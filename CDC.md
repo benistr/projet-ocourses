@@ -55,8 +55,14 @@ Sprint 2 jusqu'au jeudi 10 octobre 2019 - livrable : ?
 
 ### Navigation interne
 
+Sur Mobile
+    Page d'accueil avec menu Burger (ou équivalant) affichant le menu sur la moitié de l'écran.
+    
+
+
+Sur Ordi
+
     Un menu principal vers les catégories (+ lien vers l'accueil)
-    En responsive, un menu burger apparait dans lequel se trouvent les liens du menu
     Menu secondaire sur le côté pour accéder aux auteurs
     Sur les listes d'articles, j'accède aux détails de l'article en question en cliquant sur son titre
 
@@ -66,56 +72,35 @@ Layout global
     Page d'accueil :
         Lien vers aliments de saison 
         Lien vers mes listes
+        Lien vers les recettes
     
-    Un menu avec :
-        titre/logo
-        liens vers les catégories
-    Un slogan (baseline)
-    Sidebar à droite qui regroupe :
-        champ de recherche
-        liste des catégories
-        listes des auteurs
+    Header : 
+        Un titre/logo
+        Un slogan (baseline)
+        Un menu avec :
+            liens vers les catégories
+    
     Pied de page :
         Liens vers les réseaux sociaux
         Liens navigation annexe type "mentions légales"
 
-Liste des articles
-
-    Chaque article :
-        Un titre (cliquable)
-        Un résumé (cliquable et renvoie vers la page article)
-        Date
-        Auteur
-        Catégorie
-    Pagination (liens précedent/suivant)
+    Listes :
+        Sidebar à droite qui regroupe :
+            Aliments/Produits favoris
 
 ## Contraintes techniques
 
 Site responsive Compatibilité dernières versions des navigateurs (Chrome (2 dernières versions), Firefox, Edge + versions mobiles ?)
 Spécifications techniques
 Architecture logicielle choisie
+
 ### Côté front
 
-    HTML5 : le code respectera une sémantique correcte.
+    HTML5 : le code respectera une sémantique correcte : point d'entrée de notre modèle React
     CSS 3 : respect de la charte graphique
-    Javascript : sera utilisé si besoin
+    React : sera utilisé
 
 ### Côté back
 
-    PHP7
-    Base de données (stockage des données articles, auteurs...): MySql
-
-Description des données
-
-    Articles :
-        Titre
-        Résumé
-        Date de publication
-        Auteur
-        Catégorie
-    Auteurs :
-        Nom
-        Prénom
-        Image de profil
-    Catégorie :
-        Intitulé
+    Node.JS ?
+    Base de données (stockage des données articles, auteurs...): Node.JS ???
