@@ -1,12 +1,13 @@
 23 Septembre : 
 
-Kévin:
+- Réunion pour partage de tâches.
 
-Mimi: 
+- Définitions des fonctionnalités du site/application mobile.
 
-Dorian:
+- Création du Trello.
 
-Ben:
+- Création du cahier des charges.
+
 
 24 Septembre : 
 
