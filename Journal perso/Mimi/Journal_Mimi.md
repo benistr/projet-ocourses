@@ -1,7 +1,19 @@
 ## Jour 1
 
-23/09/2018
+23/09/2019
 
 Réunion d'équipe pour partage de tâches.
 
-Moi : référente technique => choix de techniques choisi
+Moi : référente technique => choix de techniques choisis.
+
+## Jour 2
+
+24/09/2019
+
+Meeting de 15 minutes pour debriefing et planification des tâches de la journée.
+
+Création du wireframe du projet.
+
+Création des user stories.
+
+Recherche sur Node.js
