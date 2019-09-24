@@ -58,8 +58,6 @@ Sprint 2 jusqu'au jeudi 10 octobre 2019 - livrable : ?
 Sur Mobile
     Page d'accueil avec menu Burger (ou équivalant) affichant le menu sur la moitié de l'écran.
     
-
-
 Sur Ordi
 
     Un menu principal vers les catégories (+ lien vers l'accueil)
@@ -98,9 +96,130 @@ Architecture logicielle choisie
 
     HTML5 : le code respectera une sémantique correcte : point d'entrée de notre modèle React
     CSS 3 : respect de la charte graphique
-    React : sera utilisé
+    React : sera utilisé principalement
 
 ### Côté back
 
     Node.JS ?
     Base de données (stockage des données articles, auteurs...): Node.JS ???
+
+### Description des données
+
+    Recettes : 
+        - Titre
+        - Instructions
+        - Ingrédients
+        - Lien vers recette originale
+        - Tips / Astuces
+        - Catégories
+
+### Fonctionnalités prioritaire après WireFrame
+
+    Ergonomie
+        Accentuation visuelle de la page visitée
+        Chemin du site sur chaque page visitée
+
+    Page d'accueil bureau
+        Header
+            Navigation complète (Mes listes, Mes recettes, Mon Compte, Légumes de saison, Qui sommes-nous?)
+            Connexion
+        Body
+           Fruits & Légumes de saison
+           Suggestions de recettes
+           Créer une liste 
+        Footer
+            Contact
+            CGU
+            Mentions légales
+
+    Page d'accueil mobile
+        Header
+            Logo
+            Menu Burger
+            Connexion
+        Body
+            Fruits & Légumes de saison
+            Suggestions de recettes
+            Créer une liste 
+        Footer
+            Accès rapide aux 3 fonctionnalités (si connecté)
+
+    Page liste bureau
+        Header
+            Navigation complète (Mes listes, Mes recettes, Mon Compte, Légumes de saison, Qui sommes-nous?)
+            Connexion
+        Body
+            Chemin du site
+            Si connecté : accès à "Mes listes"
+            Si non connecté : accès à une liste vide
+            Export de liste
+            Partage de liste
+            Barre de recherche/Input + quantités (Input) + rayons/catégorie
+            Liste en drag & drop
+            Possibilité de supprimer le produit / Ajouter en favoris / Modifier nom et quantité d'un produit
+            Rayer un produit pour dire qu'il est dans le caddie
+            Bouton de validation de la liste : top départ pour les courses !
+        Footer
+            Contact
+            CGU
+            Mentions légales
+
+    Page liste mobile
+        Header
+            Logo
+            Menu Burger (avec CGU, QSN, Contect, etc)
+            Connexion
+        Body
+            Chemin du site
+            Si connecté : accès à "Mes listes"
+            Si non connecté : accès à une liste vide
+            Export de liste (choix du format)
+            Partage de liste (envoi lien par mail)
+            Barre de recherche/Input + quantités (Input) + rayons/catégorie
+            Liste en drag & drop
+            Possibilité de supprimer le produit / Ajouter en favoris / Modifier nom et quantité d'un produit
+            Rayer un produit pour dire qu'il est dans le caddie
+            Bouton de validation de la liste : top départ pour les courses !
+        Footer
+            Accès rapide aux 3 fonctionnalités (si connecté)
+
+    Page recette bureau
+        Header
+            Navigation complète (Mes listes, Mes recettes, Mon Compte, Légumes de saison, Qui sommes-nous?)
+            Connexion
+        Body
+            Une recette affichée en top de manière aléatoire
+            Un champ de recherche
+            Vignette avec les recettes ajoutées
+            Bouton ajouter recette
+        Footer
+            Contact
+            CGU
+            Mentions légales
+
+    Page recette mobile
+        Header
+            Logo
+            Menu Burger (avec CGU, QSN, Contect, etc)
+            Connexion
+        Body
+            Une recette affichée en top de manière aléatoire
+            Un champ de recherche
+            Vignette avec les recettes ajoutées
+            Bouton ajouter recette
+        Footer
+            Accès rapide aux 3 fonctionnalités (si connecté)
+
+    Page Mon Compte bureau & mobile
+        Pop up - modale pour la connexion et/ou création de compte
+        Modification de l'interface si connecté
+        Mon compte :
+            Modification des informations perso
+            Mes listes
+            Mes produits favoris
+            Mes recettes
+
+    Page 404
+    Page contact
+    Page qui sommes-nous ?
+
