@@ -17,3 +17,9 @@ Création du wireframe du projet.
 Création des user stories.
 
 Recherche sur Node.js
+
+## Jour 3
+
+25/09/2019
+
+Recherche sur MongoDB, Node.js, différences entre les bases de données SQL et NoSQL.
