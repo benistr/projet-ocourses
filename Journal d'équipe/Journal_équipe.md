@@ -1,4 +1,4 @@
-23 Septembre : 
+**23 Septembre** : 
 
 - Réunion pour partage de tâches.
 - Définitions des fonctionnalités du site/application mobile.
@@ -6,18 +6,21 @@
 - Création du cahier des charges.
 
 
-24 Septembre : 
+**24 Septembre** : 
 
 - Création des wireframes chacun de son côté : puis mise en commun l'après-midi
 - UserStories
 
 Kévin:
 
-Mimi: 
+- **Matin :** chaque membre du groupe a crée un wireframe pour donner son idée visuelle du projet. 
 
-Dorian:
+- **Après-midi :** Debriefing du travail de ce matin, toutes les bonnes idées retenues seront intégrés dans un seul wireframe par Dorian.
 
-Ben:
+- Création des User Stories.
+
+- **Bonus :** On commence à faire des recherches sur Node.js, techno qui on pense, sera utile à notre projet.
+
 
 25 Septembre : 
 
