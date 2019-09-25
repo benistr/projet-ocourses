@@ -1,4 +1,4 @@
-Horaires :
+### Horaires : ###
 - Horaire de cours en semaine
 - Soirée et WE pour les bonus ABSOLUMENT PAS OBLIGATOIRE !!!
 
