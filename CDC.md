@@ -1,7 +1,7 @@
 ## Présentation
 
 Une interface (site et appli si possible) pour gérer et préparer facilement sa liste de courses afin d'être plus efficace une fois dans le magasin (supermarché, coop, boucherie, boulangerie, etc).
-Moins de temps pour faire les courses = plus de temps pour manger +1
+Moins de temps pour faire les courses = plus de temps pour manger
 
 Description
 En créant un compte, l'utilisateur pourrait enrichir sa liste de courses en assignant un produit + quantité appartenant à une catégorie (créée en amont).
@@ -15,14 +15,12 @@ Exemple :
 
 Grâce à un drag & drop, l'utilisateur pourrait agencer les catégories en fonction de son parcours dans le supermarché. Au fur et à mesure des produits mis dans son caddie, il pourrait cliquer sur le produit en question qui changerait d'état (code couleur, police barrée : à définir).
 
-Côté préparation de la liste, j'ai pensé ajouter un onglet recettes. L'utilisateur pourrait alimenter une base de données. Il renseignerait chaque ingrédient de chaque recette qu'il a l'habitude de faire. Ainsi, en cliquant sur une des recettes, les ingrédients s'ajouteraient automatiquement à la liste de courses.
-Un petit rappel pourrait être ajouté pour se rappeler des recettes choisies pour la semaine et pourquoi pas ajouter un petit calendrier pour les plus organisés/sportifs d'entre nous.
+L'utilisateur pourrait alimenter une base de données de recette. Il renseignerait chaque ingrédient de chaque recette qu'il a l'habitude de faire. Ainsi, en cliquant sur une des recettes, les ingrédients s'ajouteraient automatiquement à la liste de courses.
+Un rappel pourrait être ajouté pour se rappeler des recettes choisies pour la semaine et pourquoi pas ajouter un petit calendrier pour les plus organisés/sportifs.
 
-Le but ultime serait d'arriver à un partage de liste avec d'autres utilisateurs (potes, compagne, compagnon), pour que chacun puisse agrémenter la liste et vérifier les éléments déjà achetés.
+Le but ultime serait d'arriver à un partage de liste avec d'autres utilisateurs (amis, compagne/compagnon), pour que chacun puisse agrémenter la liste et vérifier les éléments déjà achetés.
 
-Pourquoi pas sur une version plus élaborée, ajouter des statistiques sur le nombre de recettes choisies sur une période, des informations nutritives ou des photos pour préciser une marque ou un produit précis lorsqu'on est plusieurs utilisateurs sur une même liste.
-
-Les bonnes idées sont les bienvenues pour agrémenter le site et faire gagner du temps à l'utilisateur.
+Sur une version plus élaborée, ajouter des statistiques sur le nombre de recettes choisies sur une période, les produits les plus souvent mis sur une liste, des informations nutritives ou des photos pour préciser une marque ou un produit précis lorsqu'on est plusieurs utilisateurs sur une même liste.
 
 ## Délai
 
@@ -55,16 +53,16 @@ Sprint 2 jusqu'au jeudi 10 octobre 2019 - livrable : ?
 
 ### Navigation interne
 
-Sur Mobile
+Mobile
     Page d'accueil avec menu Burger (ou équivalant) affichant le menu sur la moitié de l'écran.
     
-Sur Ordi
-
+Desktop
     Un menu principal vers les catégories (+ lien vers l'accueil)
     Menu secondaire sur le côté pour accéder aux auteurs
-    Sur les listes d'articles, j'accède aux détails de l'article en question en cliquant sur son titre
+    Sur les listes d'articles, on accède aux détails de l'article en question en cliquant sur son titre
 
 ## Templates
+
 Layout global
 
     Page d'accueil :
@@ -223,3 +221,6 @@ Architecture logicielle choisie
     Page contact
     Page qui sommes-nous ?
 
+### User Stories
+
+Voir Trello

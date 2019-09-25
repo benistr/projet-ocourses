@@ -1,15 +1,15 @@
 23 Septembre : 
 
 - Réunion pour partage de tâches.
-
 - Définitions des fonctionnalités du site/application mobile.
-
 - Création du Trello.
-
 - Création du cahier des charges.
 
 
 24 Septembre : 
+
+- Création des wireframes chacun de son côté : puis mise en commun l'après-midi
+- UserStories
 
 Kévin:
 
