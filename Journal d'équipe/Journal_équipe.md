@@ -19,18 +19,16 @@ Kévin:
 
 - Création des User Stories.
 
-- **Bonus :** On commence à faire des recherches sur Node.js, techno qui on pense, sera utile à notre projet.
+- **Bonus :** On commence à faire des recherches sur NodeJS, techno qui on pense, sera utile à notre projet.
 
 
-25 Septembre : 
+**25 Septembre** : 
 
-Kévin:
+- Concertation en équipe et mini réunion avec Déborah pour validation de la techno qui nous allons utiliser pour notre base de données.
 
-Mimi: 
+- Création du diagramme de classes par Benjamin.
 
-Dorian:
-
-Ben:
+- Nous continuons notre recherche sur NodeJS, MongoDb et les API.
 
 26 Septembre : 
 
