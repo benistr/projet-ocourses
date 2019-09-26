@@ -1,5 +1,6 @@
-module.exports = function (app) {
-    /*
-    This is where the routes and functions will be stack for the api /user
-    */
+    const account = require('./account/lib.js');
+
+    module.exports = function (app) {
+        app.post('/login',account.login);
+        app.post('/signup',account.signup);
     }
