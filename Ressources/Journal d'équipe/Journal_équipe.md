@@ -30,6 +30,10 @@ Kévin:
 
 - Nous continuons notre recherche sur NodeJS, MongoDb et les API.
 
+- Présentation de notre projet à Déborah avec nos priorités et définition des objectifs pour le sprint 1.
+
+- Installation de mongoDB ok, Node.JS ok, et création de endpoints login et signup
+
 26 Septembre : 
 
 Kévin:
