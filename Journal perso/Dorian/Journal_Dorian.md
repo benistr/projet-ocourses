@@ -12,5 +12,5 @@
 
 25 Septembre :
 
--Mise à jour de la maquette d'après la mise en commun de la veille
--Recherche concernant la réalisation de la DB, SQL or not SQL
+- Mise à jour de la maquette d'après la mise en commun de la veille
+- Recherches concernant la réalisation de la DB, SQL or not SQL
