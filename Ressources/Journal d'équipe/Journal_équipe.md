@@ -19,7 +19,7 @@ Kévin:
 
 - Création des User Stories.
 
-- **Bonus :** On commence à faire des recherches sur NodeJS, techno qui on pense, sera utile à notre projet.
+- **Bonus :** Nous commençons à faire des recherches sur NodeJS, techno qui nous pensons, sera utile à notre projet.
 
 
 **25 Septembre** : 
@@ -30,29 +30,26 @@ Kévin:
 
 - Nous continuons notre recherche sur NodeJS, MongoDb et les API.
 
+
+**26 Septembre** : 
+
 - Présentation de notre projet à Déborah avec nos priorités et définition des objectifs pour le sprint 1.
 
 - Installation de mongoDB ok, Node.JS ok, et création de endpoints login et signup
 
-26 Septembre : 
+**27 Septembre** : 
 
-Kévin:
+- Création des composants de notre page d'accueil.
 
-Mimi: 
+Kévin: body 
 
-Dorian:
+Mimi: footer
 
-Ben:
+Dorian: header
 
-27 Septembre : 
+Ben: login
 
-Kévin:
-
-Mimi: 
-
-Dorian:
-
-Ben:
+- Nous avons eu beaucoup de difficulté à travailler avec le sass. A revoir.
 
 30 Septembre : 
 
