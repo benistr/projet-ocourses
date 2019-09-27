@@ -5,13 +5,14 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+
 /**
  * Local import
  */
 import { updateInputValue } from 'src/store/reducer';
 
 // Composants enfants éventuels
-import ClicCounter from 'src/components/ClicCounter';
+import Main from 'src/components/Main';
 
 // Styles et assets
 import './app.sass';
@@ -25,8 +26,10 @@ const App = ({ title, greeting, handleChange }) => (
       value={greeting}
       onChange={handleChange}
     />
+    <Main />
+
     <br/>
-    <ClicCounter label="Clic-me!" />
+   
   </div>
 );
 
