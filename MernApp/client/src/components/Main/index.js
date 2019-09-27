@@ -1,5 +1,5 @@
 import React from 'react';
-import { Responsive } from 'semantic-ui-react';
+
 
 //Local imports
 import './styles.scss';
@@ -72,6 +72,10 @@ const Main = () => {
                     </div>
                 </div>
 
+                <div className="addAList">
+                    <p className="buttonLabel">Ajouter une nouvelle Liste </p>
+                    <button className="createListButton">+</button>
+               </div>
                
             </div>
             
