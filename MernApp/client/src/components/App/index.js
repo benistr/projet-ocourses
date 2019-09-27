@@ -9,22 +9,17 @@ import PropTypes from 'prop-types';
  * Local import
  */
 import { updateInputValue } from 'src/store/reducer';
+import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
 
 
 // Styles et assets
-import './app.sass';
+//import './app.sass';
 
-const App = ({ title, greeting, handleChange }) => (
+const App = () => (
   <div id="app">
-    <h1 id="app-title">{title}</h1>
-    <input
-      type="text"
-      id="app-content"
-      value={greeting}
-      onChange={handleChange}
-    />
+    <Footer />
     <br/>
   </div>
 );
