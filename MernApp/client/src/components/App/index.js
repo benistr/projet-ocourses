@@ -19,13 +19,7 @@ import './app.sass';
 
 const App = ({ title, greeting, handleChange }) => (
   <div id="app">
-    <h1 id="app-title">{title}</h1>
-    <input
-      type="text"
-      id="app-content"
-      value={greeting}
-      onChange={handleChange}
-    />
+    
     <Main />
 
     <br/>

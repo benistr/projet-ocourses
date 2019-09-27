@@ -1,31 +1,78 @@
 import React from 'react';
-import { Button, Responsive, Image } from 'semantic-ui-react';
+import { Responsive } from 'semantic-ui-react';
 
 //Local imports
-import './styles.sass';
+import './styles.scss';
 
 const Main = () => {
    
     return <div className="mainContainer">
                 <div className="mainContent">
                     <div className="title"> Fruits et légumes de saison</div>
-                    <div className="legumes"> Légumes </div>
+                    <div className="legumes"> 
+                        <div className="summary">
+                        
+                            <ul className="recipe-items">
+                                <li>- Légume </li>
+                                <li>- Légume </li>
+                                <li>- Légume </li>
+                                <li>- Légume </li>
+                                
+                        </ul> 
+                        </div>
+                    </div>
+                    
                 </div>
 
                 <div className="mainContent">
                     <div className="title"> Recette suggérée</div>
-                    <div className="recette"> Recettes </div>
+                    <div className="recette"> 
+                        <div className="summary">
+                        <p className="summary-title">Titre de la recette</p>
+                        <ul className="recipe-items">
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            
+                        </ul>
+                        </div>    
+                    </div>
                 </div>
 
                 <div className="mainContent">
                     <div className="title"> Recette suggérée</div>
-                    <div className="recette"> Blue</div>
+                    <div className="recette"> 
+                        <div className="summary">
+                        <p className="summary-title">Titre de la recette</p>
+                        <ul className="recipe-items">
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            
+                        </ul>
+                        </div>    
+                    </div>
                 </div>
 
                 <div className="mainContent">
                     <div className="title"> Recette suggérée</div>
-                    <div className="recette">Red</div>
+                    <div className="recette"> 
+                        <div className="summary">
+                        <p className="summary-title">Titre de la recette</p>
+                        <ul className="recipe-items">
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            <li>- Ingrédient</li>
+                            
+                        </ul>
+                        </div>    
+                    </div>
                 </div>
+
+               
             </div>
             
 };
