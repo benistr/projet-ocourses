@@ -11,7 +11,7 @@ import PropTypes from 'prop-types';
 import { updateInputValue } from 'src/store/reducer';
 
 // Composants enfants éventuels
-import ClicCounter from 'src/components/ClicCounter';
+
 
 // Styles et assets
 import './app.sass';
@@ -26,7 +26,6 @@ const App = ({ title, greeting, handleChange }) => (
       onChange={handleChange}
     />
     <br/>
-    <ClicCounter label="Clic-me!" />
   </div>
 );
 
