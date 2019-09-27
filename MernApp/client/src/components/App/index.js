@@ -8,27 +8,25 @@ import PropTypes from 'prop-types';
 /**
  * Local import
  */
+
+
+import Header from 'src/components/Header';
 import { updateInputValue } from 'src/store/reducer';
 
 // Composants enfants éventuels
-import ClicCounter from 'src/components/ClicCounter';
+
 
 // Styles et assets
 import './app.sass';
 
-const App = ({ title, greeting, handleChange }) => (
+const App = ({ title }) => (
   <div id="app">
-    <h1 id="app-title">{title}</h1>
-    <input
-      type="text"
-      id="app-content"
-      value={greeting}
-      onChange={handleChange}
-    />
-    <br/>
-    <ClicCounter label="Clic-me!" />
+    <Header />
   </div>
-);
+
+)
+
+
 
 App.propTypes = {
   /** Titre de l'application React */
