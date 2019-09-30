@@ -23,3 +23,14 @@ Recherche sur Node.js
 25/09/2019
 
 Recherche sur MongoDB, Node.js, différences entre les bases de données SQL et NoSQL.
+
+## Jour 4
+
+26/09/2019
+
+Cockpit avec Déborah pour la retrospective du sprint 0.
+
+Travail en équipe pour l'installation de MongoDB.
+
+Révision en général.
+

@@ -1,9 +1,9 @@
 {
-  "name": "mernApp",
+  "name": "ernApp",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "startMDB": "node server.js"
   },
   "dependencies": {
     "body-parser": "^1.18.2",

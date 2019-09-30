@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+
 /**
  * Local import
  */
@@ -13,14 +14,18 @@ import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
 
+import Main from 'src/components/Main';
 
 // Styles et assets
 //import './app.sass';
 
 const App = () => (
   <div id="app">
+    <Main />
+
     <Footer />
-    <br/>
+
+
   </div>
 );
 
