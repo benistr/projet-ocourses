@@ -39,52 +39,52 @@ togglePopup() {
     });
 }
 
-render() {
-    return (
-        <div className='app'>
-            <h1>Test Login</h1>
-            <button onClick={this.togglePopup.bind(this)}>Popup Login</button>
-            <button onClick={() => {alert('It works');}}>Try me when popup is open</button>
-            {this.state.showPopup ? 
-        <Popup
-            text='Close Me'
-            closePopup={this.togglePopup.bind(this)}
-        />
-        : null
-            }
-        <img src={Logo}></img> 
-        <br></br>
-        <Input
-            key=""
-            type=""
-            className="ui input"
-            placeholder="Votre Email"
-            // Duo de props pour faire une input contrôlé :
-            value=""
-            onChange=""
-        />
-        <Input
-            key=""
-            type=""
-            className="ui input"
-            placeholder="Votre Mot de Passe"
-            // Duo de props pour faire une input contrôlé :
-            value=""
-            onChange=""
-        />
-        <form onSubmit="">
-            <button type="submit" className="ui button">
-            Connexion
-            </button>
-            <button type="cancel" className="ui button">
-            Annuler
-            </button>
-        </form>
-        <br></br>
-        <small>Pas encore de compte ?</small><p>Créer un compte</p>
-        </div>
-    );
-}
+    render() {
+        return (
+            <div className='mainContainer'>
+                <h1>Connexion</h1>
+                <button onClick={this.togglePopup.bind(this)}>Popup Login</button>
+                <button onClick={() => {alert('It works');}}>Try me when popup is open</button>
+                {this.state.showPopup ? 
+            <Popup
+                text='Close Me'
+                closePopup={this.togglePopup.bind(this)}
+            />
+            : null
+                }
+            <img src={Logo}></img> 
+            <br></br>
+            <Input
+                key=""
+                type=""
+                className="ui input"
+                placeholder="Votre Email"
+                // Duo de props pour faire une input contrôlé :
+                value=""
+                onChange=""
+            />
+            <Input
+                key=""
+                type=""
+                className="ui input"
+                placeholder="Votre Mot de Passe"
+                // Duo de props pour faire une input contrôlé :
+                value=""
+                onChange=""
+            />
+            <form onSubmit="">
+                <button type="submit" className="ui button">
+                Connexion
+                </button>
+                <button type="cancel" className="ui button">
+                Annuler
+                </button>
+            </form>
+            <br></br>
+            <small>Pas encore de compte ?</small><p>Créer un compte</p>
+            </div>
+        );
+    }
 };
 
 export default Log;
