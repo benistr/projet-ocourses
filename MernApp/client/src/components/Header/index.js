@@ -33,13 +33,13 @@ const Nav = () => (
         <li id="nav">
           <a id="a" href="">Mon Compte</a>
         </li>
-        <li id="picto">
+        <ul id="picto">
           <a id="a" href=""><img className="picto-compte" src={Compte} /></a>
           <a id="a" href=""><img className="picto-menu" src={Menu}/></a>
           <li id="nav2">
           <a id="a" href="">Connexion</a>
         </li>
-        </li>
+        </ul>
         
       </ul>
   </div>

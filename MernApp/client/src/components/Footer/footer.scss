@@ -1,0 +1,93 @@
+
+@import 'src/styles/vars';
+
+   
+.footer-menu {
+    display: flex;
+    bottom: 0;
+    width: 100%;
+    position: fixed;
+    justify-content: center; 
+    background-color: #fff;
+    box-shadow: 1px 1px 4px #DCDCDC;  
+}
+
+.nav-footer {
+    display: flex;
+    width: 30%;
+    color: $text-color;
+    font-size: .8em;
+    list-style: none;
+    font-style: italic;
+    padding: 1.2em;
+    justify-content: center;
+    font-family: $font-family;
+}
+
+.nav-footer-mobile {
+    width:100%;
+    display: flex;
+    color: $text-color;
+    font-size: .8em;
+    list-style: none;
+    font-style: italic;
+    padding: 1.2em;
+    justify-content: space-around;
+    font-family: $font-family;
+}
+
+.li {
+    margin-right: 1em;
+}
+
+.li-mobile {
+    
+    font-size: 0.9rem;
+}
+
+  
+
+li a:hover {
+    transform: scale(1.05, 1.05);
+    transition-duration: 200ms, 300ms;
+    color: $text-color;
+    font-weight: bold;
+}
+   
+
+// .addAList {
+//     border: 1px solid red;
+//     z-index: 1000;
+//     width: 100%;
+//     // display: flex;
+//     margin: auto;
+//     // float: right;
+//     // justify-content:flex-end;
+//     // padding-right: 5rem;
+
+// }
+
+// .list {
+//     width: 68%;
+//     margin: auto;
+//     // justify-content: flex-end;
+//     right: 0;
+//     display: block;
+// }
+
+// .addlist {
+//     width: 70%;
+//     // justify-content: flex-end;
+//     width: 4em;
+//     filter: drop-shadow(1px 1px 2px #DCDCDC);    
+// }
+
+.addlist:hover {
+    transform: rotate(90deg);
+    transition-duration: 200ms, 300ms;
+    filter: drop-shadow(1px 1px 2px #DCDCDC);
+}
+
+
+@media (min-width: 800px){
+}

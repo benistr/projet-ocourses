@@ -5,7 +5,7 @@
     width:100%;
     font-family: $font-family;
     color: $text-color;
-    padding-left: 1rem;
+    padding-left: 2.5rem;
 }
 
 .mainContainer {
@@ -16,6 +16,7 @@
     padding-top: 120px;
     font-family: $font-family;
     background-color:#F9F9F9;
+    
 }
 
     
@@ -80,40 +81,22 @@
     color: #B6B6B6;
 }
 
-
-
 .recipe-items {
     display: none;
     
 }
 
-.addAList {
-    display: flex;
-    align-items: center;
-    position: fixed;
-    height: 25px;
-    bottom: 20px;
-    right : 0px;
-}
 
-.buttonLabel {
-    width: 40%;
-    font-size: 0.5rem;
-    color: $text-color;
-}
-
-.createListButton {
-    border-radius: 50%;
-    background-color: $text-color;
-    color: white;
-    border: 0.5px solid #b6b6b6;
-    
-}
 
 @media (min-width: 800px){
+    .navigation {
+        padding-left: 1rem;
+    }
+
     .mainContent {
     width: calc(50% - 2rem);
     margin: 1rem 1rem;
+    
     }
 
     .mainContainer {
@@ -131,34 +114,7 @@
 
 .summary-title {
     font-weight: bold;
-    color: skyblue;
+    color: $text-color;
     padding-bottom: 0.2rem;
 }
-
-.addAList {
-    margin-left: 85%;
-    margin-top: 0.5rem;
-    display: flex;
-    align-items: center;
-    position: relative;
-    height: 100px;
-    bottom: 0px;
-
-}
-
-.buttonLabel {
-    width: 100%;
-    font-size: 1rem;
-    color: $text-color;
-}
-
-.createListButton {
-    font-size: 3rem;
-    color: white;
-    width: 70%;
-    height: 70%;
-    
-
-}
-
 }

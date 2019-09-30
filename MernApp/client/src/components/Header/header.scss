@@ -9,9 +9,9 @@
  * Styles
  */
 
-$break-small: 320px;
+$break-small: 319px;
 $break-medium: 764px;
-$break-large: 1200px;
+$break-large: 1023px;
 $break-extra-large: 2500px;
 
 
@@ -22,6 +22,7 @@ $break-extra-large: 2500px;
   display: flex;
   position: fixed;
   padding: 1rem;
+  z-index: 10;
 }
 
 .logo {
