@@ -13,6 +13,7 @@ import { updateInputValue } from 'src/store/reducer';
 
 // Composants enfants éventuels
 import Log from 'src/components/Log';
+import Lists from 'src/components/Lists';
 
 // Styles et assets
 import './app.sass';
@@ -21,7 +22,7 @@ const App = ({ title, greeting, handleChange }) => (
   <div id="app">
     
     <Log />
-
+    <Lists />
     <br/>
    
   </div>
