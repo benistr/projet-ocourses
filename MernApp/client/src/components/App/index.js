@@ -9,24 +9,47 @@ import PropTypes from 'prop-types';
 /**
  * Local import
  */
+
+
+import Header from 'src/components/Header';
 import { updateInputValue } from 'src/store/reducer';
+import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
+
 import Log from 'src/components/Log';
 import Lists from 'src/components/Lists';
+
+
+
+
+import Main from 'src/components/Main';
+
 
 // Styles et assets
 import './app.sass';
 
-const App = ({ title, greeting, handleChange }) => (
+
+const App = ({ title }) => (
   <div id="app">
+
     
     <Log />
     <Lists />
     <br/>
    
+
+    <Header />
+    <Main />
+    <Footer />
+
+
+
   </div>
-);
+
+)
+
+
 
 App.propTypes = {
   /** Titre de l'application React */
