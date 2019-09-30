@@ -9,25 +9,35 @@ import PropTypes from 'prop-types';
 /**
  * Local import
  */
+
+
+import Header from 'src/components/Header';
 import { updateInputValue } from 'src/store/reducer';
 import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
 
+
+
 import Main from 'src/components/Main';
+
 
 // Styles et assets
 //import './app.sass';
 
-const App = () => (
-  <div id="app">
-    <Main />
 
+const App = ({ title }) => (
+  <div id="app">
+    <Header />
+    <Main />
     <Footer />
 
 
   </div>
-);
+
+)
+
+
 
 App.propTypes = {
   /** Titre de l'application React */
