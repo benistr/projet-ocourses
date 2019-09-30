@@ -62,34 +62,37 @@ li a:hover {
 
 .addAList {
     border: 1px solid red;
-    z-index: 1000;
+    //z-index: 1000;
     width: 68%;
     display: flex;
     margin: auto;
     z-index: 100;
     flex-wrap: wrap;
     // float: right;
-    // justify-content:flex-end;
+    justify-content:flex-end;
     // padding-right: 5rem;
     
 }
 
 .buttonLabel {
-    // display: flex;
+    //display: flex;
     flex-wrap: wrap;
-    width: 5rem;
+    //width: 5rem;
+    line-height: 1.2em;
 }
 
 .list {
-    // width: 68%;
+    width: 20%;
     // margin: auto;
     text-align: right;
-    width: 6rem;
+    //width: 6rem;
     justify-content: flex-end;
     right: 0px;
-    display: inline;
+    display: flex;
+    align-items: center;
     font-family: $font-family;
     font-size: 0.8em;
+    
 }
 
 .addlist {
