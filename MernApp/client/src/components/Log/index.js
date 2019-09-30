@@ -41,18 +41,9 @@ togglePopup() {
 
     render() {
         return (
-            <div className='mainContainer'>
+            <div className='logContainer'>
                 <h1>Connexion</h1>
-                <button onClick={this.togglePopup.bind(this)}>Popup Login</button>
-                <button onClick={() => {alert('It works');}}>Try me when popup is open</button>
-                {this.state.showPopup ? 
-            <Popup
-                text='Close Me'
-                closePopup={this.togglePopup.bind(this)}
-            />
-            : null
-                }
-            <img src={Logo}></img> 
+            <img className="img-log" src={Logo}></img> 
             <br></br>
             <Input
                 key=""

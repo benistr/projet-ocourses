@@ -20,8 +20,7 @@ const Lists = () => {
                                 <li>- 6 bières </li>
                                 <li>- 1 liquide vaisselle </li>
                                 <li>- 2 poivrons </li>
-                                
-                        </ul> 
+                            </ul> 
                         </Responsive>
                         </div>
                     </div>
@@ -32,15 +31,14 @@ const Lists = () => {
                 <div className="title">Ikea</div>
                 <div className="legumes"> 
                     <div className="summary">
-                    <p className="summary-title">Découvrez les fruits & légumes du mois</p>
+                    <p className="summary-title">Ma liste Ikea</p>
                     <Responsive minWidth={1024}>
                         <ul className="recipe-items">
-                            <li>- 1 étagère Klax </li>
+                            <li>- 1 étagère Kallax </li>
                             <li>- 1 commode Malm </li>
                             <li>- 1 cadre </li>
                             <li>- 2 bougies </li>
-                            
-                    </ul> 
+                        </ul> 
                     </Responsive>
                     </div>
                 </div>
