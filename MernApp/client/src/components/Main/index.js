@@ -6,7 +6,8 @@ import './styles.scss';
 
 const Main = () => {
    
-    return <div className="mainContainer">
+    return  <div className="mainContainer">
+            <p className="navigation">▶ Accueil</p>
                 <div className="mainContent">
                     <div className="title"> Fruits et légumes de saison</div>
                     <div className="legumes"> 

@@ -1,7 +1,7 @@
 /**
  * Import
  */
-
+ @import 'src/styles/vars';
 
 
 
@@ -87,7 +87,7 @@ $break-extra-large: 2500px;
   
   margin-right: 5%;
   margin-left: 5%;
-  font-family: 'Open Sans', sans-serif;
+  font-family: $font-family;
   font-size: 1rem;
   flex-wrap: wrap;
   padding-top: 0.5rem; 
@@ -135,5 +135,7 @@ $break-extra-large: 2500px;
 #a:hover {
   transform: scale(1.05, 1.05);
   transition-duration: 200ms, 300ms;
+  color: $text-color;
+  font-weight: bold; 
 }
 

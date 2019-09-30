@@ -23,7 +23,7 @@ import Main from 'src/components/Main';
 
 
 // Styles et assets
-//import './app.sass';
+import './app.sass';
 
 
 const App = ({ title }) => (
