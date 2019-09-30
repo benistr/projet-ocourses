@@ -17,6 +17,10 @@ import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
 
+import Log from 'src/components/Log';
+import Lists from 'src/components/Lists';
+
+
 
 
 import Main from 'src/components/Main';
@@ -28,9 +32,17 @@ import './app.sass';
 
 const App = ({ title }) => (
   <div id="app">
+
+    
+    <Log />
+    <Lists />
+    <br/>
+   
+
     <Header />
     <Main />
     <Footer />
+
 
 
   </div>
