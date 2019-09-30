@@ -4,6 +4,7 @@
    
 .footer-menu {
     display: flex;
+    z-index: 10;
     bottom: 0;
     width: 100%;
     position: fixed;
@@ -45,42 +46,59 @@
     font-size: 0.9rem;
 }
 
-  
-
 li a:hover {
     transform: scale(1.05, 1.05);
     transition-duration: 200ms, 300ms;
     color: $text-color;
     font-weight: bold;
 }
-   
 
-// .addAList {
-//     border: 1px solid red;
-//     z-index: 1000;
-//     width: 100%;
-//     // display: flex;
-//     margin: auto;
-//     // float: right;
-//     // justify-content:flex-end;
-//     // padding-right: 5rem;
+.footer {
+    height: 9em;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    bottom: 0px;
+}
 
-// }
+.addAList {
+    border: 1px solid red;
+    z-index: 1000;
+    width: 68%;
+    display: flex;
+    margin: auto;
+    z-index: 100;
+    flex-wrap: wrap;
+    // float: right;
+    // justify-content:flex-end;
+    // padding-right: 5rem;
+    
+}
 
-// .list {
-//     width: 68%;
-//     margin: auto;
-//     // justify-content: flex-end;
-//     right: 0;
-//     display: block;
-// }
+.buttonLabel {
+    // display: flex;
+    flex-wrap: wrap;
+    width: 5rem;
+}
 
-// .addlist {
-//     width: 70%;
-//     // justify-content: flex-end;
-//     width: 4em;
-//     filter: drop-shadow(1px 1px 2px #DCDCDC);    
-// }
+.list {
+    // width: 68%;
+    // margin: auto;
+    text-align: right;
+    width: 6rem;
+    justify-content: flex-end;
+    right: 0px;
+    display: inline;
+    font-family: $font-family;
+    font-size: 0.8em;
+}
+
+.addlist {
+    // width: 70%;
+    justify-content: flex-end;
+    width: 4em;
+    filter: drop-shadow(1px 1px 2px #DCDCDC); 
+    flex-wrap: wrap;
+}
 
 .addlist:hover {
     transform: rotate(90deg);
@@ -89,5 +107,9 @@ li a:hover {
 }
 
 
-@media (min-width: 800px){
+@media (max-width: 800px){
+
+    .addAList {
+        width: 80%;
+    }
 }

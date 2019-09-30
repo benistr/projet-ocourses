@@ -6,7 +6,7 @@ import Addlist from './addlist.png'
 
 const Footer = () => (
     
-<div>
+<div className="footer">
 
         <div className="addAList">
             <div className="list">
@@ -16,6 +16,8 @@ const Footer = () => (
         </div>
 
     <Responsive minWidth={1023}>
+
+    
         <div className="footer-menu">
             <ul className='nav-footer'>
                 <li className="li" ><a href="">CGU</a></li>  
