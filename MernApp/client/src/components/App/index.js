@@ -5,6 +5,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+
 /**
  * Local import
  */
@@ -12,16 +13,26 @@ import PropTypes from 'prop-types';
 
 import Header from 'src/components/Header';
 import { updateInputValue } from 'src/store/reducer';
+import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
 
 
+
+import Main from 'src/components/Main';
+
+
 // Styles et assets
-import './app.sass';
+//import './app.sass';
+
 
 const App = ({ title }) => (
   <div id="app">
     <Header />
+    <Main />
+    <Footer />
+
+
   </div>
 
 )
