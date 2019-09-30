@@ -10,20 +10,22 @@ import PropTypes from 'prop-types';
  * Local import
  */
 import { updateInputValue } from 'src/store/reducer';
+import Footer from 'src/components/Footer';
 
 // Composants enfants éventuels
+
 import Main from 'src/components/Main';
 
 // Styles et assets
-import './app.sass';
+//import './app.sass';
 
-const App = ({ title, greeting, handleChange }) => (
+const App = () => (
   <div id="app">
-    
     <Main />
 
-    <br/>
-   
+    <Footer />
+
+
   </div>
 );
 
