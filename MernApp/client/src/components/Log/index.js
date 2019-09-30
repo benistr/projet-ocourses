@@ -8,77 +8,84 @@ import { Input } from 'semantic-ui-react';
 import Logo from '../../../../../Ressources/Images/logo.png';
 
 // Composants enfants éventuels
-import LoginInput from 'src/components/LoginInput';
+
 
 // Styles et assets
-import './app.sass';
+import './styles.sass';
 
-class App extends Component {
- state = {
-   email: '',
-   password: '',
-   color: 'red',
-   promo: 'Titan'
- }
+class Popup extends React.Component {
+    render() {
+        return (
+        <div className='popup'>
+            <div className='popup_inner'>
+            <h1>{this.props.text}</h1>
+            <button onClick={this.props.closePopup}>close me</button>
+            </div>
+        </div>
+        );
+    }
+}
 
- // Usine à callbacks pour les événements de type 'change' sur les <Field />.
- updateField = fieldName => event => {
-   this.setState({ [fieldName]: event.target.value })
- }
+class Log extends React.Component {
+    constructor() {
+        super();
+        this.state = {
+        showPopup: false
+    };
+}
 
+togglePopup() {
+    this.setState({
+    showPopup: !this.state.showPopup
+    });
+}
 
- sendRequest = (event) => {
-   event.preventDefault();
- 
-   // On déclenche un POST et on obtient immédiatement un objet,
-   // la promesse, qui modélise la future réponse qu'on obtiendra.
-   const promise = axios.post('http://localhost:3001/login', {
-     email: this.state.email,
-     password: this.state.password
-   });
- 
-   promise.then(this.handleResponse);
- }
- 
- handleResponse = (response) => {
-   console.log(response);
-   // this.setState({
-   //   message: 'Identifiants invalides'
-   // })
- }
-
- render() {
-
-   const fieldsJSX = this.props.form.map(field => {
-     return <div> <img src={Logo}></img>
-     <Input
-       key={field.name}
-       type={field.type}
-       className="ui input"
-       placeholder={field.placeholder}
-       // Duo de props pour faire une input contrôlé :
-       value={this.state[field.name]}
-       onChange={this.updateField(field.name)}
-     />
-     </div>
-   })
-
-   return <div className="app">
-     <form onSubmit={this.sendRequest}>
-       {fieldsJSX}
-       <button type="submit" className="ui button">
-         Connexion
-       </button>
-       <button type="cancel" className="ui button">
-         Annuler
-       </button>
-     </form>
-     <small>Pas encore de compte ?</small>
-     <p>Créer un compte</p>
-   </div>
- }
+render() {
+    return (
+        <div className='app'>
+            <h1>Test Login</h1>
+            <button onClick={this.togglePopup.bind(this)}>Popup Login</button>
+            <button onClick={() => {alert('It works');}}>Try me when popup is open</button>
+            {this.state.showPopup ? 
+        <Popup
+            text='Close Me'
+            closePopup={this.togglePopup.bind(this)}
+        />
+        : null
+            }
+        <img src={Logo}></img> 
+        <br></br>
+        <Input
+            key=""
+            type=""
+            className="ui input"
+            placeholder="Votre Email"
+            // Duo de props pour faire une input contrôlé :
+            value=""
+            onChange=""
+        />
+        <Input
+            key=""
+            type=""
+            className="ui input"
+            placeholder="Votre Mot de Passe"
+            // Duo de props pour faire une input contrôlé :
+            value=""
+            onChange=""
+        />
+        <form onSubmit="">
+            <button type="submit" className="ui button">
+            Connexion
+            </button>
+            <button type="cancel" className="ui button">
+            Annuler
+            </button>
+        </form>
+        <br></br>
+        <small>Pas encore de compte ?</small><p>Créer un compte</p>
+        </div>
+    );
+}
 };
-/**
- * Export
- */
-export default App;
+
+export default Log;
