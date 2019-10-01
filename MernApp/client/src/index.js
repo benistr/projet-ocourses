@@ -5,6 +5,7 @@ import '@babel/polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+import { Router } from 'react-router';
 
 
 /**
@@ -22,6 +23,10 @@ import form from 'src/data/form';
 const reactRootElement = <Provider store={kastore}>
   <AppContainer form={form} />
 </Provider>;
+/*
+const reactRootElement = <Router>
+  <App />
+</Router>;*/
 
 const renderingArea = document.querySelector('#root');
 render(reactRootElement, renderingArea);

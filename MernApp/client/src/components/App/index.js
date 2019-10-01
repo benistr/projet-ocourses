@@ -14,6 +14,7 @@ import PropTypes from 'prop-types';
 import Header from 'src/components/Header';
 import { updateInputValue } from 'src/store/reducer';
 import Footer from 'src/components/Footer';
+import UserAccount from 'src/components/UserAccount';
 
 // Composants enfants éventuels
 
@@ -32,16 +33,12 @@ import './app.sass';
 
 const App = ({ title }) => (
   <div id="app">
-
-
-    <Header />
-    <Main />
+    {/*<Header />*/}
+    {/*<Main />*/}
     {/*<Lists />*/}
     {/*<Log />*/}
-    <Footer />
-
-
-
+    <UserAccount />
+    {/*<Footer />*/}
   </div>
 
 )
