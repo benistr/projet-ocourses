@@ -34,8 +34,9 @@ const Nav = () => (
         <li id="nav">
           <a id="a" href="">Qui Sommes-nous?</a>
         </li>
+
         <NavLink to='/account'>
-        <li id="nav">
+          <li id="nav">
           <a id="a" href="">Mon Compte</a>
         </li>
         </NavLink>

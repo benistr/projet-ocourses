@@ -27,8 +27,11 @@ import Main from 'src/components/Main';
 import './app.sass';
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7b44d89a6a25598bf2c500fedd6fc2ce5a788ef8
 // App Component
 
 // ATTENTION : penser à importer et mettre en place la balise Router dans le index.js du dossier src
@@ -46,7 +49,11 @@ const App = () => {
         <Route path="/" exact component={Main} />
         <Route path="/listes" component={Lists} />
         <Route path="/login" component={Log} />
+<<<<<<< HEAD
         <Route path="/account" component={UserAccount} />
+=======
+        <Route path="/useraccount" component={UserAccount} />
+>>>>>>> 7b44d89a6a25598bf2c500fedd6fc2ce5a788ef8
         </Switch>
         <Footer />
         </div>

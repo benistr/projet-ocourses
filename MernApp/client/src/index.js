@@ -28,7 +28,10 @@ const reactRootElement = <Router>
   <AppContainer form={form} />
 
 </Provider>;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7b44d89a6a25598bf2c500fedd6fc2ce5a788ef8
 </Router>;
 
 
