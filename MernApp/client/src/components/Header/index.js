@@ -23,25 +23,26 @@ const Nav = () => (
         </li>
        
         <li id="nav">
-        <NavLink to='/listes'id="a" href="">
-        Mes Listes
+        <NavLink to='/listes' id="a" href="">
+        Mes listes
         </NavLink>
         </li>
         
         <li id="nav">
-          <a id="a" href="">Mes Recettes</a>
+          <NavLink to="/recettes" id="a" href="">Mes recettes
+          </NavLink>
         </li>
         <li id="nav">
           <a id="a" href="">Légumes de saison</a>
         </li>
         <li id="nav">
-          <a id="a" href="">Qui Sommes-nous?</a>
+          <a id="a" href="">Qui sommes nous ?</a>
         </li>
 
         
         <li id="nav">
           <NavLink to='/account' id="a" href="">
-          Mon Compte
+          Mon compte
           </NavLink>
         </li>
         

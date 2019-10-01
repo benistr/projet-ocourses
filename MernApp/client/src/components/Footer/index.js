@@ -21,7 +21,7 @@ const Footer = () => (
         <div className="footer-menu">
             <ul className='nav-footer'>
                 <li className="li" ><a href="">CGU</a></li>  
-                <li className="li "><a href="">Mentions Légales</a></li>
+                <li className="li "><a href="">Mentions légales</a></li>
                 <li className="li"><a href="">Contact</a></li>
             </ul>
         </div>
@@ -32,7 +32,7 @@ const Footer = () => (
             <ul className='nav-footer-mobile'>
                 <li className="li-mobile"><a href="">Mes listes</a></li>  
                 <li className="li-mobile"><a href="">Mes recettes</a></li>
-                <li className="li-mobile"><a href="">Fruits & Légumes</a></li>
+                <li className="li-mobile"><a href="">Fruits & légumes</a></li>
             </ul>
           </div>
     </Responsive>
