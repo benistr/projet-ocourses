@@ -33,7 +33,6 @@
     transform: scale(1.05);
     width: 50;
     margin: 1rem auto;
-
 }
 
 .title {
@@ -105,14 +104,14 @@
         flex-flow: row wrap;
     }
 
-.recipe-items {
-    display: block;
-    
-}
+    .recipe-items {
+        display: block;
+        
+    }
 
-.summary-title {
-    font-weight: bold;
-    color: $text-color;
-    padding-bottom: 0.2rem;
-}
+    .summary-title {
+        font-weight: bold;
+        color: $text-color;
+        padding-bottom: 0.2rem;
+    }
 }
