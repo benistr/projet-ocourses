@@ -5,7 +5,11 @@ import '@babel/polyfill';
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
+
 import { Router } from 'react-router';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+
 
 
 /**
@@ -20,13 +24,20 @@ import form from 'src/data/form';
  * Code
  */
 
-const reactRootElement = <Provider store={kastore}>
+// Mise en place et import de la balise Router autour de l'AppContainer
+const reactRootElement = <Router>
+<Provider store={kastore}>
   <AppContainer form={form} />
+
 </Provider>;
 /*
 const reactRootElement = <Router>
   <App />
 </Router>;*/
+
+</Provider>
+</Router>;
+
 
 const renderingArea = document.querySelector('#root');
 render(reactRootElement, renderingArea);
