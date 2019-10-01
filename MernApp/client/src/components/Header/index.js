@@ -34,9 +34,11 @@ const Nav = () => (
         <li id="nav">
           <a id="a" href="">Qui Sommes-nous?</a>
         </li>
+        <NavLink to="/useraccount">
         <li id="nav">
           <a id="a" href="">Mon Compte</a>
         </li>
+        </NavLink>
         <ul id="picto">
           <a id="a" href=""><img className="picto-compte" src={Compte} /></a>
           <a id="a" href=""><img className="picto-menu" src={Menu}/></a>
