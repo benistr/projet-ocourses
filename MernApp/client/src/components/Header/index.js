@@ -15,16 +15,19 @@ const Nav = () => (
   <div id="header">
     
       <ul id="menu">
-        <NavLink to="/">
+        
         <li className="logo-div">
-          <a id="a" href=""><img className="logo" src={Logo}/></a>
-        </li>
+        <NavLink to="/" id="a" href="">
+        <img className="logo" src={Logo}/>
         </NavLink>
-        <NavLink to='/listes'>
+        </li>
+       
         <li id="nav">
-          <a id="a" href="">Mes Listes</a>
-        </li>
+        <NavLink to='/listes'id="a" href="">
+        Mes Listes
         </NavLink>
+        </li>
+        
         <li id="nav">
           <a id="a" href="">Mes Recettes</a>
         </li>
@@ -35,19 +38,23 @@ const Nav = () => (
           <a id="a" href="">Qui Sommes-nous?</a>
         </li>
 
-        <NavLink to='/account'>
-          <li id="nav">
-          <a id="a" href="">Mon Compte</a>
+        
+        <li id="nav">
+          <NavLink to='/account' id="a" href="">
+          Mon Compte
+          </NavLink>
         </li>
-        </NavLink>
+        
         <ul id="picto">
           <a id="a" href=""><img className="picto-compte" src={Compte} /></a>
           <a id="a" href=""><img className="picto-menu" src={Menu}/></a>
-          <NavLink to="login">
+          
           <li id="nav2">
-          <a id="a" href="">Connexion</a>
-          </li>
+          <NavLink to="login" id="a" href="">
+          Connexion
           </NavLink>
+          </li>
+          
         </ul>
         
       </ul>
