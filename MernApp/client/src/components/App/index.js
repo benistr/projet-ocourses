@@ -35,8 +35,8 @@ const App = ({ title }) => (
 
 
     <Header />
-    <Main />
-    {/*<Lists />*/}
+    {/*<Main />*/}
+    <Lists />
     {/*<Log />*/}
     <Footer />
 
