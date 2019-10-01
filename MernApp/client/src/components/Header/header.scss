@@ -73,11 +73,10 @@ $break-extra-large: 2500px;
 
 #nav {
   
-  margin-right: 2%;
-  margin-left: 2%;
   font-family: 'Open Sans', sans-serif;
   flex-wrap: wrap;
   padding-top: 1.5rem; 
+  width: 7rem;
   
   @media screen and (max-width: $break-large) {
     display: none;
