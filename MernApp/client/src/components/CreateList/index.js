@@ -6,29 +6,56 @@ import './CreateList.scss';
 
 
 
-const CreateList =() => {
+class CreateList extends React.Component{
+    state = {
+        itemList: []
+    };
 
-    const racks = [];
+    newItem = {};
+
+
+    handleSubmit = () => {
+        console.log('test');
+        let newItemList = this.state.itemList.slice();
+        newItemList.push(this.newItem)
+        console.log(newItemList);
+        this.setState({ itemList: newItemList });
+        console.log(this.state);
+    }  
     
+
+    handleChange = () => {
+        console.log('change!');
+        console.log(event.target.value);
+        console.log(event.target.id);
+        this.newItem = {...this.newItem, [event.target.id] : event.target.value};
+        console.log(this.newItem);
+    }
+    
+    
+
+    render() {
       return  <div className="mainContainer">
-
-      {/* Input de recherche */}
-        <form className="inputs">
-        <input type="text" className="input" icon="search" placeholder="Produit recherché..." />
-        <select className="input" icon="cart" placeholder="" >
-            <option value="">--Categorie / Rayon--</option>
-            <option value="dog">Dog</option>
-            <option value="cat">Cat</option>
-            <option value="hamster">Hamster</option>
-            <option value="parrot">Parrot</option>
-            <option value="spider">Spider</option>
-            <option value="goldfish">Goldfish</option>
-        </select>
-        <input type="text" className="input" icon="" placeholder="Quantité" />
-        <button type="submit">Ajouter</button>
-        </form>
-
-
+ 
+       {/* Input de recherche */}
+         <form className="inputs" onSubmit= { (e) => { 
+             e.preventDefault();
+             this.handleSubmit() }}>
+         <input type="text" className="input" icon="search" placeholder="Produit recherché..." name="product" id="product" onChange={this.handleChange}/>
+         <select className="input" icon="cart" name="rack" id="rack" onChange={this.handleChange} >
+             <option value="">--Categorie / Rayon--</option>
+             <option value="Surgelés">Surgelés</option>
+             <option value="Fruits &amp; Légumes">Fruits &amp; Légumes</option>
+             <option value="Confiserie">Confiserie</option>
+             <option value="Biscuits">Biscuits</option>
+             <option value="Produits Ménagers">Produits Ménagers</option>
+             <option value="Alcool">Alcool</option>
+         </select>
+         <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" onChange={this.handleChange}/>
+         <button type="submit">Ajouter</button>
+         </form>
+ 
+ 
         {/* Espaces pour les bloc de catégories */}
         <div className="categories">
         {/* A factoriser ! via un map? */}
@@ -65,6 +92,7 @@ const CreateList =() => {
 
 
     
+}
 }
 
 export default CreateList;
