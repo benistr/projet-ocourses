@@ -29,17 +29,15 @@ const Main = () => {
                 </div>
 
                 <div className="mainContent"><a href="">
-                    <div className="title"> Recette suggérée</div>
-                    <div className="recette"> 
-                        <div className="summary">
-                        <p className="summary-title">Titre de la recette</p>
-                        
-                        <Responsive minWidth={1024}>
+                <div className="title">Lasagnes à l'italienne</div>
+                <div className="lasagnes"> 
+                    <div className="summary">
+                    <Responsive minWidth={1024}>
                         <ul className="recipe-items">
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
+                            <li>- 1 Carotte </li>
+                            <li>- 1 Branche de céleri </li>
+                            <li>- 800gr hâché mélangé </li>
+                            <li>- Sauce tomate </li>
                             
                         </ul>
                         </Responsive>
@@ -49,17 +47,16 @@ const Main = () => {
                 </div>
 
                 <div className="mainContent"><a href="">
-                    <div className="title"> Recette suggérée</div>
-                    <div className="recette"> 
+                    <div className="title">Crêpes au suc'</div>
+                    <div className="crepes"> 
                         <div className="summary">
-                        <p className="summary-title">Titre de la recette</p>
                         <Responsive minWidth={1024}>
                         <ul className="recipe-items">
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            
+                            <li>- 300gr de farine</li>
+                            <li>- 3 oeufs</li>
+                            <li>- 50gr de beurre fondu</li>
+                            <li>- 60cl de lait</li>
+                            <li>- Du suc'</li>
                         </ul>
                         </Responsive>
                         </div>    
@@ -68,16 +65,15 @@ const Main = () => {
                 </div>
 
                 <div className="mainContent"><a href="">
-                    <div className="title"> Recette suggérée</div>
-                    <div className="recette"> 
+                    <div className="title">Pizza maison</div>
+                    <div className="pizza"> 
                         <div className="summary">
-                        <p className="summary-title">Titre de la recette</p>
                         <Responsive minWidth={1024}>
                         <ul className="recipe-items">
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
-                            <li>- Ingrédient</li>
+                            <li>- Mortadelle</li>
+                            <li>- 1 poivron</li>
+                            <li>- 3 champignons</li>
+                            <li>- Mozzarella</li>
                             
                         </ul>
                         </Responsive>
