@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form} from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
 
 import './style.scss';
 
@@ -20,30 +20,33 @@ class FormUser extends React.Component {
         return (
             <div className="userForm">
 
-                <h1 className="form-text">Créez votre compte</h1> 
+                <h1 className="form-text">Mon Compte</h1> 
                 <img className="form-logo" src={Logo}/>
+                
                 
     
             <Form className="form">
             
                 <Form.Field className="input-style">
-                  <label className="input-label" >Votre prénom</label>
-                  <input placeholder='First Name' />
+                  <input placeholder='Votre prénom' 
+                  onChange={handleChange('firstName')}
+
+                  />
                 </Form.Field>
 
                 <Form.Field className="input-style">
-                  <label className="input-label">Votre nom</label>
-                  <input placeholder='Last Name' />
+                  <input placeholder='Votre nom' />
                 </Form.Field>
 
                 <Form.Field className="input-style">
-                  <label className="input-label">Votre email</label>
-                  <input placeholder='Email' />
-                </Form.Field>
+                  <input placeholder='Votre email' />
+                </Form.Field>   
 
                 <Button className="buttonForm" type='submit'>Déconnexion</Button>
+  
             </Form>
             </div>
+                
           
         );
     }

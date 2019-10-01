@@ -28,7 +28,8 @@ class UserAccount extends React.Component {
 
     // Handle fields change
     handleChange = input => event => {
-        this.setState({[input]: e.target.value})
+        this.setState({[input]: event.target.value})
+        console.log(event.target.value);
     }
 
     render() {
