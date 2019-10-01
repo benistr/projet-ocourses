@@ -26,7 +26,6 @@ import Main from 'src/components/Main';
 
 import './app.sass';
 
-
 // App Component
 
 // ATTENTION : penser à importer et mettre en place la balise Router dans le index.js du dossier src
@@ -44,6 +43,8 @@ const App = () => {
         <Route path="/" exact component={Main} />
         <Route path="/listes" component={Lists} />
         <Route path="/login" component={Log} />
+        <Route path="/account" component={UserAccount} />
+
         </Switch>
         <Footer />
         </div>
