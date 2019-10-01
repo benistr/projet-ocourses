@@ -1,0 +1,46 @@
+@import 'src/styles/vars';
+
+
+.userForm {
+    width: 50%;
+    display: block;
+    filter: drop-shadow(1px 1px 2px #DCDCDC);
+    border: 1px solid $text-color;
+    border-radius: 2em;
+    margin: 6em auto;
+}
+
+.form-logo {
+    width: 15%;
+    display: block;
+    justify-content: center;
+    //border: 1px solid red;
+    margin: 0 auto;
+}
+
+.form-text {
+    //border: 1px solid red;
+    text-align: center;
+    margin-top: 5em;
+    padding: 1em;
+    font-size: 2em;
+    font-style: italic;
+    font-family: $font-family;
+    
+}
+
+.form {
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-style {
+    padding: .5em;
+}
+
+.buttonForm {
+    flex-direction: flex-start;
+    width: 15%;
+    border: 1px solid red;
+}

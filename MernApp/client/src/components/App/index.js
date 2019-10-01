@@ -14,6 +14,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Header from 'src/components/Header';
 import { updateInputValue } from 'src/store/reducer';
 import Footer from 'src/components/Footer';
+import UserAccount from 'src/components/UserAccount';
 
 // Composants enfants éventuels
 
@@ -24,6 +25,21 @@ import Main from 'src/components/Main';
 // Styles et assets
 
 import './app.sass';
+
+
+const App = ({ title }) => (
+  <div id="app">
+    {/*<Header />*/}
+    {/*<Main />*/}
+    {/*<Lists />*/}
+    {/*<Log />*/}
+    <UserAccount />
+    {/*<Footer />*/}
+  </div>
+
+
+import './app.sass';
+
 
 
 // App Component
