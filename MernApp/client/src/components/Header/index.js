@@ -34,11 +34,14 @@ const Nav = () => (
         <li id="nav">
           <a id="a" href="">Légumes de saison</a>
         </li>
-        <li id="nav">
-          <a id="a" href="">Qui Sommes-nous?</a>
-        </li>
 
         
+        <li id="nav">
+          <NavLink to='/team'id="a" href="">
+            <a id="a" href="">Qui Sommes-nous?</a>
+          </NavLink>
+        </li>
+
         <li id="nav">
           <NavLink to='/account' id="a" href="">
           Mon Compte
