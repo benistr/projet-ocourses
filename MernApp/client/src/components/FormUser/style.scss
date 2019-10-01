@@ -1,11 +1,47 @@
 @import 'src/styles/vars';
 
 
-.form {
-    width: 80%;
-    display: flex;
+.userForm {
+    width: 60%;
+    display: block;
+    filter: drop-shadow(1px 1px 2px #DCDCDC);
+    //border: 1px solid black;
+    margin: 2em auto;
 }
 
-.buttonForm {
+.form-logo {
+    width: 15%;
+    display: block;
     justify-content: center;
+    //border: 1px solid red;
+    margin: 0 auto;
+}
+
+.form-text {
+    //border: 1px solid red;
+    text-align: center;
+    margin-top: 5em;
+    padding: 1em;
+    font-size: 2em;
+    font-style: italic;
+    font-family: $font-family;
+    
+}
+
+.form {
+    margin: 5em auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-style {
+    padding: .5em;
+}
+
+.input-label {
+    color: $text-color;
+}
+.buttonForm {
+    flex-direction: flex-start;
+    width: 15%;
 }
