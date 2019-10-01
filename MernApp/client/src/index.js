@@ -6,8 +6,6 @@ import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
 
-import { Router } from 'react-router';
-
 import { BrowserRouter as Router } from 'react-router-dom';
 
 
@@ -28,13 +26,6 @@ import form from 'src/data/form';
 const reactRootElement = <Router>
 <Provider store={kastore}>
   <AppContainer form={form} />
-
-</Provider>;
-/*
-const reactRootElement = <Router>
-  <App />
-</Router>;*/
-
 </Provider>
 </Router>;
 
