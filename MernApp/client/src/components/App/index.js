@@ -19,11 +19,8 @@ import Footer from 'src/components/Footer';
 
 import Log from 'src/components/Log';
 import Lists from 'src/components/Lists';
-
-
-
-
 import Main from 'src/components/Main';
+import CreateList from 'src/components/CreateList'
 
 
 // Styles et assets
@@ -35,8 +32,9 @@ const App = ({ title }) => (
 
 
     <Header />
-    <Main />
-    {/*<Lists />*/}
+    {/* <Main />± */}
+    {/* <Lists /> */}
+    <CreateList />
     {/*<Log />*/}
     <Footer />
 
