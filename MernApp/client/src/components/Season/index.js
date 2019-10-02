@@ -3,16 +3,16 @@ import { Responsive } from 'semantic-ui-react';
 
 //Local imports
 import './styles.scss';
-import Janvier from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Janvier.jpg';
-import Février from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Février.jpg';
-import Mars from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Mars.jpg';
-import Avril from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Avril.jpg';
-import Mai from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Mai.jpg';
-import Juin from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Juin.jpg';
-import Juillet from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Juillet.jpg';
-import Aout from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Aout.jpg';
-import Septembre from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Septembre.jpg';
-import Octobre from '/var/www/html/projet-Ocourses/MernApp/client/src/components/Season/Octobre.jpg';
+import Janvier from 'src/components/Season/Janvier.jpg';
+import Février from 'src/components/Season/Février.jpg';
+import Mars from 'src/components/Season/Mars.jpg';
+import Avril from 'src/components/Season/Avril.jpg';
+import Mai from 'src/components/Season/Mai.jpg';
+import Juin from 'src/components/Season/Juin.jpg';
+import Juillet from 'src/components/Season/Juillet.jpg';
+import Aout from 'src/components/Season/Aout.jpg';
+import Septembre from 'src/components/Season/Septembre.jpg';
+import Octobre from 'src/components/Season/Octobre.jpg';
 
 
 
