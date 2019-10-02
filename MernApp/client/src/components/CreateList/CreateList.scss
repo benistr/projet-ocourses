@@ -11,23 +11,19 @@
     padding-top: 120px;
     font-family: $font-family;
     background-color:#F9F9F9;
-    
 }
 
 .inputs {
-    width: 60%;
-    height: 40px;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-around;
 }
 
 .input{
+    margin: 0.2rem auto;
     border-radius: 8px;
     border : 2px solid #5dd4e8;
-    align-self: flex-end;
-    width: 30%;
-    height: 100%;
-
+    width: 70%
 }
 
 button {
@@ -73,6 +69,39 @@ button {
     width: 25%;
 }
 
-.HideAddAList {
-    display:none;
+
+
+@media (min-width: 800px){
+.mainListContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding-top: 120px;
+    font-family: $font-family;
+    background-color:#F9F9F9;
+    
+}
+
+.inputs {
+    width: 60%;
+    height: 40px;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.input{
+    border-radius: 8px;
+    border : 2px solid #5dd4e8;
+    align-self: flex-end;
+    width: 30%;
+    height: 100%;
+
+}
+
+button {
+    border-radius: 5px;
+    background-color: $text-color;
+    color: white;
+}
 }
