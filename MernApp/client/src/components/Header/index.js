@@ -40,9 +40,9 @@ const Nav = () => (
         <li id="nav">
 
           <NavLink to='/team'id="a" href="">
-            <a id="a" href="">Qui Sommes-nous?</a>
+             id="a" href="">Qui Sommes-nous?
           </NavLink>
-          <a id="a" href="">Qui sommes nous ?</a>
+          
 
         </li>
 
