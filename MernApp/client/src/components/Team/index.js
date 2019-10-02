@@ -10,7 +10,7 @@ const Team = () => {
     return  <div className="mainContainer">
             <p className="navigation">▶ Accueil ▶ Qui Sommes-nous?</p>
                 <div className="mainContent">
-                    <div className="title"> Product Owner</div>
+                    <div className="title"></div>
                     <div className="legumes"> 
                         <div className="summary-team">
                         <p className="summary-title-team">Benjamin<p className="title-team">-Product Owner</p></p>
@@ -19,7 +19,7 @@ const Team = () => {
                 </div>
 
                 <div className="mainContent">
-                    <div className="title"> Scrum Master</div>
+                    <div className="title"></div>
                     <div className="recette"> 
                         <div className="summary-team">
                         <p className="summary-title-team">Kévin<p className="title-team">-Scrum Master</p></p>
@@ -28,7 +28,7 @@ const Team = () => {
                 </div>
 
                 <div className="mainContent">
-                    <div className="title"> Lead Dev Back</div>
+                    <div className="title"></div>
                     <div className="recette"> 
                         <div className="summary-team">
                         <p className="summary-title-team">Myriam<p className="title-team">-Lead Dev Back</p></p>
@@ -37,7 +37,7 @@ const Team = () => {
                 </div>
 
                 <div className="mainContent">
-                    <div className="title"> Lead Dev Front</div>
+                    <div className="title"></div>
                     <div className="recette"> 
                         <div className="summary-team">
                         <p className="summary-title-team">Dorian<p className="title-team">-Lead Dev Front</p></p>
