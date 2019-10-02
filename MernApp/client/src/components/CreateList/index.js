@@ -67,7 +67,7 @@ class CreateList extends React.Component{
        }
 
     render() {
-      return  <div className="mainContainer">
+      return  <div className="mainListContainer">
  
        {/* Input de recherche */}
          <form className="inputs" onSubmit= { (e) => { 
