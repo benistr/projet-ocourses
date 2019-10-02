@@ -53,6 +53,7 @@ const App = () => {
         <Route path="/account" component={UserAccount} />
         <Route path="/recettes" component={Recipe} />
         <Route path="/saisons" component={Season} />
+        <Route path="/create-list" component={CreateList} />
         </Switch>
         <Footer />
         </div>
