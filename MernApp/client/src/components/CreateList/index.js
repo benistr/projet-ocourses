@@ -1,38 +1,69 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react';
+import CreatedList from 'src/components/CreatedList';
+
 
 //Local import 
 import './CreateList.scss';
 
 
 
+
 class CreateList extends React.Component{
     state = {
-        itemList: []
+        itemList: [],
+        rackList: []
     };
 
     newItem = {};
 
-
+// Méthode ajoutant le produit à la list des items du state.
     handleSubmit = () => {
         console.log('test');
+        //On copie le tableau itemList de state puis on push le newItem dans ce tableau
         let newItemList = this.state.itemList.slice();
         newItemList.push(this.newItem)
         console.log(newItemList);
-        this.setState({ itemList: newItemList });
+        //On fait une copie du tableau rackList du state
+        let newRackList = this.state.rackList.slice();
+        console.log("après le slice", newRackList)
+        // On vérifie si le rayon du newItem exite dans le tableau rackList
+        console.log("test handleCheck")
+        this.handleCheck(newRackList, this.newItem.rack) 
+            // console.log("dans HandleCheck et avant le push", newRackList);
+            // //Si ce n'est pas le cas on le push dans le tableau newRackList
+            // newRackList.push(this.newItem.rack)
+            // console.log("dans handlCheck et après le push", newRackList)
+        
+        console.log(newRackList);
+        // On met à jour le state en remplacant les state.itemList et state.RackList par newItemList et newRackList
+        this.setState({ itemList: newItemList, rackList: newRackList});
         console.log(this.state);
     }  
     
-
+//Méthode permettant d'intégrer les valeurs indiquées par l'User dans l'objet NewItem
     handleChange = () => {
-        console.log('change!');
-        console.log(event.target.value);
-        console.log(event.target.id);
+        // console.log('change!');
+        // console.log(event.target.value);
+        // console.log(event.target.id);
         this.newItem = {...this.newItem, [event.target.id] : event.target.value};
         console.log(this.newItem);
     }
     
-    
+    //Methode vérifiant que le rayon n'existe pas déjà dans le tableau rackList la méthode some() renvoit un booléen si la condition est remplie
+    handleCheck(array, rackName) {
+        // return this.state.rackList.some(item => val.name === item.name);
+        // Vérification avec array.filter()
+        if(array.filter( name => name == rackName).length>0 ) {
+            console.log("existe");          
+    // Tu peux ajouter une valeur dans ton tableau            
+            return array;
+            } else { /* Error tu as déjà cette valeur dans ton tableau interdiction de l'ajouter*/ 
+        console.log("existe pas");
+        array.push(rackName);       
+    }
+  
+       }
 
     render() {
       return  <div className="mainContainer">
@@ -55,38 +86,10 @@ class CreateList extends React.Component{
          <button type="submit">Ajouter</button>
          </form>
  
- 
-        {/* Espaces pour les bloc de catégories */}
-        <div className="categories">
-        {/* A factoriser ! via un map? */}
-        {/* Bloc de catégorie */}
-            <div className="category">
-                <h3>Surgelés</h3>
-                    <ul className="items">
-                        <li>
-                            <ul className="itemDetails">
-                            <li>
-                                <span className="categoryInput name">Poisson Pané</span>
-                                <span className="categoryInput quantity">4</span>
-                                <span className="categoryInput favorite"><Icon name="star outline" /> <Icon name="delete" /></span>
-                                
-                            </li>
-                            </ul>
-                        </li>
-
-                        <li>
-                            <ul className="itemDetails">
-                                <li>
-                                    <span className="categoryInput name">Pizza Reine</span>
-                                    <span className="categoryInput quantity">1</span>
-                                    <span className="categoryInput favorite"><Icon name="star outline" /* Methode onclic pour changer la className et passer l'étoile en pleine si favori */ /> <Icon name="delete" /></span>
-                                </li>
-                            </ul>
-                        </li>
-
-                    </ul>
-            </div>
-        </div>
+        {this.state.itemList.map( product => {
+            console.log(product);
+        })}
+       <CreatedList {...this.state}/>
         
     </div>
 
