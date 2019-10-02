@@ -33,7 +33,7 @@ const Nav = () => (
           </NavLink>
         </li>
         <li id="nav">
-          <a id="a" href="">Légumes de saison</a>
+          <NavLink to="/saisons" id="a" href="">Légumes de saison</NavLink>
         </li>
 
         

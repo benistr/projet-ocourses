@@ -25,6 +25,7 @@ import Main from 'src/components/Main';
 import Team from 'src/components/Team';
 
 import Recipe from 'src/components/Recipe';
+import Season from 'src/components/Season';
 
 
 // Styles et assets
@@ -51,6 +52,7 @@ const App = () => {
         <Route path="/team" component={Team} />
         <Route path="/account" component={UserAccount} />
         <Route path="/recettes" component={Recipe} />
+        <Route path="/saisons" component={Season} />
         </Switch>
         <Footer />
         </div>
