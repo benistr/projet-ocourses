@@ -5,43 +5,24 @@ import { Responsive } from 'semantic-ui-react';
 import './styles.scss';
 
 
-const Main = () => {
+const Recipe = () => {
    
     return  <div className="mainContainer">
-            <p className="navigation">▶ Accueil</p>
+            <p className="navigation">▶ Accueil ▶ Mes recettes</p>
                 <div className="mainContent"><a href="">
-                    <div className="title"> Fruits et légumes de saison</div>
-                    <div className="legumes"> 
+                    <div className="title">Lasagnes à l'italienne</div>
+                    <div className="lasagnes"> 
                         <div className="summary">
-                        <p className="summary-title">Découvrez les fruits & légumes du mois</p>
                         <Responsive minWidth={1024}>
                             <ul className="recipe-items">
-                                <li>- Légume </li>
-                                <li>- Légume </li>
-                                <li>- Légume </li>
-                                <li>- Légume </li>
+                                <li>- 1 Carotte </li>
+                                <li>- 1 Branche de céleri </li>
+                                <li>- 800gr hâché mélangé </li>
+                                <li>- Sauce tomate </li>
                                 
                         </ul> 
                         </Responsive>
                         </div>
-                    </div>
-                    </a>
-                </div>
-
-                <div className="mainContent"><a href="">
-                <div className="title">Lasagnes à l'italienne</div>
-                <div className="lasagnes"> 
-                    <div className="summary">
-                    <Responsive minWidth={1024}>
-                        <ul className="recipe-items">
-                            <li>- 1 Carotte </li>
-                            <li>- 1 Branche de céleri </li>
-                            <li>- 800gr hâché mélangé </li>
-                            <li>- Sauce tomate </li>
-                            
-                        </ul>
-                        </Responsive>
-                        </div>    
                     </div>
                     </a>
                 </div>
@@ -86,4 +67,4 @@ const Main = () => {
             
 };
 
-export default Main;
+export default Recipe;
