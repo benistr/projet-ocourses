@@ -38,7 +38,7 @@ const Nav = () => (
 
         
         <li id="nav">
-          <NavLink to='/team'id="a" href="">
+         <NavLink to='/team'id="a" href="">
             <a id="a" href="">Qui Sommes-nous?</a>
           </NavLink>
         </li>
