@@ -23,3 +23,13 @@
     Présentation de chaque wireframe
     Listing des foncitonnalités à retenir et des visuels de travail
     Rédaction des Users Stories.
+
+
+## Jour 3 - Mercredi 25 Septembre 
+
+### Matin
+    Finalisation de la maquette du site
+    Recherches sur mongoDB et Node.js pour comprendre le fonctionnement du back en JS
+
+## Après-Midi 
+    
