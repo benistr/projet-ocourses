@@ -1,6 +1,7 @@
 import React from 'react'
 import { Icon } from 'semantic-ui-react';
 import CreatedList from 'src/components/CreatedList';
+import CreatedRack from 'src/components/CreatedRack';
 
 
 //Local import 
@@ -85,11 +86,12 @@ class CreateList extends React.Component{
          <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" onChange={this.handleChange}/>
          <button type="submit">Ajouter</button>
          </form>
- 
-        {this.state.itemList.map( product => {
-            console.log(product);
+
+        {this.state.rackList.map( rack => {
+            console.log(rack);
+           return <CreatedRack {...this.state}
+           rack={rack} />
         })}
-       <CreatedList {...this.state}/>
         
     </div>
 
