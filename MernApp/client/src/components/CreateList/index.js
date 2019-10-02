@@ -76,12 +76,24 @@ class CreateList extends React.Component{
          <input type="text" className="input" icon="search" placeholder="Produit recherché..." name="product" id="product" onChange={this.handleChange}/>
          <select className="input" icon="cart" name="rack" id="rack" onChange={this.handleChange} >
              <option value="">--Categorie / Rayon--</option>
-             <option value="Surgelés">Surgelés</option>
-             <option value="Fruits &amp; Légumes">Fruits &amp; Légumes</option>
-             <option value="Confiserie">Confiserie</option>
+             <option value="Animaux">Animaux</option>
+             <option value="Autres">Autres</option>
+             <option value="Bébé">Bébé</option>
+             <option value="Bio">Bio</option>
              <option value="Biscuits">Biscuits</option>
+             <option value="Boissons alcoolisées">Boissons alcoolisées</option>
+             <option value="Boissons">Boissons</option>
+             <option value="Boulangerie">Boulangerie</option>
+             <option value="Confiserie">Confiserie</option>
+             <option value="Epicerie">Epicerie</option>
+             <option value="Fruits &amp; Légumes">Fruits &amp; Légumes</option>
+             <option value="Hygière">Hygiène</option>
+             <option value="Poissons">Poissons</option>
+             <option value="Produits frais">Produits frais</option>
              <option value="Produits Ménagers">Produits Ménagers</option>
-             <option value="Alcool">Alcool</option>
+             <option value="Surgelés">Surgelés</option>
+             <option value="Viandes">Viandes</option>
+             <option value="Viennoiseries">Viennoiseries</option>
          </select>
          <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" onChange={this.handleChange}/>
          <button type="submit">Ajouter</button>
