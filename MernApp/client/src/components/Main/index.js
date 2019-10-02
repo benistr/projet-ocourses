@@ -10,8 +10,8 @@ const Main = () => {
    
     return  <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
-                <div className="mainContent">
-                    <div className="title"><NavLink to="/saisons">Fruits et légumes de saison</NavLink></div>
+                <div className="mainContent"><NavLink to="/saisons">
+                    <div className="title">Fruits et légumes de saison</div>
                     <div className="legumes"> 
                         <div className="summary">
                         <p className="summary-title">Découvrez les fruits & légumes du mois</p>
@@ -26,6 +26,7 @@ const Main = () => {
                         </Responsive>
                         </div>
                     </div>
+                    </NavLink>
                 </div>
 
                 <div className="mainContent"><a href="">
