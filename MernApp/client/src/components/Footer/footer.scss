@@ -61,8 +61,7 @@ li a:hover {
 }
 
 .addAList {
-    // border: 1px solid red;
-    //z-index: 1000;
+
     width: 68%;
     display: flex;
     margin: auto;
@@ -77,8 +76,9 @@ li a:hover {
 .buttonLabel {
     // display: flex;
     flex-wrap: wrap;
-    //width: 5rem;
+    width: 6rem;
     line-height: 1.2em;
+    margin-right: 3px;
 }
 
 .list {

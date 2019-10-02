@@ -2,9 +2,7 @@
  * Import
  */
  @import 'src/styles/vars';
-
-
-
+ 
 /**
  * Styles
  */
@@ -68,16 +66,14 @@ $break-extra-large: 2500px;
   display: flex;
   position: relative;
   justify-content: space-between;
-  
 }
 
 #nav {
   
-  margin-right: 2%;
-  margin-left: 2%;
   font-family: 'Open Sans', sans-serif;
   flex-wrap: wrap;
   padding-top: 1.5rem; 
+  width: 7rem;
   
   @media screen and (max-width: $break-large) {
     display: none;
@@ -99,7 +95,7 @@ $break-extra-large: 2500px;
 }
 
 #nav:hover {
-  transform: scale(1.1, 1.1);
+  transform: scale(1.05, 1.05);
   transition-duration: 200ms, 300ms;
 }
 
