@@ -1,28 +1,39 @@
 @import 'src/styles/vars';
 
+.body {
+    position: relative;
+    width: 100%;
+}
 
 .userForm {
     width: 50%;
     display: block;
     filter: drop-shadow(1px 1px 2px #DCDCDC);
     border: 1px solid $text-color;
+    background-color: #fff;
     border-radius: 2em;
-    margin: 6em auto;
+    padding: 2em;
+    position: absolute;
+    top: 10em;
+    left: 25em;
+    height: 60%;
+
 }
 
 .form-logo {
     width: 15%;
     display: block;
     justify-content: center;
+    align-items: center;
     //border: 1px solid red;
-    margin: 0 auto;
+    margin: 2em auto;
 }
 
 .form-text {
     //border: 1px solid red;
     text-align: center;
-    margin-top: 5em;
-    padding: 1em;
+    //margin-top: 5em;
+    //padding: 1em;
     font-size: 2em;
     font-style: italic;
     font-family: $font-family;
@@ -30,17 +41,34 @@
 }
 
 .form {
-    margin: 5em auto;
-    display: flex;
-    flex-direction: column;
+    width: 100%;
 }
 
-.input-style {
-    padding: .5em;
+.label {
+    font-size: 1.2em;
+    display: inline-block;
+    margin-left: .5em;
+    font-style: italic;
 }
 
-.buttonForm {
-    flex-direction: flex-start;
-    width: 15%;
-    border: 1px solid red;
+.p-style {
+    color:  #B6B6B6;
+    display: inline;
+    margin-left: 7em;
+   
 }
+
+
+  
+.ui.divider {
+    margin: .5em auto;
+    padding: .8em;
+    width: 80%;
+    color: $text-color;
+    
+   
+    
+}
+   
+
+

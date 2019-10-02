@@ -26,10 +26,8 @@ import form from 'src/data/form';
 const reactRootElement = <Router>
 <Provider store={kastore}>
   <AppContainer form={form} />
-
-</Provider>;
+</Provider>
 </Router>;
-
 
 
 const renderingArea = document.querySelector('#root');
