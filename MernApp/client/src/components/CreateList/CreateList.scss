@@ -37,23 +37,51 @@ button {
 }
 
 .category {
-
-    width: 60%;
+    width: 80%;
     border-radius: 8px;
     margin : 1rem auto;
     box-shadow: 4px 4px 6px #D7D7D7;
+    transition: transform .1s;
     background-color: #F2F2F2;
     padding-top: calc(20px - 1rem);
+    height: 0 auto;
+}
+
+.category:hover {
+    // transform: scale(1.05);
+    // margin: 1rem auto;
+    font-family: $font-family;
+    color: $text-color;
 }
 
 .category>h3 {
-     text-decoration: underline;
-     text-align: center;
-     font-size: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    height: 20px;
+    text-align: left;
+    margin: 0.2rem 1rem 0.2rem 1rem;
+    font-size: 0.8rem;
+    filter: drop-shadow(1px 1px 2px #DCDCDC);
+    font-weight: bolder;
 }
 
+.items {
+display: flex;
+display: block;
+text-align: left;
+// width: 32%;
+// margin: 0 1rem;
+border-bottom-left-radius: 5px;
+border-bottom-right-radius: 5px;
+line-height: 1.2rem;
+background-color: #FFF;
+padding: 1rem ;
+color: #B6B6B6;
+}
+
+
 .items>li {
-    border-top: 1px dashed grey;
+    border-bottom: 1px dashed grey;
     padding: 0.2rem;
     background-color: white;
     
