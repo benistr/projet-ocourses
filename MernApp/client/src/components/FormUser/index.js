@@ -18,7 +18,7 @@ class FormUser extends React.Component {
         // On récupères les props values de userAccount en les déstructurant
         const { values, handleChange } = this.props;
         return (
-
+              <div className="teste">
                 <div className="userForm">
 
                     <h1 className="form-text">Mon Compte</h1> 
@@ -40,7 +40,7 @@ class FormUser extends React.Component {
                     <div class="ui divider"></div>
 
                 </div>
-                   
+                </div>  
           
         );
     }
