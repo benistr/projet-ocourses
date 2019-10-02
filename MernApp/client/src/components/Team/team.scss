@@ -6,6 +6,7 @@
     font-family: $font-family;
     color: $text-color;
     padding-left: 2.5rem;
+    margin-bottom: 1rem;
 }
 
 .mainContainer {
@@ -33,23 +34,23 @@
     transform: scale(1.05);
     width: 50;
     margin: 1rem auto;
-
 }
 
-.title {
+.title-team {
     height: 20px;
     text-align: left;
     margin: 0.2rem 1rem 0.2rem 1rem;
     font-size: 0.8rem;
     filter: drop-shadow(1px 1px 2px #DCDCDC);
     font-weight: bolder;
+    color: $text-color;
+    display: inline;
 }
     
     
 .recette {
     padding-top: 0.5rem;
     height: 260px;
-    background-image: url(./recettes-crepes.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-left-radius: 5px;
@@ -59,29 +60,31 @@
 .legumes {
     padding-top: 0.5rem;
     height: 260px;
-    background-image: url(./legumes.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 
 }
 
-.summary {
-    display: block;
+.summary-team {
+    display: flex;
     text-align: left;
-    width: 32%;
-    margin: 0 1rem;
-    border-radius: 10px;
+    width: 50%;
+    margin: 1rem 1rem;
+    border-radius: 30px;
     line-height: 1.2rem;
     background-color: rgba(255, 255, 255, 0.880);
     padding: 0.3rem ;
     color: #B6B6B6;
+    padding-left: 15px;
 }
 
 .recipe-items {
     display: none;
     
+}
+
+.Addlist {
+  display: none;
 }
 
 
@@ -107,12 +110,13 @@
 
     .recipe-items {
         display: block;
-        
+        color:#B6B6B6;
     }
 
-    .summary-title {
+    .summary-title-team {
         font-weight: bold;
         color: $text-color;
         padding-bottom: 0.2rem;
+        color:#B6B6B6;
     }
 }

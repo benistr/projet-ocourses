@@ -2,48 +2,87 @@ import React from 'react';
 import { Responsive } from 'semantic-ui-react';
 
 //Local imports
-import './styles.scss';
+import './lists.scss';
+
+import Supprimer from './supprimer.png';
+import Image from './oeuf.jpg';
 
 
 const Lists = () => {
    
-    return  <div className="mainContainer">
-            <p className="navigation">▶ Accueil ▶ Listes</p>
-                <div className="mainContent"><a href="">
-                    <div className="title">Carrefour</div>
-                    <div className="legumes"> 
-                        <div className="summary">
-                        <p className="summary-title">Ma liste Carrefour</p>
-                        <Responsive minWidth={1024}>
-                            <ul className="recipe-items">
-                                <li>- 1 tomate </li>
-                                <li>- 6 bières </li>
-                                <li>- 1 liquide vaisselle </li>
-                                <li>- 2 poivrons </li>
+    return  <div className="container">
+            <p className="path">▶ Accueil ▶ Listes</p>
+
+
+                <div className="content"><a href="">
+                    <ul className="title">Carrefour <img className="delete"src={Supprimer}/></ul>
+                
+                        <div className="summary-lists">
+                        
+                    
+                            <ul className="list-lists">
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- tomates </li>
+                                    <li className="item">500g</li>
+                                </ul>
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- bières</li>
+                                    <li className="item">500g</li>
+                                </ul>
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- liquide vaisselle</li>
+                                    <li className="item">500g</li>
+                                </ul>
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- poivrons</li>
+                                    <li className="item">500g</li>
+                                </ul>
                             </ul> 
-                        </Responsive>
+                  
                         </div>
-                    </div>
+                    
                     </a>
                 </div>
 
-                <div className="mainContent"><a href="">
-                <div className="title">Ikea</div>
-                <div className="legumes"> 
-                    <div className="summary">
-                    <p className="summary-title">Ma liste Ikea</p>
-                    <Responsive minWidth={1024}>
-                        <ul className="recipe-items">
-                            <li>- 1 étagère Kallax </li>
-                            <li>- 1 commode Malm </li>
-                            <li>- 1 cadre </li>
-                            <li>- 2 bougies </li>
-                        </ul> 
-                    </Responsive>
-                    </div>
+                <div className="content"><a href="">
+                    <ul className="title">Carrefour <img className="delete"src={Supprimer}/></ul>
+                
+                        <div className="summary-lists">
+                        
+                    
+                            <ul className="list-lists">
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- tomates </li>
+                                    <li className="item">500g</li>
+                                </ul>
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- bières</li>
+                                    <li className="item">500g</li>
+                                </ul>
+
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- liquide vaisselle</li>
+                                    <li className="item">500g</li>
+                                </ul>
+                                
+                                <ul className="list-infos">
+                                    <li><img className="item" src={Image}/>- poivrons</li>
+                                    <li className="item">500g</li>
+                                </ul>
+                            </ul> 
+                  
+                        </div>
+                    
+                    </a>
                 </div>
-                </a>
-            </div>
+
+            
 
             </div>
             

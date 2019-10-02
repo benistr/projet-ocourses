@@ -33,7 +33,6 @@
     transform: scale(1.05);
     width: 50;
     margin: 1rem auto;
-
 }
 
 .title {
@@ -46,7 +45,17 @@
 }
     
     
-.recette {
+.lasagnes {
+    padding-top: 0.5rem;
+    height: 260px;
+    background-image: url(./lasagnes.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.crepes {
     padding-top: 0.5rem;
     height: 260px;
     background-image: url(./recettes-crepes.jpg);
@@ -56,15 +65,14 @@
     border-bottom-right-radius: 5px;
 }
 
-.legumes {
+.pizza {
     padding-top: 0.5rem;
     height: 260px;
-    background-image: url(./legumes.jpg);
+    background-image: url(./pizza.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 
 .summary {

@@ -33,7 +33,6 @@
     transform: scale(1.05);
     width: 50;
     margin: 1rem auto;
-
 }
 
 .title {
@@ -46,26 +45,13 @@
 }
     
     
-.recette {
-    padding-top: 0.5rem;
+.box {
     height: 260px;
-    background-image: url(./recettes-crepes.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
+    width: 100%;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-.legumes {
-    padding-top: 0.5rem;
-    height: 260px;
-    background-image: url(./legumes.jpg);
-    background-size: cover;
-    background-repeat: no-repeat;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-
-}
 
 .summary {
     display: block;
