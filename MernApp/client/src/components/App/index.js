@@ -21,7 +21,11 @@ import UserAccount from 'src/components/UserAccount';
 import Log from 'src/components/Log';
 import Lists from 'src/components/Lists';
 import Main from 'src/components/Main';
+
+import Team from 'src/components/Team';
+
 import Recipe from 'src/components/Recipe';
+
 
 // Styles et assets
 
@@ -44,6 +48,7 @@ const App = () => {
         <Route path="/" exact component={Main} />
         <Route path="/listes" component={Lists} />
         <Route path="/login" component={Log} />
+        <Route path="/team" component={Team} />
         <Route path="/account" component={UserAccount} />
         <Route path="/recettes" component={Recipe} />
         </Switch>
