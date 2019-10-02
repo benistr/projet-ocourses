@@ -1,5 +1,6 @@
 import React from 'react';
 import { Responsive } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 import './footer.scss';
 import Addlist from './addlist.png'
@@ -30,9 +31,12 @@ const Footer = () => (
     <Responsive maxWidth={1023}>
         <div className="footer-menu">
             <ul className='nav-footer-mobile'>
-                <li className="li-mobile"><a href="">Mes listes</a></li>  
-                <li className="li-mobile"><a href="">Mes recettes</a></li>
-                <li className="li-mobile"><a href="">Fruits & légumes</a></li>
+                <li className="li-mobile"><NavLink to="/listes" href="">Mes listes
+                </NavLink></li>  
+                <li className="li-mobile"><NavLink to="/recettes" href="">Mes recettes
+                </NavLink></li>
+                <li className="li-mobile"><NavLink to="/saisons" href="">Fruits & légumes
+                </NavLink></li>
             </ul>
           </div>
     </Responsive>
