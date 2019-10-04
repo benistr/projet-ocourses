@@ -1,5 +1,6 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import CreatedList from 'src/components/CreatedList';
 import CreatedRack from 'src/components/CreatedRack';
 
@@ -11,10 +12,17 @@ import './CreateList.scss';
 
 
 class CreateList extends React.Component{
-    state = {
-        itemList: [],
-        rackList: []
-    };
+    constructor(props) {
+        super(props);
+        console.log('props reçu', props);
+        this.state = {
+            itemList: [this.props.itemsOnList],
+            rackList: []
+        };
+
+    }
+
+    
 
     newItem = {};
 
@@ -24,6 +32,7 @@ class CreateList extends React.Component{
         //On copie le tableau itemList de state puis on push le newItem dans ce tableau
         let newItemList = this.state.itemList.slice();
         newItemList.push(this.newItem)
+        this.props.addItem(this.newItem);
         console.log(newItemList);
         //On fait une copie du tableau rackList du state
         let newRackList = this.state.rackList.slice();
@@ -48,7 +57,19 @@ class CreateList extends React.Component{
         // console.log(event.target.value);
         // console.log(event.target.id);
         this.newItem = {...this.newItem, [event.target.id] : event.target.value};
+        this.newItem.id= Math.random(1, 1000);
         console.log(this.newItem);
+        // axios.get(
+        // header('Access-Control-Allow-Origin: *'),
+        // header('Access-Control-Allow-Credentials: true'),
+        // // on précise que le contenu est au format json
+        // header('Content-Type: application/json'),
+        // // on affiche les données au format json
+        
+        // `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${event.target.value}`)
+        // .then(res => {
+        //     console.log(res);
+        // });
     }
     
     //Methode vérifiant que le rayon n'existe pas déjà dans le tableau rackList la méthode some() renvoit un booléen si la condition est remplie
@@ -67,7 +88,7 @@ class CreateList extends React.Component{
        }
 
     render() {
-      return  <div className="mainContainer">
+      return  <div className="mainListContainer">
  
        {/* Input de recherche */}
          <form className="inputs" onSubmit= { (e) => { 
@@ -90,7 +111,9 @@ class CreateList extends React.Component{
         {this.state.rackList.map( rack => {
             console.log(rack);
            return <CreatedRack {...this.state}
-           rack={rack} />
+           key={rack}
+           rack={rack} 
+           deleteItem={this.props.deleteItem}/>
         })}
         
     </div>
@@ -100,4 +123,33 @@ class CreateList extends React.Component{
 }
 }
 
-export default CreateList;
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+    // 1er argument : stratégie de lecture (dans le state privé global)
+    (state, ownProps) => {
+      return {
+        itemsOnList: state.itemsOnList
+      };
+    },
+  
+    // 2d argument : stratégie d'écriture (dans le state privé global)
+    (dispatch, ownProps) => {
+      return {
+        deleteItem: (id) => {
+            console.log('dans deleteItem id: ', id);
+          dispatch( {type: "DELETE_ITEM", value: id} );
+        },
+        addItem: (item) => {
+            console.log('dans addItem, ajout de ', item)
+            dispatch( {type: "ADD_ITEM_TO_LIST", value: item})
+        } 
+      };
+    },
+  );
+  
+  // Étape 2 : on applique ces stratégies à un composant spécifique.
+  const CreateListContainer = connectionStrategies(CreateList);
+  
+  // Étape 3 : on exporte le composant connecté qui a été généré
+  export default CreateListContainer;
+

@@ -2,7 +2,8 @@ export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
 export const SIDE_EFFECT = 'SIDE_EFFECT';
 
 const initialState = {
-  greetingMessage: 'Bonjour depuis le store !'
+  greetingMessage: 'Bonjour depuis le store !',
+  itemsOnList: []
 };
 
 const defaultAction = {};
@@ -13,6 +14,35 @@ const reducer = (state = initialState, action = defaultAction) => {
       return {
         ...state,
         greetingMessage: action.value
+      }
+    }
+    //Gestion de la suppression d'un tâche 
+    case 'DELETE_ITEM': {
+      let updatedItemsOnList = state.itemsOnList;
+      console.log('suppression item id:', action.value);
+      for (let i=0; i <= updatedItemsOnList.length -1; i++) {
+        console.log("dans le for de delete_item");
+          if(updatedItemsOnList[i].id == action.value){
+            console.log("item identique trouvé", updatedItemsOnList[i])
+            updatedItemsOnList.splice(i, 1);
+          }
+        }
+      console.log("itemsOnListe suite suppression: ", updatedItemsOnList);
+      // console.log('tableau après suppression :',updatedTasks);
+      return {
+        ...state,
+        itemsOnList: updatedItemsOnList
+        
+      }
+    }
+    case 'ADD_ITEM_TO_LIST': {
+      let updatedItemsOnList = state.itemsOnList;
+      updatedItemsOnList.push(action.value);
+      console.log("itemsOnListe suite ajout: ", updatedItemsOnList);
+      
+      return {
+        ...state,
+        itemsOnList: updatedItemsOnList
       }
     }
     default: {

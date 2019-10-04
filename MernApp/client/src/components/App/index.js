@@ -21,7 +21,7 @@ import UserAccount from 'src/components/UserAccount';
 import Log from 'src/components/Log';
 import Lists from 'src/components/Lists';
 import Main from 'src/components/Main';
-import CreateList from 'src/components/CreateList'
+import CreateListContainer from 'src/components/CreateList'
 
 import Team from 'src/components/Team';
 
@@ -53,7 +53,7 @@ const App = () => {
         <Route path="/account" component={UserAccount} />
         <Route path="/recettes" component={Recipe} />
         <Route path="/saisons" component={Season} />
-        <Route path="/create-list" component={CreateList} />
+        <Route path="/create-list" component={CreateListContainer} />
         </Switch>
         <Footer />
         </div>

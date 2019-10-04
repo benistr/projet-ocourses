@@ -3,7 +3,7 @@
 */
 @import 'src/styles/vars';
 
-.mainContainer {
+.mainListContainer {
     width: 100%;
     display: flex;
     flex-flow: column wrap;
@@ -73,6 +73,3 @@ button {
     width: 25%;
 }
 
-.addAList {
-    display:none;
-}
