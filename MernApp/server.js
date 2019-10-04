@@ -3,16 +3,23 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 
+//DB Config
+const db = require('./config/keys').mongoURI;
+const opt = {
+ useNewUrlParser: true,
+ useUnifiedTopology: true,
+}
+
 //Connexion à la base de donnée
 mongoose
-  .connect("mongodb://localhost/db")
-  .then(() => {
-    console.log("Connected to mongoDB");
-  })
-  .catch((e) => {
-    console.log("Error while DB connecting");
-    console.log(e);
-  });
+ .connect(db, opt)
+ .then(() => {
+   console.log("MongoDB connected");
+ })
+ .catch((e) => {
+   console.log("Error while DB connecting");
+   console.log(e);
+ });
 
 //On définit notre objet express nommé app
 const app = express();
