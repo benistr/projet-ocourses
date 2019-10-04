@@ -9,24 +9,24 @@ const Main = () => {
     
         return <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
-                <div className="mainContent"><NavLink to="/saisons">
-                    <div className="title"></div>
-                    <div className="legumes"> 
-                        <div className="summary">
-                        <p className="summary-title">Découvrez les fruits & légumes du mois</p>
-                        <Responsive minWidth={1024}>
-                            <ul className="recipe-items">
-                                <li>- Légume </li>
-                                <li>- Légume </li>
-                                <li>- Légume </li>
-                                <li>- Légume </li>
-                                
-                        </ul> 
-                        </Responsive>
+                    <div className="mainContent"><NavLink to="/saisons">
+                        <div className="title">Octobre</div>
+                        <div className="legumes"> 
+                            <div className="summary">
+                            <p className="summary-title">Découvrez les fruits & légumes du mois</p>
+                            <Responsive minWidth={1024}>
+                                <ul className="recipe-items">
+                                    <li>- Légume </li>
+                                    <li>- Légume </li>
+                                    <li>- Légume </li>
+                                    <li>- Légume </li>
+                                    
+                            </ul> 
+                            </Responsive>
+                            </div>
                         </div>
+                        </NavLink>
                     </div>
-                    </NavLink>
-                </div>
 
                 <div className="mainContent"><a href="">
                 <div className="title">Lasagnes à l'italienne</div>

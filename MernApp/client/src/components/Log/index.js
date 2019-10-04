@@ -73,8 +73,8 @@ togglePopup() {
                 </button>
             </form>
             <br></br>
-            <small>Pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créer un compte ◀ ◀ ◀</NavLink>
+            <small>Comment ? Vous n'avez pas encore de compte ?</small>
+            <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
             </div>
         );
     }
