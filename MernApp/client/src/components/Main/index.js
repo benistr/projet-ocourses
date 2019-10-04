@@ -5,13 +5,12 @@ import { NavLink } from 'react-router-dom';
 //Local imports
 import './styles.scss';
 
-
 const Main = () => {
-   
-    return  <div className="mainContainer">
+    
+        return <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
                 <div className="mainContent"><NavLink to="/saisons">
-                    <div className="title">Fruits et légumes de saison</div>
+                    <div className="title"></div>
                     <div className="legumes"> 
                         <div className="summary">
                         <p className="summary-title">Découvrez les fruits & légumes du mois</p>
