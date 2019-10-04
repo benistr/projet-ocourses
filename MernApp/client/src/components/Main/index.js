@@ -19,13 +19,6 @@ const Main = () => {
                             <div className="summary">
                             <p className="summary-title">Découvrez les fruits & légumes du mois</p>
                             <Responsive minWidth={1024}>
-                                <ul className="recipe-items">
-                                    <li>- Légume </li>
-                                    <li>- Légume </li>
-                                    <li>- Légume </li>
-                                    <li>- Légume </li>
-                                    
-                            </ul> 
                             </Responsive>
                             </div>
                         </div>

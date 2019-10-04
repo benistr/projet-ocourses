@@ -29,7 +29,7 @@ togglePopup() {
     render() {
         return (
             <div className='logContainer'>
-                <h1>Connexion</h1>
+                <h1>S'enregristrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
             <Input
