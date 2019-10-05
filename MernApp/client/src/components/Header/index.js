@@ -49,11 +49,11 @@ const Nav = () => (
         </li>
         
         <ul id="picto">
-          <a id="a" href=""><img className="picto-compte" src={Compte} /></a>
+          <NavLink to="/login" id="a" href=""><img className="picto-compte" src={Compte} /></NavLink>
           <a id="a" href=""><img className="picto-menu" src={Menu}/></a>
           
           <li id="nav2">
-          <NavLink to="login" id="a" href="">
+          <NavLink to="/login" id="a" href="">
           Connexion
           </NavLink>
           </li>
