@@ -1,8 +1,8 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 
-const CreatedRack = ({ itemList, rackList, rack, deleteItem }) => {
-
+const CreatedRack = ({ itemList, rackList, rack, deleteItem, handleFav }) => {
+const favStar = handleFav ? "star outline" : "star";
 
 
         {/* Bloc de catégorie */}
@@ -19,7 +19,9 @@ const CreatedRack = ({ itemList, rackList, rack, deleteItem }) => {
                                     <li>
                                         <span className="categoryInput name">{item.product}</span>
                                         <span className="categoryInput quantity">{item.quantity}</span>
-                                        <span className="categoryInput favorite"><Icon name="star outline" /* Methode onclic pour changer la className et passer l'étoile en pleine si favori */ /> <Icon name="delete" onClick={() => {deleteItem(item.id)} }/></span>
+                                        <span className="categoryInput favorite"><Icon name={favStar}
+                                        onClick={handleFav}
+                                        /* Methode onclic pour changer la className et passer l'étoile en pleine si favori */ /> <Icon name="delete" onClick={() => {deleteItem(item.id)} }/></span>
                                     </li>
                                 </ul>
                             </li>

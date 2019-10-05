@@ -16,12 +16,22 @@ class CreateList extends React.Component{
         super(props);
         console.log('props reçu', props);
         this.state = {
+            update: this.props.update,
             itemList: [this.props.itemsOnList],
             rackList: []
         };
 
     }
 
+    componentDidUpdate(prevProps) {
+        console.log('CDU appelé');
+        if(prevProps.itemsOnList.length !== this.props.itemsOnList.length) {
+        
+        console.log('voila les prevProps', prevProps);
+        }else {
+            console.log('pas de changement')
+        }
+    }
     
 
     newItem = {};
@@ -49,7 +59,22 @@ class CreateList extends React.Component{
         // On met à jour le state en remplacant les state.itemList et state.RackList par newItemList et newRackList
         this.setState({ itemList: newItemList, rackList: newRackList});
         console.log(this.state);
+        console.log('requete axios')
+        // this.getRequest('https://world.openfoodfacts.org/cgi/search.pl?search_terms=banania&search_simple=1&action=process&json=1', {headers:{ 'User-Agent': 'CoolFoodApp - Android - Version 1.0' }})
+        
     }  
+
+    //requête axios
+    getRequest = (url) => {
+        console.log('getRequest lancée')
+        axios.get(url)
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
     
 //Méthode permettant d'intégrer les valeurs indiquées par l'User dans l'objet NewItem
     handleChange = () => {
@@ -57,19 +82,9 @@ class CreateList extends React.Component{
         // console.log(event.target.value);
         // console.log(event.target.id);
         this.newItem = {...this.newItem, [event.target.id] : event.target.value};
-        this.newItem.id= Math.random(1, 1000);
+        this.newItem.id = Math.random(1, 1000);
+        this.newItem.fav = false
         console.log(this.newItem);
-        // axios.get(
-        // header('Access-Control-Allow-Origin: *'),
-        // header('Access-Control-Allow-Credentials: true'),
-        // // on précise que le contenu est au format json
-        // header('Content-Type: application/json'),
-        // // on affiche les données au format json
-        
-        // `https://world.openfoodfacts.org/cgi/search.pl?search_terms=${event.target.value}`)
-        // .then(res => {
-        //     console.log(res);
-        // });
     }
     
     //Methode vérifiant que le rayon n'existe pas déjà dans le tableau rackList la méthode some() renvoit un booléen si la condition est remplie
@@ -113,7 +128,9 @@ class CreateList extends React.Component{
            return <CreatedRack {...this.state}
            key={rack}
            rack={rack} 
-           deleteItem={this.props.deleteItem}/>
+           deleteItem={this.props.deleteItem}
+           handleFav={this.props.handleFav}
+           />
         })}
         
     </div>
@@ -142,6 +159,10 @@ const connectionStrategies = connect(
         addItem: (item) => {
             console.log('dans addItem, ajout de ', item)
             dispatch( {type: "ADD_ITEM_TO_LIST", value: item})
+        },
+        handleFav: (bool) => {
+            console.log('dans handle fav');
+            dispatch({ type: "CLICK_FAV", value : !bool})
         } 
       };
     },

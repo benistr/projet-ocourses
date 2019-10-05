@@ -3,6 +3,7 @@ export const SIDE_EFFECT = 'SIDE_EFFECT';
 
 const initialState = {
   greetingMessage: 'Bonjour depuis le store !',
+  update: false,
   itemsOnList: []
 };
 
@@ -31,7 +32,8 @@ const reducer = (state = initialState, action = defaultAction) => {
       // console.log('tableau après suppression :',updatedTasks);
       return {
         ...state,
-        itemsOnList: updatedItemsOnList
+        itemsOnList: updatedItemsOnList,
+        update: !state.update,
         
       }
     }
@@ -44,6 +46,9 @@ const reducer = (state = initialState, action = defaultAction) => {
         ...state,
         itemsOnList: updatedItemsOnList
       }
+    }
+    case "CLICK_FAV" : {
+      return action.value
     }
     default: {
       // return state;
