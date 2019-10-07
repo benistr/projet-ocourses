@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
 /**
  * Local import
  */
@@ -42,10 +43,13 @@ import './app.sass';
 // Main ou Home est donc à mettre en dernier avant la clôture du Switch
 // Pour ne plus se soucier de la priorisation : utiliser la mention EXACT pour la Home / Main
 const App = () => {
+
     return (
         <Router>
         <div id="app">
+
         <Header />
+
         <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/listes" component={Lists} />
