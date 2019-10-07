@@ -16,14 +16,32 @@ class SignUp extends React.Component {
     constructor() {
         super();
         this.state = {
-        showPopup: false
+        name: '',
+        surname: '',
+        email: '',
+        password: '',
     };
 }
 
-togglePopup() {
+handleChange = event => {
     this.setState({
-    showPopup: !this.state.showPopup
+        name: event.target.value,
+        surname: event.target.value,
+        email: event.target.value,
+        password: event.target.value,
     });
+    console.log(handleChange);
+}
+
+handleSubmit = event => {
+    event.preventDefault();
+
+    const user = {
+        name: this.state.name,
+        surname: this.state.surname,
+        email: this.state.email,
+        password: this.state.password
+    }
 }
 
     render() {
@@ -33,43 +51,44 @@ togglePopup() {
             <img className="img-log" src={Logo}></img> 
             <br></br>
             <Input
-            key=""
-            type=""
-            className="ui input"
-            placeholder="Nom"
-            // Duo de props pour faire une input contrôlé :
-            value=""
-            onChange=""
+                type=""
+                className="ui input"
+                placeholder="Nom"
+                // Duo de props pour faire une input contrôlé :
+                value={this.state.value}
+                onChange={(event, newValue) => 
+                this.setState({name:newValue})}
             />
             <Input
-            key=""
-            type=""
-            className="ui input"
-            placeholder="Prénom"
-            // Duo de props pour faire une input contrôlé :
-            value=""
-            onChange=""
+                type=""
+                className="ui input"
+                placeholder="Prénom"
+                // Duo de props pour faire une input contrôlé :
+                value={this.state.value}
+                onChange={(event, newValue) => 
+                this.setState({surname:newValue})}
             />
             <Input
-                key=""
                 type=""
                 className="ui input"
                 placeholder="E-mail"
                 // Duo de props pour faire une input contrôlé :
-                value=""
-                onChange=""
+                value={this.state.value}
+                onChange={(event, newValue) => 
+                this.setState({email:newValue})}
             />
             <Input
-                key=""
                 type=""
                 className="ui input"
                 placeholder="Mot de Passe"
                 // Duo de props pour faire une input contrôlé :
-                value=""
-                onChange=""
+                value={this.state.value}
+                onChange={(event, newValue) => 
+                this.setState({password:newValue})}
             />
             <form onSubmit="">
-                <button type="submit" className="ui button">
+                <button type="submit" className="ui button" onClick={(event) =>
+                this.handleClick(event)}>
                 S'enregistrer
                 </button>
                 <button type="cancel" className="ui button">
