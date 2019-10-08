@@ -47,7 +47,6 @@ togglePopup() {
             <img className="img-log" src={Logo}></img> 
             <br></br>
             <Input
-                key=""
                 type=""
                 className="ui input"
                 placeholder="E-mail"
@@ -56,7 +55,6 @@ togglePopup() {
                 onChange=""
             />
             <Input
-                key=""
                 type=""
                 className="ui input"
                 placeholder="Mot de Passe"
