@@ -48,7 +48,7 @@ const App = () => {
         <Router>
         <div id="app">
 
-        <Header />
+    {/* <Header />*/}
 
         <Switch>
         <Route path="/" exact component={Main} />
