@@ -50,8 +50,10 @@ handleSubmit = event => {
                 <h1>S'enregristrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
+            <form method="POST" action="/register">
             <Input
-                type=""
+                name="name"
+                type="text"
                 className="ui input"
                 placeholder="Nom"
                 // Duo de props pour faire une input contrôlé :
@@ -60,7 +62,8 @@ handleSubmit = event => {
                 this.setState({name:newValue})}
             />
             <Input
-                type=""
+                name="surname"
+                type="text"
                 className="ui input"
                 placeholder="Prénom"
                 // Duo de props pour faire une input contrôlé :
@@ -69,6 +72,7 @@ handleSubmit = event => {
                 this.setState({surname:newValue})}
             />
             <Input
+                name="email"
                 type=""
                 className="ui input"
                 placeholder="E-mail"
@@ -78,6 +82,7 @@ handleSubmit = event => {
                 this.setState({email:newValue})}
             />
             <Input
+                name="password"
                 type=""
                 className="ui input"
                 placeholder="Mot de Passe"
@@ -86,7 +91,6 @@ handleSubmit = event => {
                 onChange={(event, newValue) => 
                 this.setState({password:newValue})}
             />
-            <form onSubmit="">
                 <button type="submit" className="ui button" onClick={(event) =>
                 this.handleClick(event)}>
                 S'enregistrer
