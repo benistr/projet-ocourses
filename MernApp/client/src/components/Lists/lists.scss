@@ -8,14 +8,15 @@
     padding-left: 2.5rem;
 }
 
-.container {
-    width: 100%;
+.contain {
+    width: 70%;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     padding-top: 120px;
     font-family: $font-family;
     background-color:#F9F9F9;  
+    margin: 0 auto;
 }
     
 .content {

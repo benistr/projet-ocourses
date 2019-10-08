@@ -10,7 +10,7 @@ import Image from './oeuf.jpg';
 
 const Lists = () => {
    
-    return  <div className="container">
+    return  <div className="contain">
             <p className="path">▶ Accueil ▶ Listes</p>
 
 
