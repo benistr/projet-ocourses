@@ -2,7 +2,7 @@ import React from 'react'
 import axios from 'axios';
 import { connect } from 'react-redux';
 import CreatedList from 'src/components/CreatedList';
-import CreatedRack from 'src/components/CreatedRack';
+import CreatedRackContainer from 'src/components/CreatedRack';
 
 
 //Local import 
@@ -22,44 +22,41 @@ class CreateList extends React.Component{
         };
 
     }
-
-    componentDidUpdate(prevProps) {
-        console.log('CDU appelé');
-        if(prevProps.itemsOnList.length !== this.props.itemsOnList.length) {
+    // Test CDU dans le but d'actualiser le state local à chaque changement du state global (ex suppression d'un item)
+    // Problème rencontré : Après suppression length de props est bien != lenght de prevProps mais on n'entre pas dans la condition
+    // componentDidUpdate(prevProps, props) {
+    //     console.log('CDU appelé');
+    //     if(prevProps.itemsOnList.length !== this.props.itemsOnList.length) {
         
-        console.log('voila les prevProps', prevProps);
-        }else {
-            console.log('pas de changement')
-        }
-    }
+    //     console.log('voila les prevProps', prevProps);
+    //     }else {
+    //         console.log('pas de changement')
+    //         console.log('après appel du CDU : PrevPros: ', prevProps, 'et props:', props )
+    //     }
+    // }
     
 
     newItem = {};
 
 // Méthode ajoutant le produit à la list des items du state.
     handleSubmit = () => {
-        console.log('test');
+        console.log('HandleSubmit lancé');
         //On copie le tableau itemList de state puis on push le newItem dans ce tableau
         let newItemList = this.state.itemList.slice();
         newItemList.push(this.newItem)
         this.props.addItem(this.newItem);
-        console.log(newItemList);
+        console.log('Handle submit : newItemList = ', newItemList);
         //On fait une copie du tableau rackList du state
         let newRackList = this.state.rackList.slice();
-        console.log("après le slice", newRackList)
+        // console.log("après le slice", newRackList)
         // On vérifie si le rayon du newItem exite dans le tableau rackList
-        console.log("test handleCheck")
-        this.handleCheck(newRackList, this.newItem.rack) 
-            // console.log("dans HandleCheck et avant le push", newRackList);
-            // //Si ce n'est pas le cas on le push dans le tableau newRackList
-            // newRackList.push(this.newItem.rack)
-            // console.log("dans handlCheck et après le push", newRackList)
-        
-        console.log(newRackList);
+        // console.log('test handleCheck')
+        this.handleCheck(newRackList, this.newItem.rack)         
+        console.log('suite HandleCheck, new RackList : ', newRackList);
         // On met à jour le state en remplacant les state.itemList et state.RackList par newItemList et newRackList
         this.setState({ itemList: newItemList, rackList: newRackList});
-        console.log(this.state);
-        console.log('requete axios')
+        console.log('new this.state : ', this.state);
+        // console.log('requete axios')
         // this.getRequest('https://world.openfoodfacts.org/cgi/search.pl?search_terms=banania&search_simple=1&action=process&json=1', {headers:{ 'User-Agent': 'CoolFoodApp - Android - Version 1.0' }})
         
     }  
@@ -84,7 +81,7 @@ class CreateList extends React.Component{
         this.newItem = {...this.newItem, [event.target.id] : event.target.value};
         this.newItem.id = Math.random(1, 1000);
         this.newItem.fav = false
-        console.log(this.newItem);
+        console.log('suite input change, this.newItem:', this.newItem);
     }
     
     //Methode vérifiant que le rayon n'existe pas déjà dans le tableau rackList la méthode some() renvoit un booléen si la condition est remplie
@@ -92,11 +89,11 @@ class CreateList extends React.Component{
         // return this.state.rackList.some(item => val.name === item.name);
         // Vérification avec array.filter()
         if(array.filter( name => name == rackName).length>0 ) {
-            console.log("existe");          
+            console.log('le rayon existe');          
     // Tu peux ajouter une valeur dans ton tableau            
             return array;
             } else { /* Error tu as déjà cette valeur dans ton tableau interdiction de l'ajouter*/ 
-        console.log("existe pas");
+        console.log('le rayon n\'existe pas');
         array.push(rackName);       
     }
   
@@ -125,7 +122,7 @@ class CreateList extends React.Component{
 
         {this.state.rackList.map( rack => {
             console.log(rack);
-           return <CreatedRack {...this.state}
+           return <CreatedRackContainer {...this.state}
            key={rack}
            rack={rack} 
            deleteItem={this.props.deleteItem}

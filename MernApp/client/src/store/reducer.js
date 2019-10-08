@@ -48,7 +48,21 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
     case "CLICK_FAV" : {
-      return action.value
+      let updatedItemsOnList = state.itemsOnList;
+      console.log('dans reducer action CLICK_FAV');
+      for (let i=0; i <= updatedItemsOnList.length -1; i++) {
+        console.log("dans le for de click_fav");
+          if(updatedItemsOnList[i].id == action.value){
+            console.log("item identique trouvé", updatedItemsOnList[i])
+            console.log(updatedItemsOnList[i].fav);
+            updatedItemsOnList[i].fav = !updatedItemsOnList[i].fav
+            console.log('suite maj: updatedItemsOnList:', updatedItemsOnList)
+          }
+        }
+      return {
+        ...state,
+        itemsOnList: updatedItemsOnList,       
+      }
     }
     default: {
       // return state;
