@@ -82,15 +82,15 @@ function Nav() {
       </ul>
 
       <ThemeProvider theme={theme}>
-      <>
+
         <GlobalStyles />
   
         <div ref={node}>
           <Burger open={open} setOpen={setOpen} />
           <Menu open={open} setOpen={setOpen} />
         </div>
-      </>
-    </ThemeProvider>
+
+      </ThemeProvider>
  
   </div>
 );
