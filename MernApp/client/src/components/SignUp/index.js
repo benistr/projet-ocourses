@@ -50,6 +50,7 @@ handleSubmit = event => {
                 <h1>S'enregristrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
+            <form method='POST' action='/user/register'>
             <Input
                 type=""
                 className="ui input"
@@ -86,7 +87,6 @@ handleSubmit = event => {
                 onChange={(event, newValue) => 
                 this.setState({password:newValue})}
             />
-            <form onSubmit="">
                 <button type="submit" className="ui button" onClick={(event) =>
                 this.handleClick(event)}>
                 S'enregistrer
