@@ -2,9 +2,10 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-const CreatedRack = ({ itemList, rackList, rack, deleteItem, clickOnFav }) => {
+const CreatedRack = ({ rack, itemList }) => {
 
-
+  console.log('dans created rack itemList', itemList);
+  console.log('dans created rack rack', rack);
 
         {/* Bloc de catégorie */}
         return <div className="category">
@@ -42,7 +43,7 @@ const connectionStrategies = connect(
     // 1er argument : stratégie de lecture (dans le state privé global)
     (state, ownProps) => {
       return {
-        itemsOnList: state.itemsOnList
+        itemList: state.itemList
       };
     },
   

@@ -2,9 +2,9 @@ export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
 export const SIDE_EFFECT = 'SIDE_EFFECT';
 
 const initialState = {
-  greetingMessage: 'Bonjour depuis le store !',
-  update: false,
-  itemsOnList: []
+  itemList: [],
+  newItem: {},
+  rackList: [],
 };
 
 const defaultAction = {};
@@ -17,51 +17,67 @@ const reducer = (state = initialState, action = defaultAction) => {
         greetingMessage: action.value
       }
     }
+    case 'NEW_RACK': {
+      let newRackList = state.rackList.push(action.value);
+      return {
+        ...state,
+        rackList: newRackList
+      }
+    }
     //Gestion de la suppression d'un tâche 
     case 'DELETE_ITEM': {
-      let updatedItemsOnList = state.itemsOnList;
+      let updatedItemList = state.itemList;
       console.log('suppression item id:', action.value);
-      for (let i=0; i <= updatedItemsOnList.length -1; i++) {
+      for (let i=0; i <= updatedItemList.length -1; i++) {
         console.log("dans le for de delete_item");
-          if(updatedItemsOnList[i].id == action.value){
-            console.log("item identique trouvé", updatedItemsOnList[i])
-            updatedItemsOnList.splice(i, 1);
+          if(updatedItemList[i].id == action.value){
+            console.log("item identique trouvé", updatedItemList[i])
+            updatedItemList.splice(i, 1);
           }
         }
-      console.log("itemsOnListe suite suppression: ", updatedItemsOnList);
+      console.log("itemsOnListe suite suppression: ", updatedItemList);
       // console.log('tableau après suppression :',updatedTasks);
       return {
         ...state,
-        itemsOnList: updatedItemsOnList,
-        update: !state.update,
+        itemsOnList: updatedItemList,
         
       }
     }
     case 'ADD_ITEM_TO_LIST': {
-      let updatedItemsOnList = state.itemsOnList;
-      updatedItemsOnList.push(action.value);
-      console.log("itemsOnListe suite ajout: ", updatedItemsOnList);
-      
+      console.log('add idem, recu : ', action.value)
+      let updatedItemList = state.itemList;
+      updatedItemList.push(action.value);
+      console.log("itemList suite ajout: ", updatedItemList);
+      let newRackList = state.rackList.slice();
+      if(newRackList.filter( name => name == action.value.rack).length>0 ) {
+        console.log('le rayon existe');                
+        } else {  
+    console.log('le rayon n\'existe pas');
+    newRackList.push(action.value.rack);       
+}
+      console.log("sortie du if de verif de rack",updatedItemList);
       return {
         ...state,
-        itemsOnList: updatedItemsOnList
+        itemList: updatedItemList,
+        rackList: newRackList,
+        newItem: {}
       }
     }
     case "CLICK_FAV" : {
-      let updatedItemsOnList = state.itemsOnList;
+      let updatedItemList = state.itemList;
       console.log('dans reducer action CLICK_FAV');
-      for (let i=0; i <= updatedItemsOnList.length -1; i++) {
+      for (let i=0; i <= updatedItemList.length -1; i++) {
         console.log("dans le for de click_fav");
-          if(updatedItemsOnList[i].id == action.value){
-            console.log("item identique trouvé", updatedItemsOnList[i])
-            console.log(updatedItemsOnList[i].fav);
-            updatedItemsOnList[i].fav = !updatedItemsOnList[i].fav
-            console.log('suite maj: updatedItemsOnList:', updatedItemsOnList)
+          if(updatedItemList[i].id == action.value){
+            console.log("item identique trouvé", updatedItemList[i])
+            console.log(updatedItemList[i].fav);
+            updatedItemList[i].fav = !updatedItemList[i].fav
+            console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
       return {
         ...state,
-        itemsOnList: updatedItemsOnList,       
+        itemsOnList: updatedItemList,       
       }
     }
     default: {
