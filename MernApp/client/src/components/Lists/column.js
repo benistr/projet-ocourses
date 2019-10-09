@@ -1,22 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import Task from './task';
-import { Droppable } from 'react-beautiful-dnd';
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 const Contain = styled.div`
-padding-top: 120px;
+width: 68%;
+margin: 1rem auto;
 `;
 
 const Container = styled.div`
 
-  margin-top: 80px;
-  // border: 1px solid lightgrey;
+  margin-top: 20px;
   border-radius: 12px;
-  width: 68%;
   background-color: #FFF;
   box-shadow: 4px 4px 6px #D7D7D7;
   padding:1 rem;
-  margin: 1rem auto;
+  
+
+  display: flex;
+  flex-direction: column;
+
   `;
 const Title = styled.h3`
   padding: 8px;
@@ -31,6 +34,8 @@ const Title = styled.h3`
 const TaskList = styled.div`
 padding: 1rem;
 font-family: 'Open Sans';
+flex-grow: 1;
+min-height: 50px;
 `;
 
 export default class Column extends React.Component {
@@ -38,21 +43,27 @@ export default class Column extends React.Component {
     return (
       <Contain>
 
-      <Container>
-      <Title>{this.props.column.title}</Title>
-      <Droppable droppableId={this.props.column.id}>
-      {provided => (
-      <TaskList
-      ref={provided.innerRef}
-        {...provided.droppableProps}
-      >
-        {this.props.tasks.map(task => <Task key={task.id} task={task} />)}
-        {provided.placeholder}
-      </TaskList>
-      )}
+      <Draggable draggableId={this.props.column.id} index={this.props.index}>
+      {(provided) => (
+      <Container {...provided.draggableProps} ref={provided.innerRef}>
+        <Title {...provided.dragHandleProps}>{
+          this.props.column.title}</Title>
+        <Droppable droppableId={this.props.column.id} type="task">
+        {(provided) => (
+        <TaskList 
+          ref={provided.innerRef} 
+          {...provided.droppableProps}
+          >
+          {this.props.tasks.map((task, index) => (
+            <Task key={task.id} task={task} index={index}/>
+          ))}
+          {provided.placeholder}
+        </TaskList>
+        )}
       </Droppable>
       </Container>
-
+      )}
+      </Draggable>
       </Contain>
     );
 }

@@ -9,9 +9,14 @@ const initialData = {
       title: 'Carrefour',
       taskIds: ['task-1', 'task-2'],
     },
+    'column-2': {
+      id: 'column-2',
+      title: 'Leclerc',
+      taskIds: [],
+    },
   },
   // Facilitate reordering of the columns
-  columnOrder: ['column-1'],
+  columnOrder: ['column-1', 'column-2'],
 };
 
 export default initialData;
