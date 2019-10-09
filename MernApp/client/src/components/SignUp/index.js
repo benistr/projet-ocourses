@@ -56,40 +56,28 @@ handleSubmit = event => {
                 type="text"
                 className="ui input"
                 placeholder="Nom"
-                // Duo de props pour faire une input contrôlé :
                 value={this.state.value}
-                onChange={(event, newValue) => 
-                this.setState({name:newValue})}
             />
             <Input
                 name="surname"
                 type="text"
                 className="ui input"
                 placeholder="Prénom"
-                // Duo de props pour faire une input contrôlé :
                 value={this.state.value}
-                onChange={(event, newValue) => 
-                this.setState({surname:newValue})}
             />
             <Input
                 name="email"
-                type=""
+                type="email"
                 className="ui input"
                 placeholder="E-mail"
-                // Duo de props pour faire une input contrôlé :
                 value={this.state.value}
-                onChange={(event, newValue) => 
-                this.setState({email:newValue})}
             />
             <Input
                 name="password"
-                type=""
+                type="password"
                 className="ui input"
                 placeholder="Mot de Passe"
-                // Duo de props pour faire une input contrôlé :
                 value={this.state.value}
-                onChange={(event, newValue) => 
-                this.setState({password:newValue})}
             />
                 <button type="submit" className="ui button">
                 S'enregistrer

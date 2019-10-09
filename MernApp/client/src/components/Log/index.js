@@ -65,20 +65,18 @@ handleSubmit = event => {
             <br></br>
             <form method="POST" action="http://localhost:8800/api/user/login">
             <Input
-                type=""
+                name="email"
+                type="email"
                 className="ui input"
                 placeholder="E-mail"
-                // Duo de props pour faire une input contrôlé :
                 value={this.state.value}
-                onChange=""
             />
             <Input
-                type=""
+                name="password"
+                type="password"
                 className="ui input"
                 placeholder="Mot de Passe"
-                // Duo de props pour faire une input contrôlé :
                 value={this.state.value}
-                onChange=""
             />
                 <button type="submit" className="ui button">
                 Se connecter
