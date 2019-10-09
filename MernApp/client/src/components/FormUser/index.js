@@ -26,16 +26,16 @@ class FormUser extends React.Component {
 
                       <label className="label">Nom</label>
 
-                    <div class="ui divider"></div>  
+                    <div className="ui divider"></div>  
 
                       <label className="label">Prénom</label>
 
-                    <div class="ui divider"></div>                     
+                    <div className="ui divider"></div>                     
                       <label className="label">E-mail</label>
-                    <div class="ui divider"></div>
+                    <div className="ui divider"></div>
                      
                     <label className="label">Mot de passe</label>
-                    <div class="ui divider"></div> 
+                    <div className="ui divider"></div> 
 
                 </div>
                 </div>  

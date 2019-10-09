@@ -13,7 +13,8 @@ const Team = () => {
                     <div className="title"></div>
                     <div className="legumes"> 
                         <div className="summary-team">
-                        <p className="summary-title-team">Benjamin<p className="title-team">Product Owner</p></p>
+                        <p className="summary-title-team">Benjamin</p>
+                        <p className="title-team">Product Owner</p>
                         </div>
                     </div>
                 </div>
@@ -22,7 +23,7 @@ const Team = () => {
                     <div className="title"></div>
                     <div className="recette"> 
                         <div className="summary-team">
-                        <p className="summary-title-team">Kévin<p className="title-team">Project Manager</p></p>
+                        <p className="summary-title-team">Kévin</p><p className="title-team">Project Manager</p>
                         </div>    
                     </div>
                 </div>
@@ -31,7 +32,7 @@ const Team = () => {
                     <div className="title"></div>
                     <div className="recette"> 
                         <div className="summary-team">
-                        <p className="summary-title-team">Myriam<p className="title-team">Lead Dev Back</p></p>
+                        <p className="summary-title-team">Myriam</p><p className="title-team">Lead Dev Back</p>
                         </div>    
                     </div>
                 </div>
@@ -40,7 +41,7 @@ const Team = () => {
                     <div className="title"></div>
                     <div className="recette"> 
                         <div className="summary-team">
-                        <p className="summary-title-team">Dorian<p className="title-team">Lead Dev Front</p></p>
+                        <p className="summary-title-team">Dorian</p><p className="title-team">Lead Dev Front</p>
                         </div>    
                     </div>
                 </div>

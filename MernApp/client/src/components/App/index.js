@@ -68,11 +68,11 @@ const App = () => {
 }
 
 
-App.propTypes = {
+/* App.propTypes = { */
   /** Titre de l'application React */
-  title: PropTypes.string.isRequired
+/*   title: PropTypes.string.isRequired
 };
-
+ */
 /**
  * Export
  */
