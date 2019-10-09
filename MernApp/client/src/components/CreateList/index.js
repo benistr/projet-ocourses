@@ -1,7 +1,8 @@
 import React from 'react'
-import { Icon } from 'semantic-ui-react';
+import axios from 'axios';
+import { connect } from 'react-redux';
 import CreatedList from 'src/components/CreatedList';
-import CreatedRack from 'src/components/CreatedRack';
+import CreatedRackContainer from 'src/components/CreatedRack';
 
 
 //Local import 
@@ -10,61 +11,40 @@ import './CreateList.scss';
 
 
 
-class CreateList extends React.Component{
-    state = {
-        itemList: [],
-        rackList: []
-    };
 
-    newItem = {};
+class CreateList extends React.Component{
+    constructor(props) {
+        super(props);
+        console.log('props reçu', props);
+        console.log('rackList:', props.rackList)
+        this.state = {
+            product: '',
+            rack: '',
+            quantity: '',
+            fav: false,
+            id: Math.random(1,1000)
+        }
+    }
+
+    
+
+    
 
 // Méthode ajoutant le produit à la list des items du state.
     handleSubmit = () => {
-        console.log('test');
-        //On copie le tableau itemList de state puis on push le newItem dans ce tableau
-        let newItemList = this.state.itemList.slice();
-        newItemList.push(this.newItem)
-        console.log(newItemList);
-        //On fait une copie du tableau rackList du state
-        let newRackList = this.state.rackList.slice();
-        console.log("après le slice", newRackList)
-        // On vérifie si le rayon du newItem exite dans le tableau rackList
-        console.log("test handleCheck")
-        this.handleCheck(newRackList, this.newItem.rack) 
-            // console.log("dans HandleCheck et avant le push", newRackList);
-            // //Si ce n'est pas le cas on le push dans le tableau newRackList
-            // newRackList.push(this.newItem.rack)
-            // console.log("dans handlCheck et après le push", newRackList)
-        
-        console.log(newRackList);
-        // On met à jour le state en remplacant les state.itemList et state.RackList par newItemList et newRackList
-        this.setState({ itemList: newItemList, rackList: newRackList});
-        console.log(this.state);
+        console.log('HandleSubmit lancé');
+        console.log(this.state)
+        this.props.addItem(this.state)
     }  
-    
+
+ 
 //Méthode permettant d'intégrer les valeurs indiquées par l'User dans l'objet NewItem
-    handleChange = () => {
-        // console.log('change!');
-        // console.log(event.target.value);
-        // console.log(event.target.id);
-        this.newItem = {...this.newItem, [event.target.id] : event.target.value};
-        console.log(this.newItem);
+    handleChange = (e, key) => {
+        this.setState({
+            [key]: e.target.value
+        })
     }
     
-    //Methode vérifiant que le rayon n'existe pas déjà dans le tableau rackList la méthode some() renvoit un booléen si la condition est remplie
-    handleCheck(array, rackName) {
-        // return this.state.rackList.some(item => val.name === item.name);
-        // Vérification avec array.filter()
-        if(array.filter( name => name == rackName).length>0 ) {
-            console.log("existe");          
-    // Tu peux ajouter une valeur dans ton tableau            
-            return array;
-            } else { /* Error tu as déjà cette valeur dans ton tableau interdiction de l'ajouter*/ 
-        console.log("existe pas");
-        array.push(rackName);       
-    }
-  
-       }
 
     render() {
       return  <div className="mainListContainer">
@@ -73,8 +53,8 @@ class CreateList extends React.Component{
          <form className="inputs" onSubmit= { (e) => { 
              e.preventDefault();
              this.handleSubmit() }}>
-         <input type="text" className="input" icon="search" placeholder="Produit recherché..." name="product" id="product" onChange={this.handleChange}/>
-         <select className="input" icon="cart" name="rack" id="rack" onChange={this.handleChange} >
+         <input type="text" className="input" icon="search" placeholder="Produit recherché..." value={this.state.product} name="product" id="product"  onChange={(e) => this.handleChange(e, 'product')}/>
+         <select className="input" icon="cart" name="rack" id="rack" value={this.state.rack} onChange={(e) => this.handleChange(e, 'rack')} >
              <option value="">--Categorie / Rayon--</option>
              <option value="Animaux">Animaux</option>
              <option value="Autres">Autres</option>
@@ -95,15 +75,28 @@ class CreateList extends React.Component{
              <option value="Viandes">Viandes</option>
              <option value="Viennoiseries">Viennoiseries</option>
          </select>
-         <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" onChange={this.handleChange}/>
+         <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" value={this.state.quantity} onChange={(e) => this.handleChange(e, 'quantity')}/>
          <button type="submit">Ajouter</button>
          </form>
 
-        {this.state.rackList.map( rack => {
+        {/* {this.props.rackList.map( (rack, index) => {
             console.log(rack);
-           return <CreatedRack {...this.state}
-           rack={rack} />
-        })}
+            this.props.itemList.map( (item, index) => {
+                if(item.rack === rack){
+                     console.log(item)
+           //Boucler sur item list car rackList ne change pas si 2 item on le meme rayon
+                   return <CreatedRackContainer key={index} rack={rack} item={item}/>}
+            })
+                
+            })
+        } */}
+        {this.props.rackList.map( (rack, index) => {
+                return <CreatedRackContainer 
+                        key={index}
+                        rack={rack}
+                        />
+            })
+        }
         
     </div>
 
@@ -112,4 +105,40 @@ class CreateList extends React.Component{
 }
 }
 
-export default CreateList;
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+    // 1er argument : stratégie de lecture (dans le state privé global)
+    (state, ownProps) => {
+      return {
+        ...state
+      };
+    },
+  
+    // 2d argument : stratégie d'écriture (dans le state privé global)
+    (dispatch, ownProps) => {
+      return {
+        updateState: (newState) => {
+            dispatch({ type : 'UPDATE_STATE', value : newState })
+        },
+        addRackName: (name) => {
+            dispatch({ type: 'NEW_RACK', value: name })
+        },
+        deleteItem: (id) => {
+            console.log('dans deleteItem id: ', id);
+          dispatch( {type: "DELETE_ITEM", value: id} );
+        },
+        addItem: (item) => {
+            console.log('dans addItem, ajout de ', item)
+            dispatch( {type: "ADD_ITEM_TO_LIST", value: item})
+        },
+        
+      };
+    },
+  );
+  
+  // Étape 2 : on applique ces stratégies à un composant spécifique.
+  const CreateListContainer = connectionStrategies(CreateList);
+  
+  // Étape 3 : on exporte le composant connecté qui a été généré
+  export default CreateListContainer;
+
