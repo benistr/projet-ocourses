@@ -23,7 +23,7 @@ $break-extra-large: 2500px;
   z-index: 10;
 }
 
-.logo {
+.logo-head {
 
   width: 100%;
   display: block;
@@ -56,9 +56,13 @@ $break-extra-large: 2500px;
 
 .picto-compte {
   width: 2.5em;
-  right: 0px;
+  margin-right: .5rem;
   filter: drop-shadow(1px 1px 2px #DCDCDC);
   margin: 0 auto;
+
+  @media screen and (max-width: $break-large) {
+    margin-right: 3rem;
+  }
 }
 
 #menu {
@@ -68,12 +72,12 @@ $break-extra-large: 2500px;
   justify-content: space-between;
 }
 
-#nav {
+#nav-desktop {
   
   font-family: 'Open Sans', sans-serif;
   flex-wrap: wrap;
   padding-top: 1.5rem; 
-  width: 7rem;
+  width: 8rem;
   
   @media screen and (max-width: $break-large) {
     display: none;
@@ -88,6 +92,7 @@ $break-extra-large: 2500px;
   font-size: 1rem;
   flex-wrap: wrap;
   padding-top: 0.5rem; 
+  display: hidden;
   
   @media screen and (max-width: $break-large) {
     display: none;
@@ -113,7 +118,7 @@ $break-extra-large: 2500px;
   transition-duration: 200ms, 300ms;
 }
 
-.logo:hover {
+.logo-head:hover {
   transform: scale(1.05, 1.05);
   transition-duration: 200ms, 300ms;
 }

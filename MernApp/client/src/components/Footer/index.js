@@ -12,7 +12,7 @@ const Footer = () => (
         <div className="addAList">
             <div className="list">
                 <p className="buttonLabel">Ajouter une nouvelle Liste </p>
-                <a href=""><img className="addlist"  src={Addlist}></img></a>
+                <NavLink to="/create-list" href=""><img className="addlist"  src={Addlist}></img></NavLink>
             </div>
         </div>
 

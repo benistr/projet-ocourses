@@ -18,16 +18,11 @@ class FormUser extends React.Component {
         // On récupères les props values de userAccount en les déstructurant
         const { values, handleChange } = this.props;
         return (
-
+              <div className="teste">
                 <div className="userForm">
 
                     <h1 className="form-text">Mon Compte</h1> 
                     <img className="form-logo" src={Logo}/>
-                    
-                      <label className="label">Photo</label>
-                      <p class="p-style">Ajoutez une photo pour     personnaliser votre compte</p>  
-
-                    <div class="ui divider"></div> 
 
                       <label className="label">Nom</label>
 
@@ -36,11 +31,14 @@ class FormUser extends React.Component {
                       <label className="label">Prénom</label>
 
                     <div class="ui divider"></div>                     
-                      <label className="label">Email</label>
+                      <label className="label">E-mail</label>
                     <div class="ui divider"></div>
+                     
+                    <label className="label">Mot de passe</label>
+                    <div class="ui divider"></div> 
 
                 </div>
-                   
+                </div>  
           
         );
     }

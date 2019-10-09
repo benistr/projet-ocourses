@@ -3,25 +3,28 @@
 .body {
     position: relative;
     width: 100%;
+    
+}
+
+.teste {
+    padding-top: 120px;
 }
 
 .userForm {
-    width: 50%;
-    display: block;
+    width: 68%;
     filter: drop-shadow(1px 1px 2px #DCDCDC);
     border: 1px solid $text-color;
     background-color: #fff;
     border-radius: 2em;
     padding: 2em;
-    position: absolute;
-    top: 10em;
-    left: 25em;
-    height: 60%;
+    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 2rem;
 
 }
 
 .form-logo {
-    width: 15%;
+    width: 8rem;
     display: block;
     justify-content: center;
     align-items: center;
@@ -32,8 +35,6 @@
 .form-text {
     //border: 1px solid red;
     text-align: center;
-    //margin-top: 5em;
-    //padding: 1em;
     font-size: 2em;
     font-style: italic;
     font-family: $font-family;
@@ -45,7 +46,7 @@
 }
 
 .label {
-    font-size: 1.2em;
+    font-size: 1em;
     display: inline-block;
     margin-left: .5em;
     font-style: italic;
@@ -53,22 +54,34 @@
 
 .p-style {
     color:  #B6B6B6;
-    display: inline;
+    display: block;
     margin-left: 7em;
-   
+    font-family: $font-family;
 }
 
 
   
 .ui.divider {
     margin: .5em auto;
-    padding: .8em;
+    padding: .5em;
     width: 80%;
-    color: $text-color;
-    
-   
-    
+    color: $text-color;   
+}
+
+.addli .buttonLabel{
+    display: none;
 }
    
+@media (max-width: 800px) {
+    .userForm {
+        width: 80%;
+    //    margin: 2rem;
+    }
+
+    // .form-logo {
+    //     width: 50%;
+    // }
+
+}
 
 
