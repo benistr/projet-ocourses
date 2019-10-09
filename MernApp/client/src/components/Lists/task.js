@@ -1,14 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 
-const Container = styled.div`
-  padding-top: 20px;
-  padding-bottom: 20px;
-  margin: 80px;
-  border-bottom: 1px solid lightgrey;
-  width: 68%;
-  background-color: #FFF;
 
+
+const Container = styled.div`
+  
+  width: 80%;
+  border-bottom: 1px solid #eeeded;
+  padding: 0.4em;
+  width: 100%;
+  color: #B6B6B6;
+  line-height: 1.5rem;
   `;
 
 export default class Task extends React.Component {
