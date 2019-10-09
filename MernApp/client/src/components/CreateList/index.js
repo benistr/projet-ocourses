@@ -20,7 +20,9 @@ class CreateList extends React.Component{
         this.state = {
             product: '',
             rack: '',
-            quantity: ''
+            quantity: '',
+            fav: false,
+            id: Math.random(1,1000)
         }
     }
 
@@ -65,11 +67,22 @@ class CreateList extends React.Component{
          <button type="submit">Ajouter</button>
          </form>
 
-        {this.props.rackList.map( (rack, index) => {
-
+        {/* {this.props.rackList.map( (rack, index) => {
+            console.log(rack);
+            this.props.itemList.map( (item, index) => {
+                if(item.rack === rack){
+                     console.log(item)
            //Boucler sur item list car rackList ne change pas si 2 item on le meme rayon
-                    return <CreatedRackContainer key={index} rack={rack} />
+                   return <CreatedRackContainer key={index} rack={rack} item={item}/>}
+            })
                 
+            })
+        } */}
+        {this.props.rackList.map( (rack, index) => {
+                return <CreatedRackContainer 
+                        key={index}
+                        rack={rack}
+                        />
             })
         }
         
@@ -106,10 +119,7 @@ const connectionStrategies = connect(
             console.log('dans addItem, ajout de ', item)
             dispatch( {type: "ADD_ITEM_TO_LIST", value: item})
         },
-        handleFav: (bool) => {
-            console.log('dans handle fav');
-            dispatch({ type: "CLICK_FAV", value : !bool})
-        } 
+        
       };
     },
   );
