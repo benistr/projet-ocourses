@@ -91,8 +91,7 @@ handleSubmit = event => {
                 onChange={(event, newValue) => 
                 this.setState({password:newValue})}
             />
-                <button type="submit" className="ui button" onClick={(event) =>
-                this.handleClick(event)}>
+                <button type="submit" className="ui button">
                 S'enregistrer
                 </button>
                 <button type="cancel" className="ui button">
