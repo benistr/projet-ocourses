@@ -6,7 +6,11 @@ const CreatedRack = ({ rack, itemList, clickOnFav, deleteItem }) => {
 
   console.log('dans created rack itemList', itemList);
   console.log('dans created rack rack', rack);
-
+  /**
+   * TODO
+   * Supprimer le rack quand il n'y a aucun item dedans
+   * synchroniser le state avec les clicks car actuellement ca ne synchronise que lorsque qu'un item est soumis via le form
+   */
         {/* Bloc de catégorie */}
         return <div className="category">
         <h3>{rack}</h3>
