@@ -3,6 +3,7 @@
   "private": false,
   "version": "1.0.0",
   "license": "MIT",
+  "proxy": "http://localhost:3000",
   "devDependencies": {
     "@babel/core": "*",
     "@babel/plugin-proposal-class-properties": "*",
