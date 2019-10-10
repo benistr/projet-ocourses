@@ -2,6 +2,8 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
+
+
 const CreatedRack = ({ rack, itemList, clickOnFav, deleteItem }) => {
 
   console.log('dans created rack itemList', itemList);
@@ -27,7 +29,7 @@ const CreatedRack = ({ rack, itemList, clickOnFav, deleteItem }) => {
                                         <span className="categoryInput name">{item.product}</span>
                                         <span className="categoryInput quantity">{item.quantity}</span>
                                         <span className="categoryInput favorite"><Icon name={favStar} onClick={ () => clickOnFav(item.id) }/> 
-                                        <Icon name="delete" onClick={() => {deleteItem(item.id)} }/></span>
+                                        <Icon name="delete" onClick={(e) => this.removeItem(item) }/></span>
                                     </li>
                                 </ul>
                             </li>
@@ -40,6 +42,8 @@ const CreatedRack = ({ rack, itemList, clickOnFav, deleteItem }) => {
     </div>
 
 }
+
+
 
 
 // Étape 1 : on définit des stratégies de connexion au store de l'app.
@@ -62,6 +66,10 @@ const connectionStrategies = connect(
         deleteItem: (id) => {
           console.log('dans deleteItem id: ', id);
         dispatch( {type: "DELETE_ITEM", value: id} );
+      },
+
+      removeItem(item) {
+        console.log('remove'+ item);
       }
         
       };

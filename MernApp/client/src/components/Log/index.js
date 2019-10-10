@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 /**
 * Local import
@@ -51,14 +52,17 @@ handleChange = event => {
 
 handleSubmit = event => {
     event.preventDefault();
-    const user = {
+    axios.post('/auth/getToken', {
+    
         email: this.state.email,
         password: this.state.password,
-    }
+    
+    }).then(res => localStorage.setItem('cool-jwt', res.data));
 }
 
     render() {
         return (
+            <div className='mainContainer'>
             <div className='logContainer'>
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
@@ -88,6 +92,7 @@ handleSubmit = event => {
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
             <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
+            </div>
             </div>
         );
     }

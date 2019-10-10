@@ -6,7 +6,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 /**
  * Local import
@@ -31,6 +31,7 @@ import Season from 'src/components/Season';
 
 // Styles et assets
 
+import './App.css';
 import './app.sass';
 
 // App Component
@@ -49,17 +50,31 @@ const App = () => {
 
         <Header />
 
-        <Switch>
-        <Route path="/" exact component={Main} />
-        <Route path="/listes" component={Lists} />
-        <Route path="/login" component={Log} />
-        <Route path="/team" component={Team} />
-        <Route path="/account" component={UserAccount} />
-        <Route path="/recettes" component={Recipe} />
-        <Route path="/saisons" component={Season} />
-        <Route path="/create-list" component={CreateListContainer} />
-        <Route path="/signup" component={SignUp} />
-        </Switch>
+        <Route render={({location}) => (
+
+        
+        <TransitionGroup>
+            <CSSTransition
+            key={location.key}
+              timeout={450}
+              classNames="fade"
+            >
+            <Switch location={location}>
+              <Route path="/" exact component={Main} />
+              <Route path="/listes" component={Lists} />
+              <Route path="/login" component={Log} />
+              <Route path="/team" component={Team} />
+              <Route path="/account" component={UserAccount} />
+              <Route path="/recettes" component={Recipe} />
+              <Route path="/saisons" component={Season} />
+              <Route path="/create-list" component={CreateListContainer} />
+              <Route path="/signup" component={SignUp} />
+            </Switch>
+
+          </CSSTransition>
+        </TransitionGroup>
+        )} />
+
         <Footer />
         </div>
         </Router>
