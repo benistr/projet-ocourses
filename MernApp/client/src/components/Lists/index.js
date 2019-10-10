@@ -1,5 +1,8 @@
 import React from 'react';
-import { Responsive } from 'semantic-ui-react';
+import initialData from './initial-data';
+import Column from './column';
+import styled from 'styled-components';
+import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 //Local imports
 import './lists.scss';
@@ -7,85 +10,98 @@ import './lists.scss';
 import Supprimer from './supprimer.png';
 import Image from './oeuf.jpg';
 
-
-const Lists = () => {
-   
-    return  <div className="container">
-            <p className="path">▶ Accueil ▶ Listes</p>
+const Container = styled.div`
+padding-top: 120px;
+`;
 
 
-                <div className="content"><a href="">
-                    <ul className="title">Carrefour <img className="delete"src={Supprimer}/></ul>
-                
-                        <div className="summary-lists">
-                        
-                    
-                            <ul className="list-lists">
+class Lists extends React.Component {
+    state = initialData;
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- tomates </li>
-                                    <li className="item">500g</li>
-                                </ul>
+    onDragEnd = result => {
+        const { destination, source, draggableId, type } = result;    
+    
+        if(!destination) {
+            return;
+        }
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- bières</li>
-                                    <li className="item">500g</li>
-                                </ul>
+        if (
+            destination.droppableId === source.droppableId && destination.index === source.index
+        ) {
+            return;
+        }
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- liquide vaisselle</li>
-                                    <li className="item">500g</li>
-                                </ul>
+        if(type === 'column') {
+            const newColumnOrder = Array.from(this.state.columnOrder);
+            newColumnOrder.splice(source.index, 1);
+            newColumnOrder.splice(destination.index, 0, draggableId);
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- poivrons</li>
-                                    <li className="item">500g</li>
-                                </ul>
-                            </ul> 
-                  
-                        </div>
-                    
-                    </a>
-                </div>
+            const newState = {
+                ...this.state,
+                columnOrder: newColumnOrder,
+            };
+            this.setState(newState);
+            return;
+        }
 
-                <div className="content"><a href="">
-                    <ul className="title">Carrefour <img className="delete"src={Supprimer}/></ul>
-                
-                        <div className="summary-lists">
-                        
-                    
-                            <ul className="list-lists">
+        const column = this.state.columns[source.droppableId];
+        const newTaskIds = Array.from(column.taskIds);
+        newTaskIds.splice(source.index, 1);
+        newTaskIds.splice(destination.index, 0, draggableId);
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- tomates </li>
-                                    <li className="item">500g</li>
-                                </ul>
+        const newColumn = {
+            ...column,
+            taskIds: newTaskIds,
+        };
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- bières</li>
-                                    <li className="item">500g</li>
-                                </ul>
+        const newState = {
+            ...this.state,
+            columns: {
+                ...this.state.columns,
+                [newColumn.id]: newColumn,            
+            },
+        };
 
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- liquide vaisselle</li>
-                                    <li className="item">500g</li>
-                                </ul>
-                                
-                                <ul className="list-infos">
-                                    <li><img className="item" src={Image}/>- poivrons</li>
-                                    <li className="item">500g</li>
-                                </ul>
-                            </ul> 
-                  
-                        </div>
-                    
-                    </a>
-                </div>
+        this.setState(newState);
+    };
 
+    render() {
+        return (
             
+            <DragDropContext onDragEnd={this.onDragEnd}>
+                <Droppable 
+                    droppableId="all-columns" 
+                    direction="vertical" 
+                    type="column"
+                >
+                {provided => (
+                    <Container
+                    {...provided.droppableProps}
+                    ref={provided.innerRef}
+                    >
+                    {this.state.columnOrder.map((columnId, index) => {
+                    const column = this.state.columns[columnId];
+                    const tasks = column.taskIds.map(
+                        taskId => this.state.tasks[taskId],
+                    );
 
-            </div>
-            
-};
+                    return (
+                        <Column 
+                            key={column.id} 
+                            column={column} 
+                            tasks={tasks} 
+                            index={index}
+                        />
+                        );
+                    })}
+                    {provided.placeholder}
+                    </Container>
+                )}
+                </Droppable>
+            </DragDropContext>
+        );
+    }
+}
+
 
 export default Lists;

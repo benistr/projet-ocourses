@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
+
 /**
  * Local import
  */
@@ -21,9 +22,8 @@ import UserAccount from 'src/components/UserAccount';
 import Log from 'src/components/Log';
 import Lists from 'src/components/Lists';
 import Main from 'src/components/Main';
-import CreateList from 'src/components/CreateList';
+import CreateListContainer from 'src/components/CreateList'
 import SignUp from 'src/components/SignUp';
-
 import Team from 'src/components/Team';
 
 import Recipe from 'src/components/Recipe';
@@ -42,10 +42,13 @@ import './app.sass';
 // Main ou Home est donc à mettre en dernier avant la clôture du Switch
 // Pour ne plus se soucier de la priorisation : utiliser la mention EXACT pour la Home / Main
 const App = () => {
+
     return (
         <Router>
         <div id="app">
+
         <Header />
+
         <Switch>
         <Route path="/" exact component={Main} />
         <Route path="/listes" component={Lists} />
@@ -54,7 +57,7 @@ const App = () => {
         <Route path="/account" component={UserAccount} />
         <Route path="/recettes" component={Recipe} />
         <Route path="/saisons" component={Season} />
-        <Route path="/create-list" component={CreateList} />
+        <Route path="/create-list" component={CreateListContainer} />
         <Route path="/signup" component={SignUp} />
         </Switch>
         <Footer />
@@ -64,11 +67,11 @@ const App = () => {
 }
 
 
-App.propTypes = {
+/* App.propTypes = { */
   /** Titre de l'application React */
-  title: PropTypes.string.isRequired
+/*   title: PropTypes.string.isRequired
 };
-
+ */
 /**
  * Export
  */

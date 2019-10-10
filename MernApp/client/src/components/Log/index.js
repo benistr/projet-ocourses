@@ -13,7 +13,7 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 // Styles et assets
 import './styles.sass';
 
-class Popup extends React.Component {
+/* class Popup extends React.Component {
     render() {
         return (
         <div className='popup'>
@@ -24,47 +24,60 @@ class Popup extends React.Component {
         </div>
         );
     }
-}
 
+    togglePopup() {
+        this.setState({
+        showPopup: !this.state.showPopup
+        });
+    }
+}
+ */
 class Log extends React.Component {
     constructor() {
         super();
         this.state = {
-        showPopup: false
+        showPopup: false,
+        email: "",
+        password: "",
     };
 }
 
-togglePopup() {
+handleChange = event => {
     this.setState({
-    showPopup: !this.state.showPopup
-    });
+        email: event.target.value,
+        password: event.target.value
+    })
+}
+
+handleSubmit = event => {
+    event.preventDefault();
+    const user = {
+        email: this.state.email,
+        password: this.state.password,
+    }
 }
 
     render() {
         return (
             <div className='logContainer'>
-                <h1>Connexion</h1>
+                <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
+            <form method="POST" action="http://localhost:8800/api/user/login">
             <Input
-                key=""
-                type=""
+                name="email"
+                type="email"
                 className="ui input"
                 placeholder="E-mail"
-                // Duo de props pour faire une input contrôlé :
-                value=""
-                onChange=""
+                value={this.state.value}
             />
             <Input
-                key=""
-                type=""
+                name="password"
+                type="password"
                 className="ui input"
                 placeholder="Mot de Passe"
-                // Duo de props pour faire une input contrôlé :
-                value=""
-                onChange=""
+                value={this.state.value}
             />
-            <form onSubmit="">
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>
