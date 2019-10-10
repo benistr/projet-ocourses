@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+//import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import api from '../services/api';
 
 /**
 * Local import
@@ -13,84 +15,63 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 // Styles et assets
 import './styles.sass';
 
-/* class Popup extends React.Component {
-    render() {
-        return (
-        <div className='popup'>
-            <div className='popup_inner'>
-            <h1>{this.props.text}</h1>
-            <button onClick={this.props.closePopup}>close me</button>
-            </div>
+export default function Login({ history }) {
+
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+
+    async function handleSubmit(event) {
+        event.preventDefault();
+
+        //console.log(email);
+
+        const response = await api.post('auth', {
+            email: email,
+            password: password
+        })
+
+        const {_id } = response.data;
+
+        localStorage.setItem('user, _id');
+
+        history.push('/listes');
+
+    }
+
+    return (
+        <div className='logContainer'>
+            <h1>Se connecter</h1>
+        <img className="img-log" src={Logo}></img> 
+        <br></br>
+        <form onSubmit={handleSubmit}>
+        <Input
+            name="email"
+            type="email"
+            className="ui input"
+            placeholder="E-mail"
+            value={email}
+            onChange={event => setEmail(event.target.value)}
+        />
+        <Input
+            name="password"
+            type="password"
+            className="ui input"
+            placeholder="Mot de Passe"
+            value={password}
+            onChange={event => setPassword(event.target.value)}
+        />
+            <button type="submit" className="ui button">
+            Se connecter
+            </button>
+            <button type="cancel" className="ui button">
+            Annuler
+            </button>
+        </form>
+        <br></br>
+        <small>Comment ? Vous n'avez pas encore de compte ?</small>
+        <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
         </div>
-        );
-    }
-
-    togglePopup() {
-        this.setState({
-        showPopup: !this.state.showPopup
-        });
-    }
-}
- */
-class Log extends React.Component {
-    constructor() {
-        super();
-        this.state = {
-        showPopup: false,
-        email: "",
-        password: "",
-    };
+    )
 }
 
-handleChange = event => {
-    this.setState({
-        email: event.target.value,
-        password: event.target.value
-    })
-}
 
-handleSubmit = event => {
-    event.preventDefault();
-    const user = {
-        email: this.state.email,
-        password: this.state.password,
-    }
-}
-
-    render() {
-        return (
-            <div className='logContainer'>
-                <h1>Se connecter</h1>
-            <img className="img-log" src={Logo}></img> 
-            <br></br>
-            <form method="POST" action="http://localhost:8800/api/user/login">
-            <Input
-                name="email"
-                type="email"
-                className="ui input"
-                placeholder="E-mail"
-                value={this.state.value}
-            />
-            <Input
-                name="password"
-                type="password"
-                className="ui input"
-                placeholder="Mot de Passe"
-                value={this.state.value}
-            />
-                <button type="submit" className="ui button">
-                Se connecter
-                </button>
-                <button type="cancel" className="ui button">
-                Annuler
-                </button>
-            </form>
-            <br></br>
-            <small>Comment ? Vous n'avez pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
-            </div>
-        );
-    }
-};
-
-export default Log;
