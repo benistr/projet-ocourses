@@ -87,7 +87,7 @@ handleSubmit = event => {
             </form>
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
+            <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
             </div>
         );
     }
