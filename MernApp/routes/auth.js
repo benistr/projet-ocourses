@@ -6,29 +6,36 @@ const { registerValidation, loginValidation } = require ('../validation');
 
 
 router.post('/register', async (req, res) => {
-
-    //VALIDATE DATE BEFORE CREATE USER
-    const { error } = registerValidation(req.body);
-    if(error) return res.status(400).send(error.details[0].message);
+    console.log('req body user', req.body.user);
+    // VALIDATE DATE BEFORE CREATE USER
+    // const { error } = registerValidation(req.body.user);
+    // if(error){
+    //     console.log('manque champs');
+    //     return res.status(400).send(error.details[0].message);
+    // }
 
     //CHECKING IF USER ALREADY IN DATABASE
-    const emailExist = await User.findOne({ email: req.body.email });
-    if (emailExist) return res.status(400).send('Email already exists');
+    const emailExist = await User.findOne({ email: req.body.user.email });
+    if (emailExist) {
+        console.log('mail existe');
+        return res.status(400).send('Email already exists');
+    }
 
     //PASSWORD HASH WITH BCRYPTJS
     const salt = await bcrypt.genSalt(10);
-    const hashedPassword = await bcrypt.hash(req.body.password, salt);
+    const hashedPassword = await bcrypt.hash(req.body.user.password, salt);
 
     //CREATE A NEW USER
     const user = new User({
-        name: req.body.name,
-        surname: req.body.surname,
-        email: req.body.email,
+        name: req.body.user.name,
+        surname: req.body.user.surname,
+        email: req.body.user.email,
         password: hashedPassword,
     })
     try{
+        console.log('on lance savedUser');
         const savedUser = await user.save();
-        res.send({ user: user._id });
+        res.send({ user});
     } catch(err){
         res.status(400).send(err);
     }
@@ -36,6 +43,7 @@ router.post('/register', async (req, res) => {
 
     //LOGIN
 router.post('/login', async (req, res) => {
+    console.log('login');
     //VALIDATE DATE BEFORE LOGIN
     const { error } = loginValidation(req.body);
     if(error) return res.status(400).send(error.details[0].message);
