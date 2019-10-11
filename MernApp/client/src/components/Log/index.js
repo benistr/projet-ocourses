@@ -13,6 +13,7 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 
 // Styles et assets
 import './styles.sass';
+import './../App/App.css';
 
 /* class Popup extends React.Component {
     render() {
@@ -62,7 +63,8 @@ handleSubmit = event => {
 
     render() {
         return (
-            <div className='mainContainer'>
+           
+         
             <div className='logContainer'>
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
@@ -93,7 +95,7 @@ handleSubmit = event => {
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
             <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
             </div>
-            </div>
+
         );
     }
 };
