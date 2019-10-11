@@ -22,13 +22,22 @@ const userSchema = new mongoose.Schema({
     password: {
         type: String,
         required: true,
+        select: false,
         min: 8,
         max: 1024,
     },
     date: {
         type: Date,
         default: Date.now,
-    }
-})
+    },
+});
+
+UserSchema.pre('save', async function(next) {
+    const hash = await bcrypt.hash(this.password, 10);
+    this.password = hash;
+  
+    next();
+
+});
 
 module.exports = mongoose.model('User', userSchema);

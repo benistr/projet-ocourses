@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-const api = axios.create({
+const apiProject = axios.create({
     baseURL: 'http://localhost:8800',
 });
 
-export default api;
+export default apiProject;
 // il faut l'importer dans App.js

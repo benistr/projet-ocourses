@@ -3,7 +3,7 @@ import initialData from './initial-data';
 import Column from './column';
 import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
-import api from '../services/api';
+import apiProject from '../services/apiProject';
 
 //Local imports
 import './lists.scss';

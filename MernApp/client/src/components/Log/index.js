@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Input } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
-import api from '../services/api';
+import apiProject from '../services/apiProject';
 
 /**
 * Local import
@@ -24,13 +24,13 @@ export default function Login({ history }) {
         event.preventDefault();
         console.log('handleSubmit');
 
-        const response = await api.post('/auth/login', {
+        const response = await apiProject.post('/api/user/login', {
             email: email,
             password: password
         })
         console.log(response);
 
-        const { _id } = response.data.user;
+        const { _id } = response.data;
         
         localStorage.setItem('user', _id);
 
