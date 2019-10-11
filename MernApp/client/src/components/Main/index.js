@@ -9,6 +9,7 @@ const Main = () => {
     
         return <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
+            <p>Bonjour {localStorage.getItem("name")}</p>
             <div className="topSpeech"><p className="description"><h2 className="slogan">On ne poussera pas votre caddie, mais on vous aide pour le reste !</h2>
             <br></br><br></br>Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ?
             <br></br><br></br>O'Courses, c'est l'application qui va vous faciliter la vie en vous permettant de créer et gérer vos listes de courses. Vous passerez moins de temps à faire les courses, et plus de temps à manger !</p>

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
+import axios from 'axios';
 
 /**
 * Local import
@@ -12,6 +13,7 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 
 // Styles et assets
 import './styles.sass';
+import { cpus } from 'os';
 
 /* class Popup extends React.Component {
     render() {
@@ -42,19 +44,23 @@ class Log extends React.Component {
     };
 }
 
-handleChange = event => {
+handleChange = () => {
+    console.log( 'onchange!', event.target.name, event.target.value);
+    console.log(this.state)
     this.setState({
-        email: event.target.value,
-        password: event.target.value
-    })
+        [event.target.name]: event.target.value,
+    });
+    
 }
 
-handleSubmit = event => {
+handleSubmit = () => {
     event.preventDefault();
-    const user = {
-        email: this.state.email,
-        password: this.state.password,
-    }
+    axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
+        .then(res => { console.log('reponses', res);
+        localStorage.setItem('cool-jwt:', res.data.token);
+        this.props.history.push('/');
+        })
+    
 }
 
     render() {
@@ -63,13 +69,14 @@ handleSubmit = event => {
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-            <form method="POST" action="http://localhost:8800/api/user/login">
+            <form onSubmit={(event) => this.handleSubmit()}>
             <Input
                 name="email"
                 type="email"
                 className="ui input"
                 placeholder="E-mail"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
             <Input
                 name="password"
@@ -77,6 +84,7 @@ handleSubmit = event => {
                 className="ui input"
                 placeholder="Mot de Passe"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
                 <button type="submit" className="ui button">
                 Se connecter
