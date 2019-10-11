@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
+import api from '../services/api';
 
 /**
 * Local import

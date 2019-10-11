@@ -22,17 +22,17 @@ export default function Login({ history }) {
 
     async function handleSubmit(event) {
         event.preventDefault();
+        console.log('handleSubmit');
 
-        //console.log(email);
-
-        const response = await api.post('auth', {
+        const response = await api.post('/auth/login', {
             email: email,
             password: password
         })
+        console.log(response);
 
-        const {_id } = response.data;
-
-        localStorage.setItem('user, _id');
+        const { _id } = response.data.user;
+        
+        localStorage.setItem('user', _id);
 
         history.push('/listes');
 
@@ -66,6 +66,7 @@ export default function Login({ history }) {
             <button type="cancel" className="ui button">
             Annuler
             </button>
+           
         </form>
         <br></br>
         <small>Comment ? Vous n'avez pas encore de compte ?</small>
