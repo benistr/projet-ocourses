@@ -63,7 +63,6 @@ handleSubmit = event => {
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-            <form method="POST" action="http://localhost:8800/api/user/login">
             <Input
                 name="email"
                 type="email"
@@ -78,6 +77,7 @@ handleSubmit = event => {
                 placeholder="Mot de Passe"
                 value={this.state.value}
             />
+            <form>
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>

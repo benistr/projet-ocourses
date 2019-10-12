@@ -50,7 +50,6 @@ handleSubmit = event => {
                 <h1>S'enregristrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-            <form method="POST" action="http://localhost:8800/api/user/register">
             <Input
                 name="name"
                 type="text"
@@ -79,6 +78,7 @@ handleSubmit = event => {
                 placeholder="Mot de Passe"
                 value={this.state.value}
             />
+            <form>
                 <button type="submit" className="ui button">
                 S'enregistrer
                 </button>
