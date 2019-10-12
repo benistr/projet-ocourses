@@ -70,4 +70,23 @@ router.post('/login', async (req, res) => {
 
 })
 
+
+
+router.get('/getuser/:id', async (req, res) => {
+    console.log('dans auth getUser req:', req.params);
+    const user = await User.findOne({ _id: req.params.id});
+    console.log(user);
+    if (!user){
+
+    return res.status(400).send('Email or password is wrong');
+    }
+    const connectedUser = {
+        name: user.name,
+        surname: user.surname,
+        email: user.email
+    }
+    res.send(connectedUser);
+
+})
+
 module.exports = router;

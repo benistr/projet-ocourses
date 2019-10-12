@@ -1,11 +1,23 @@
 import React from 'react';
 import { Responsive } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 
 //Local imports
 import './styles.scss';
 
-const Main = () => {
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        console.log('constructors props:', props, 'props connectedUser', props.connectedUser)
+    }
+
+    componentDidMount(){
+        console.log('cdm:', this.props.connectedUser);
+    }
+
+    render(){
+    console.log('props de main', this.props.connectedUser);
     
         return <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
@@ -83,5 +95,34 @@ const Main = () => {
             </div>
             
 };
+}
 
-export default Main;
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+    // 1er argument : stratégie de lecture (dans le state privé global)
+    (state, ownProps) => {
+      return {
+        ...state,
+        connectedUser: state.connectedUser
+      };
+    },
+  
+    // 2d argument : stratégie d'écriture (dans le state privé global)
+    (dispatch, ownProps) => {
+      return {
+        updateState: (newState) => {
+            dispatch({ type : 'UPDATE_STATE', value : newState })
+        },
+        setConnecterUser: (userId) => {
+            dispatch({ type : 'USER_CONNECTED', value : userId })
+        }
+        
+      };
+    },
+  );
+  
+  // Étape 2 : on applique ces stratégies à un composant spécifique.
+  const MainContainer = connectionStrategies(Main);
+  
+  // Étape 3 : on exporte le composant connecté qui a été généré
+  export default MainContainer;
