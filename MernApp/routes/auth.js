@@ -5,7 +5,7 @@ const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require ('../validation');
 
 // import de config
-const authConfig = require('../../config/config');
+const authConfig = require('../config/config');
 
 // Pour gérér les tokens lors de la création du compte
 function generateToken(params = {}) {
