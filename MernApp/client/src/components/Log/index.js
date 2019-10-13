@@ -59,7 +59,7 @@ handleSubmit = () => {
     axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
         .then(res => { console.log('reponses', res);
         //Je mets le token dans le localStorage
-        localStorage.setItem('cool-jwt:', res.data.token);
+        localStorage.setItem('cool-jwt', res.data.token);
         //Je décode le token
         const jwtD = jwtDecode(res.data.token);
         const userId= jwtD._id;

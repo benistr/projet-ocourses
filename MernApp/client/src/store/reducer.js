@@ -7,7 +7,11 @@ const initialState = {
   itemList: [],
   newItem: {},
   rackList: [],
-  connectedUser: {}
+  connectedUser: {
+    name: "",
+    surname: "",
+    email: "",
+  }
 };
 
 const defaultAction = {};
@@ -25,15 +29,15 @@ const reducer = (state = initialState, action = defaultAction) => {
       axios.get(`http://localhost:8800/api/user/getuser/${action.value}`)
       .then(res => {
         console.log('voila la réponses suite à connected user', res.data)
-        const NewconnectedUser = {
-          name: res.data.name,
-          surname: res.data.surname,
-          email: res.data.email
-        }
-        console.log('après recup de la réponse dans le reducer', NewconnectedUser)
+        // const NewconnectedUser = {
+        //   name: res.data.name,
+        //   surname: res.data.surname,
+        //   email: res.data.email
+        // }
+        // console.log('après recup de la réponse dans le reducer', NewconnectedUser)
       return {
         ...state,
-        connectedUser: NewconnectedUser,
+        connectedUser: {...state.connectedUser, name: res.data.name, surname: res.data.surname, email: res.data.email},
       }
     })
     }
