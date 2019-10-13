@@ -2,8 +2,12 @@ import React from 'react';
 import { Responsive } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 
+import Fred from './fred2.png';
+import Jamy from './jamy1.png';
+
 //Local imports
 import './styles.scss';
+
 
 const Main = () => {
     
@@ -12,16 +16,25 @@ const Main = () => {
                 <div className="gradient-box">
                     <div className="topSpeech">
                     
-                    <h2 className="slogan">On ne peut pas pousser pas votre caddie 
-                    mais on peut vous aider pour le reste !</h2>
-                    <div className="description">
-                    <div className="fred-text">Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ?</div>
-                    
-                    <div className="jamy-text">O'Courses, c'est l'application qui va te faciliter la vie 
-                en te permettant de créer et gérer tes listes de courses. 
-                Parce que moins de temps à faire les courses 
-                est égal plus de temps pour manger !</div>
-                </div>
+                        <h2 className="slogan">On ne peut pas pousser pas votre caddie 
+                        mais on peut vous aider pour le reste !</h2>
+                        <div className="description">
+                            <div className="fred">
+                                <img className="fred-img" src={Fred}/>
+                                <div className="fred-text">Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ?</div>
+                            </div>
+                        
+                            <div className="jamy">
+                                <div className="jamy-text">O'Courses, c'est l'application qui va te faciliter la vie 
+                                en te permettant de créer et gérer tes listes de courses. 
+                                Parce que moins de temps à faire les courses,
+                                égal plus de temps pour manger !
+                                </div>
+                                <img className="jamy-img" src={Jamy}/>
+                                
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
                     <div className="mainContent"><NavLink to="/saisons">
