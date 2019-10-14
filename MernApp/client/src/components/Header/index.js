@@ -24,6 +24,7 @@ const [open, setOpen] = useState(false);
 const node = useRef();
 useOnClickOutside(node, () => setOpen(false));
 
+
 // Insertion des premières ancres de navigation dans le Header à l'aide de NavLink qui enveloppe l'élément (div, lu, ul, etc) complété par le paramètre to="" qui reprendre le chemin indiqué dans le fichier App.js
 class Nav extends React.Component {
   constructor(props) {

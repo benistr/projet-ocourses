@@ -48,7 +48,7 @@ componentDidUpdate(){
         <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
             {this.state.isConnected && 
-            <p>Bonjour {this.state.name} !
+            <p>Bonjour {this.state.surname} !
             </p>
         }
             <div className="topSpeech"><p className="description"><h2 className="slogan">On ne poussera pas votre caddie, mais on vous aide pour le reste !</h2>
