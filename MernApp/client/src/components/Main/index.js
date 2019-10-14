@@ -28,7 +28,7 @@ const Main = () => {
                                 <div className="jamy-text">O'Courses, c'est l'application qui va te faciliter la vie 
                                 en te permettant de créer et gérer tes listes de courses. 
                                 Parce que moins de temps à faire les courses,
-                                égal plus de temps pour manger !
+                                c'est plus de temps pour manger !
                                 </div>
                                 <img className="jamy-img" src={Jamy}/>
                                 
