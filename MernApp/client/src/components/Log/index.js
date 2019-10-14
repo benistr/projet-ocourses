@@ -79,7 +79,9 @@ handleSubmit = () => {
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
+
             <form onSubmit={(event) => this.handleSubmit()}>
+
             <Input
                 name="email"
                 type="email"
@@ -96,6 +98,7 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
+            <form>
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>
@@ -105,11 +108,12 @@ handleSubmit = () => {
             </form>
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
+            <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
             </div>
         );
     }
 };
+
 
 // Étape 1 : on définit des stratégies de connexion au store de l'app.
 const connectionStrategies = connect(
@@ -139,4 +143,5 @@ const connectionStrategies = connect(
   
   // Étape 3 : on exporte le composant connecté qui a été généré
   export default LogContainer;
+
 

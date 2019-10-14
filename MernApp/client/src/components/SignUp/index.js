@@ -53,6 +53,7 @@ handleSubmit = () => {
             <img className="img-log" src={Logo}></img> 
             <br></br>
             <form onSubmit={(event) => this.handleSubmit()}>
+
             <Input
                 name="name"
                 type="text"
@@ -85,6 +86,7 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
+            <form>
                 <button type="submit" className="ui button">
                 S'enregistrer
                 </button>
