@@ -13,6 +13,7 @@ import './CreateList.scss';
 
 
 class CreateList extends React.Component{
+
     constructor(props) {
         super(props);
         console.log('props reçu', props);
@@ -22,12 +23,12 @@ class CreateList extends React.Component{
             rack: '',
             quantity: '',
             fav: false,
-            id: Math.random(1,1000)
+            id: 0
         }
     }
 
     
-
+    
     
 
 // Méthode ajoutant le produit à la list des items du state.
@@ -37,11 +38,16 @@ class CreateList extends React.Component{
         this.props.addItem(this.state)
     }  
 
+    deleteItem = (...props) => {
+        const isDelete = isHidden ? true : false;
+    }
+
  
 //Méthode permettant d'intégrer les valeurs indiquées par l'User dans l'objet NewItem
     handleChange = (e, key) => {
         this.setState({
-            [key]: e.target.value
+            [key]: e.target.value,
+            id: Math.random(1, 100)
         })
     }
     
@@ -118,7 +124,7 @@ const connectionStrategies = connect(
     (dispatch, ownProps) => {
       return {
         updateState: (newState) => {
-            dispatch({ type : 'UPDATE_STATE', value : newState })
+            dispatch({ type : 'UPDATE_STATE', value : newState  })
         },
         addRackName: (name) => {
             dispatch({ type: 'NEW_RACK', value: name })
