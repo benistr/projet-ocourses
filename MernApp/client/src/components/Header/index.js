@@ -7,6 +7,9 @@ import { GlobalStyles } from 'src/components/Menu-Burger/global';
 import { theme } from 'src/components/Menu-Burger/theme';
 import { Burger } from 'src/components/Menu-Burger/components';
 import { Menu } from 'src/components/Menu-Burger/components';
+import * as jwtDecode from 'jwt-decode';
+import axios from 'axios';
+import { connect } from 'react-redux';
 
 import { Header, Segment } from 'semantic-ui-react'
 <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css"></link>
@@ -17,15 +20,44 @@ import Logo from './images/logo.png';
 import Ptimenu from './images/menu.png';
 import Compte from './images/compte.png';
 
+const [open, setOpen] = useState(false);
+const node = useRef();
+useOnClickOutside(node, () => setOpen(false));
+
 // Insertion des premières ancres de navigation dans le Header à l'aide de NavLink qui enveloppe l'élément (div, lu, ul, etc) complété par le paramètre to="" qui reprendre le chemin indiqué dans le fichier App.js
-function Nav() {
-  
-  const [open, setOpen] = useState(false);
-  const node = useRef();
-  useOnClickOutside(node, () => setOpen(false));
+class Nav extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+        isConnected: false,
+        name: "",
+        surname:"",
+        email: "",
+    }
+    console.log('state', this.state)
+    if(window.localStorage.getItem('cool-jwt') === null){
+        console.log('pas de jwt');
+    } else {
+        console.log('jwt detécté')
+        let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
+        console.log(userId._id);
+        axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
+                .then(res => {
+                console.log('voila la réponses suite à connected user', res.data)
+                this.setState({...this.state, isConnected : true,
+                name: res.data.name,
+                surname: res.data.surname,
+                email: res.data.email,})
+                console.log('state après connexion', this.state)
+                console.log(this.state.isConnected)
+            })
+        
+    }
+  }
 
+
+render() {
   return (
-
   <div id="header" ref={node}>
 
       <ul id="menu">
@@ -101,4 +133,33 @@ function Nav() {
   </div>
 );
 }
-export default Nav;
+}
+
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+  // 1er argument : stratégie de lecture (dans le state privé global)
+  (state, ownProps) => {
+    return {
+      ...state,
+    };
+  },
+
+  // 2d argument : stratégie d'écriture (dans le state privé global)
+  (dispatch, ownProps) => {
+    return {
+      updateState: (newState) => {
+          dispatch({ type : 'UPDATE_STATE', value : newState })
+      },
+      setConnecterUser: (userId) => {
+          dispatch({ type : 'USER_CONNECTED', value : userId })
+      }
+      
+    };
+  },
+);
+
+// Étape 2 : on applique ces stratégies à un composant spécifique.
+const NavContainer = connectionStrategies(Nav);
+
+// Étape 3 : on exporte le composant connecté qui a été généré
+export default NavContainer;
