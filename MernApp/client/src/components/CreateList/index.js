@@ -23,7 +23,7 @@ class CreateList extends React.Component{
             rack: '',
             quantity: '',
             fav: false,
-            id: Math.random(1,1000)
+            id: 0
         }
     }
 
@@ -46,7 +46,8 @@ class CreateList extends React.Component{
 //Méthode permettant d'intégrer les valeurs indiquées par l'User dans l'objet NewItem
     handleChange = (e, key) => {
         this.setState({
-            [key]: e.target.value
+            [key]: e.target.value,
+            id: Math.random(1, 100)
         })
     }
     

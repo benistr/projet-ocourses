@@ -3,6 +3,10 @@ import { Input } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 
+import * as jwtDecode from 'jwt-decode';
+import { connect } from 'react-redux';
+
+
 /**
 * Local import
 */
@@ -14,6 +18,9 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 // Styles et assets
 import './styles.sass';
 import './../App/App.css';
+
+import { cpus } from 'os';
+
 
 /* class Popup extends React.Component {
     render() {
@@ -35,8 +42,8 @@ import './../App/App.css';
 }
  */
 class Log extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
         showPopup: false,
         email: "",
@@ -44,21 +51,40 @@ class Log extends React.Component {
     };
 }
 
-handleChange = event => {
+handleChange = () => {
     this.setState({
-        email: event.target.value,
-        password: event.target.value
-    })
+        [event.target.name]: event.target.value,
+    });
+    
 }
 
-handleSubmit = event => {
+handleSubmit = () => {
     event.preventDefault();
+
     axios.post('/auth/getToken', {
     
         email: this.state.email,
         password: this.state.password,
     
     }).then(res => localStorage.setItem('cool-jwt', res.data));
+
+    //je vérifie que le login existe et je récupère le token
+    axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
+        .then(res => { console.log('reponses', res);
+        //Je mets le token dans le localStorage
+        localStorage.setItem('cool-jwt', res.data.token);
+        //Je décode le token
+        const jwtD = jwtDecode(res.data.token);
+        const userId= jwtD._id;
+        console.log('après decode:', jwtD, 'et id:', userId)
+        console.log('on lance connected user');
+        //Je lance ma méthode pour obtenir les détails de l'user et les mettre dans le store
+        this.props.setConnecterUser(userId);
+        // je redirige vers la page d'accueil
+        this.props.history.push('/');
+        })
+    
+
 }
 
     render() {
@@ -69,13 +95,16 @@ handleSubmit = event => {
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-            <form method="POST" action="http://localhost:8800/api/user/login">
+
+            <form onSubmit={(event) => this.handleSubmit()}>
+
             <Input
                 name="email"
                 type="email"
                 className="ui input"
                 placeholder="E-mail"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
             <Input
                 name="password"
@@ -83,7 +112,9 @@ handleSubmit = event => {
                 className="ui input"
                 placeholder="Mot de Passe"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
+            <form>
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>
@@ -93,11 +124,41 @@ handleSubmit = event => {
             </form>
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créer un compte ici ◀ ◀ ◀</NavLink>
+            <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
             </div>
 
         );
     }
 };
 
-export default Log;
+
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+    // 1er argument : stratégie de lecture (dans le state privé global)
+    (state, ownProps) => {
+      return {
+        ...state
+      };
+    },
+  
+    // 2d argument : stratégie d'écriture (dans le state privé global)
+    (dispatch, ownProps) => {
+      return {
+        updateState: (newState) => {
+            dispatch({ type : 'UPDATE_STATE', value : newState })
+        },
+        setConnecterUser: (userId) => {
+            dispatch({ type : 'USER_CONNECTED', value : userId })
+        }
+        
+      };
+    },
+  );
+  
+  // Étape 2 : on applique ces stratégies à un composant spécifique.
+  const LogContainer = connectionStrategies(Log);
+  
+  // Étape 3 : on exporte le composant connecté qui a été généré
+  export default LogContainer;
+
+

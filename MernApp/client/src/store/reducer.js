@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
 export const SIDE_EFFECT = 'SIDE_EFFECT';
 
@@ -5,6 +7,11 @@ const initialState = {
   itemList: [],
   newItem: {},
   rackList: [],
+  connectedUser: {
+    name: "",
+    surname: "",
+    email: "",
+  }
 };
 
 const defaultAction = {};
@@ -16,6 +23,23 @@ const reducer = (state = initialState, action = defaultAction) => {
         ...state,
         greetingMessage: action.value
       }
+    }
+    case 'USER_CONNECTED': {
+      console.log('dans connected user')
+      axios.get(`http://localhost:8800/api/user/getuser/${action.value}`)
+      .then(res => {
+        console.log('voila la réponses suite à connected user', res.data)
+        // const NewconnectedUser = {
+        //   name: res.data.name,
+        //   surname: res.data.surname,
+        //   email: res.data.email
+        // }
+        // console.log('après recup de la réponse dans le reducer', NewconnectedUser)
+      return {
+        ...state,
+        connectedUser: {...state.connectedUser, name: res.data.name, surname: res.data.surname, email: res.data.email},
+      }
+    })
     }
     case 'NEW_RACK': {
       let newRackList = state.rackList.push(action.value);
