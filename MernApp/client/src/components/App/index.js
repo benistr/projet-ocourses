@@ -62,9 +62,9 @@ const App = () => {
               classNames="fade"
             >
             <Switch location={location}>
-              <Route path="/" exact component={Main} />
+              <Route path="/" exact component={MainContainer} />
               <Route path="/listes" component={Lists} />
-              <Route path="/login" component={Log} />
+              <Route path="/login" component={LogContainer} />
               <Route path="/team" component={Team} />
               <Route path="/account" component={UserAccount} />
               <Route path="/recettes" component={Recipe} />
@@ -76,20 +76,6 @@ const App = () => {
           </CSSTransition>
         </TransitionGroup>
         )} />
-
-
-        <Switch>
-        <Route path="/" exact component={MainContainer} />
-        <Route path="/listes" component={Lists} />
-        <Route path="/login" component={LogContainer} />
-        <Route path="/team" component={Team} />
-        <Route path="/account" component={UserAccount} />
-        <Route path="/recettes" component={Recipe} />
-        <Route path="/saisons" component={Season} />
-        <Route path="/create-list" component={CreateListContainer} />
-        <Route path="/signup" component={SignUp} />
-        </Switch>
-
         <Footer />
         </div>
         </Router>

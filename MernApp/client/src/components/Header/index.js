@@ -43,12 +43,6 @@ function Nav() {
         </li>
 
         <li id="nav-desktop">
-        <NavLink to='/protected' id="a" href="">
-        Protégé
-        </NavLink>
-        </li>
-        
-        <li id="nav-desktop">
           <NavLink to="/recettes" id="a" href="">Mes recettes
           </NavLink>
         </li>

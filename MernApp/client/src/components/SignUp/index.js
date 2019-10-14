@@ -90,14 +90,14 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
-            <form>
+            
                 <button type="submit" className="ui button">
                 S'enregistrer
                 </button>
                 <button type="cancel" className="ui button">
                 Annuler
                 </button>
-            </form>
+                </form>
             </div>
             </div>
         );

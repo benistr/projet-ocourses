@@ -19,7 +19,7 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 import './styles.sass';
 import './../App/App.css';
 
-import { cpus } from 'os';
+
 
 
 /* class Popup extends React.Component {
@@ -114,14 +114,14 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
-            <form>
+            </form>
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>
                 <button type="cancel" className="ui button">
                 Annuler
                 </button>
-            </form>
+            
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
             <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
