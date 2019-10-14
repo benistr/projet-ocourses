@@ -70,8 +70,14 @@ router.post('/login', async (req, res) => {
 
 })
 
+//Enregistrement des favoris de l'user
+router.post('/favlist/:id', async(req, res) => {
+    console.log('dans la route favlist', req.params);
+
+})
 
 
+//Obtenir les infos de l'user 
 router.get('/getuser/:id', async (req, res) => {
     console.log('dans auth getUser req:', req.params);
     const user = await User.findOne({ _id: req.params.id});

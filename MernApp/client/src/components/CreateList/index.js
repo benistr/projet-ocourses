@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import CreatedList from 'src/components/CreatedList';
 import CreatedRackContainer from 'src/components/CreatedRack';
-
+import * as jwtDecode from 'jwt-decode';
 
 //Local import 
 import './CreateList.scss';
@@ -18,11 +18,23 @@ class CreateList extends React.Component{
         console.log('props reçu', props);
         console.log('rackList:', props.rackList)
         this.state = {
+            isConnected: false,
             product: '',
             rack: '',
             quantity: '',
             fav: false,
             id: 0
+        }
+
+        if(window.localStorage.getItem('cool-jwt') === null){
+            console.log('pas de jwt');
+        } else {
+            console.log('jwt detécté')
+            let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
+            console.log(userId._id);
+            this.state.isConnected = true,
+            console.log('state de CreateList après connexion', this.state) 
+  
         }
     }
 
@@ -46,6 +58,10 @@ class CreateList extends React.Component{
         })
     }
     
+    handleListSave = () => {
+        console.log('click sur enregistrement', this.props.itemList)
+    }
+
 
     render() {
       return  <div className="mainListContainer">
@@ -79,6 +95,7 @@ class CreateList extends React.Component{
          <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" value={this.state.quantity} onChange={(e) => this.handleChange(e, 'quantity')}/>
          <button type="submit">Ajouter</button>
          </form>
+         <button onClick={() => {this.handleSave()}}>Sauvegarder la Liste</button>
 
         {/* {this.props.rackList.map( (rack, index) => {
             console.log(rack);

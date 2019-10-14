@@ -4,9 +4,11 @@ export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
 export const SIDE_EFFECT = 'SIDE_EFFECT';
 
 const initialState = {
+  isConnected: false,
   itemList: [],
   newItem: {},
   rackList: [],
+  favItems: [],
   connectedUser: {
     name: "",
     surname: "",
@@ -37,10 +39,10 @@ const reducer = (state = initialState, action = defaultAction) => {
         // console.log('après recup de la réponse dans le reducer', NewconnectedUser)
       return {
         ...state,
-        connectedUser: {...state.connectedUser, name: res.data.name, surname: res.data.surname, email: res.data.email},
+        connectedUser: {...state, isConnected: true, ...state.connectedUser, name: res.data.name, surname: res.data.surname, email: res.data.email},
       }
     })
-    }
+    };
     case 'NEW_RACK': {
       let newRackList = state.rackList.push(action.value);
       return {
@@ -88,20 +90,27 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
     case "CLICK_FAV" : {
+      console.log('click fav value', action.value, 'user', action.value.user)
       let updatedItemList = state.itemList;
       console.log('dans reducer action CLICK_FAV');
       for (let i=0; i <= updatedItemList.length -1; i++) {
         console.log("dans le for de click_fav");
-          if(updatedItemList[i].id == action.value){
+          if(updatedItemList[i].id == action.value.item){
             console.log("item identique trouvé", updatedItemList[i])
             console.log(updatedItemList[i].fav);
             updatedItemList[i].fav = !updatedItemList[i].fav
             console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
+        let newFavList = updatedItemList.filter(item => item.fav === true)
+        console.log('suite filter nouveaux favoris :', newFavList);
+        axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
+        .then(res => console.log(res.body))
+
       return {
         ...state,
-        itemsOnList: updatedItemList,       
+        itemsOnList: updatedItemList,
+        favItems: newFavList,       
       }
     }
     default: {

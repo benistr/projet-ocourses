@@ -26,6 +26,7 @@ class Main extends React.Component {
             console.log(userId._id);
             axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
                     .then(res => {
+                    this.props.setConnecterUser(userId._id);
                     console.log('voila la réponses suite à connected user', res.data)
                     this.setState({...this.state, isConnected : true,
                     name: res.data.name,
