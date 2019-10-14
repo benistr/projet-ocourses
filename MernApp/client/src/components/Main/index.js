@@ -5,8 +5,41 @@ import { NavLink } from 'react-router-dom';
 import * as jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
+import Fred from './fred2.png';
+import Jamy from './jamy1.png';
+
 //Local imports
 import './styles.scss';
+
+
+const Main = () => {
+    
+        return <div className="mainContainer">
+            <p className="navigation">▶ Accueil</p>
+                <div className="gradient-box">
+                    <div className="topSpeech">
+                    
+                        <h2 className="slogan">On ne peut pas pousser pas votre caddie 
+                        mais on peut vous aider pour le reste !</h2>
+                        <div className="description">
+                            <div className="fred">
+                                <img className="fred-img" src={Fred}/>
+                                <div className="fred-text">Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ?</div>
+                            </div>
+                        
+                            <div className="jamy">
+                                <div className="jamy-text">O'Courses, c'est l'application qui va te faciliter la vie 
+                                en te permettant de créer et gérer tes listes de courses. 
+                                Parce que moins de temps à faire les courses,
+                                c'est plus de temps pour manger !
+                                </div>
+                                <img className="jamy-img" src={Jamy}/>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
 class Main extends React.Component {
     constructor(props) {
@@ -55,6 +88,7 @@ componentDidUpdate(){
             <br></br><br></br>Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ? 
             <br></br><br></br>O'Courses, c'est l'application qui va vous faciliter la vie en vous permettant de créer et gérer vos listes de courses. Vous passerez moins de temps à faire les courses, et plus de temps à manger !</p>
             </div>
+
                     <div className="mainContent"><NavLink to="/saisons">
                         <div className="title">Octobre</div>
                         <div className="legumes"> 
