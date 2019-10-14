@@ -47,9 +47,13 @@ require(__dirname + "/controllers/userController")(router); */
 
 // Import Routes
 const authRoute = require('./routes/auth');
+const listRoute = require('./routes/list');
 
 // Route Middleware
 app.use('/api/user', authRoute);
+app.use('/lists', listRoute);
+
+
 
 //Définition et mise en place du port d'écoute
 const port = 8800;

@@ -1,12 +1,10 @@
 // Contoller qui va demander à l'user d'être connecté sur l'appli
-
-const express = require('express');
+const router = require('express').Router();
 const authMiddleware = require('../middlewares/authenticate');
 
 const List = require('../model/List');
 const Product = require('../model/Product');
 
-const router = express.Router();
 
 // j'appele le middleware crée
 router.use(authMiddleware);
@@ -18,7 +16,7 @@ router.use(authMiddleware);
 router.get('/', async (req, res) => {
     try {                               //4.
         const lists = await List.find().populate(['user', 'products']);
-
+        
         return res.send({ lists });
 
     } catch (err) {
@@ -123,7 +121,7 @@ router.delete('/:listId', async (req, res) => {
     }
 });
 
-module.exports = app => app.use('/lists', router);
+module.exports = router;
 
 // NOTES
 
