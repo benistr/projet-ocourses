@@ -35,7 +35,7 @@ const Recipe = () => {
                         <ul className="recipe-items">
                             <li>- 300gr de farine</li>
                             <li>- 3 oeufs</li>
-                            <li>- 50gr de beurre fondu</li>
+                            <li>- 60gr de beurre fondu</li>
                             <li>- 60cl de lait</li>
                             <li>- Du suc'</li>
                         </ul>
