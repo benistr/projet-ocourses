@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Favicon from 'react-favicon';
 
 /**
  * Local import
@@ -49,7 +50,7 @@ const App = () => {
     return (
         <Router>
         <div id="app">
-
+        <Favicon url="src/components/App/favicon.png" />
         <Header />
 
         <Route render={({location}) => (
