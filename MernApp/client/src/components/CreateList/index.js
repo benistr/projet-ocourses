@@ -13,6 +13,7 @@ import './CreateList.scss';
 
 
 class CreateList extends React.Component{
+
     constructor(props) {
         super(props);
         console.log('props reçu', props);
@@ -27,7 +28,7 @@ class CreateList extends React.Component{
     }
 
     
-
+    
     
 
 // Méthode ajoutant le produit à la list des items du state.
@@ -36,6 +37,10 @@ class CreateList extends React.Component{
         console.log(this.state)
         this.props.addItem(this.state)
     }  
+
+    deleteItem = (...props) => {
+        const isDelete = isHidden ? true : false;
+    }
 
  
 //Méthode permettant d'intégrer les valeurs indiquées par l'User dans l'objet NewItem
@@ -119,7 +124,7 @@ const connectionStrategies = connect(
     (dispatch, ownProps) => {
       return {
         updateState: (newState) => {
-            dispatch({ type : 'UPDATE_STATE', value : newState })
+            dispatch({ type : 'UPDATE_STATE', value : newState  })
         },
         addRackName: (name) => {
             dispatch({ type: 'NEW_RACK', value: name })

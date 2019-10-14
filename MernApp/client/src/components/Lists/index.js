@@ -6,12 +6,25 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 
 //Local imports
 import './lists.scss';
+import './../App/App.css';
 
 import Supprimer from './supprimer.png';
 import Image from './oeuf.jpg';
 
+const Contain = styled.div`
+position: absolute; 
+  height: 10px;
+  left: 0;
+  right: 0;
+`
+
 const Container = styled.div`
-padding-top: 120px;
+    padding-top: 120px;
+  
+  top: 50px;
+  left: 0;
+  right: 0;
+  
 `;
 
 
@@ -67,6 +80,8 @@ class Lists extends React.Component {
 
     render() {
         return (
+
+            <Contain>
             
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable 
@@ -99,7 +114,10 @@ class Lists extends React.Component {
                 )}
                 </Droppable>
             </DragDropContext>
+
+            </Contain>
         );
+        
     }
 }
 

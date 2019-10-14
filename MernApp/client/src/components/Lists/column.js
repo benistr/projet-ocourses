@@ -3,9 +3,12 @@ import styled from 'styled-components';
 import Task from './task';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 
+
+
 const Contain = styled.div`
 width: 68%;
 margin: 1rem auto;
+
 `;
 
 const Container = styled.div`
@@ -15,7 +18,6 @@ const Container = styled.div`
   background-color: #FFF;
   box-shadow: 4px 4px 6px #D7D7D7;
   padding:1 rem;
-  
 
   display: flex;
   flex-direction: column;
