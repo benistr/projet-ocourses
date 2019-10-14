@@ -3,6 +3,7 @@ const Joi = require ('@hapi/joi');
 
 //Register Validation
 const registerValidation = (data) => {
+    console.log('dans la validation data.name', data.name)
     const schema = {
         name: Joi.string()
             .min(3)
@@ -18,7 +19,7 @@ const registerValidation = (data) => {
             .min(8)
             .required()
     };
-    return Joi.validate(data, schema);
+    return Joi.validate(data.user, schema);
 };
 
 const loginValidation = (data) => {

@@ -2,32 +2,51 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 
-const CreatedRack = ({ rack, itemList, clickOnFav, deleteItem }) => {
+class CreatedRack extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      rack: props.rack,
+      itemList: props.itemList,
+      
+    }
+  }
 
-  console.log('dans created rack itemList', itemList);
-  console.log('dans created rack rack', rack);
+  handleFav = (itemId) => {
+      this.props.clickOnFav(itemId);
+      this.setState({...this.state, itemList: this.props.itemList})
+  }  
+
+  handleDelete = (itemId) => {
+    this.props.deleteItem(itemId);
+    this.setState({ ...this.state, itemList: this.props.itemList})
+  }
+  
   /**
    * TODO
    * Supprimer le rack quand il n'y a aucun item dedans
    * synchroniser le state avec les clicks car actuellement ca ne synchronise que lorsque qu'un item est soumis via le form
    */
+
+   render(){
+     console.log('dans le render de CreatedRack', this.state)
         {/* Bloc de catégorie */}
         return <div className="category">
-        <h3>{rack}</h3>
+        <h3>{this.state.rack}</h3>
             <ul className="items">
-                    { itemList.map( item => {
+                    { this.state.itemList.map( item => {
                         // console.log("item general", item);
                         const favStar= item.fav ? 'star' : 'star outline';
                        
-                        if(item.rack === rack){
+                        if(item.rack === this.state.rack){
                             // console.log("item filtré par rack", item);
                             return <li key={item.product}>
                                 <ul className="itemDetails">
                                     <li>
                                         <span className="categoryInput name">{item.product}</span>
                                         <span className="categoryInput quantity">{item.quantity}</span>
-                                        <span className="categoryInput favorite"><Icon name={favStar} onClick={ () => clickOnFav(item.id) }/> 
-                                        <Icon name="delete" onClick={() => {deleteItem(item.id)} }/></span>
+                                        <span className="categoryInput favorite"><Icon name={favStar} onClick={ () => this.handleFav(item.id) }/> 
+                                        <Icon name="delete" onClick={() => {this.handleDelete(item.id)} }/></span>
                                     </li>
                                 </ul>
                             </li>
@@ -38,6 +57,7 @@ const CreatedRack = ({ rack, itemList, clickOnFav, deleteItem }) => {
                     }
                     </ul>
     </div>
+   }
 
 }
 
@@ -47,8 +67,7 @@ const connectionStrategies = connect(
     // 1er argument : stratégie de lecture (dans le state privé global)
     (state, ownProps) => {
       return {
-        itemList: state.itemList,
-        rackList: state.rackList,
+        ...state
       };
     },
   

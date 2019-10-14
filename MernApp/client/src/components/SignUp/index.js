@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
+import axios from 'axios';
 
 /**
 * Local import
@@ -12,37 +13,38 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 // Styles et assets
 import './styles.sass';
 
+
 class SignUp extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
         name: '',
         surname: '',
         email: '',
         password: '',
     };
+    console.log('dans le form history:',this.props.history)
 }
 
-handleChange = event => {
+handleChange = () => {
     this.setState({
-        name: event.target.value,
-        surname: event.target.value,
-        email: event.target.value,
-        password: event.target.value,
+        [event.target.name]: event.target.value,
     });
-    console.log(handleChange);
+    
 }
 
-handleSubmit = event => {
+handleSubmit = () => {
     event.preventDefault();
-
-    const user = {
-        name: this.state.name,
-        surname: this.state.surname,
-        email: this.state.email,
-        password: this.state.password
+    console.log(this.state);
+    axios.post('http://localhost:8800/api/user/register' , { user: this.state })
+        .then(res => {console.log(res.data);
+        localStorage.setItem('token', res.data.token);
+        localStorage.setItem('name', res.data.user.name)
+        this.props.history.push('/');
+        })
+        
     }
-}
+
 
     render() {
         return (
@@ -50,12 +52,15 @@ handleSubmit = event => {
                 <h1>S'enregristrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
+            <form onSubmit={(event) => this.handleSubmit()}>
+
             <Input
                 name="name"
                 type="text"
                 className="ui input"
                 placeholder="Nom"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
             <Input
                 name="surname"
@@ -63,6 +68,7 @@ handleSubmit = event => {
                 className="ui input"
                 placeholder="Prénom"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
             <Input
                 name="email"
@@ -70,6 +76,7 @@ handleSubmit = event => {
                 className="ui input"
                 placeholder="E-mail"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
             <Input
                 name="password"
@@ -77,6 +84,7 @@ handleSubmit = event => {
                 className="ui input"
                 placeholder="Mot de Passe"
                 value={this.state.value}
+                onChange={(event) => this.handleChange()}
             />
             <form>
                 <button type="submit" className="ui button">

@@ -1,16 +1,58 @@
 import React from 'react';
 import { Responsive } from 'semantic-ui-react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import * as jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
 //Local imports
 import './styles.scss';
 
-const Main = () => {
-    
-        return <div className="mainContainer">
+class Main extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            isConnected: false,
+            name: "",
+            surname:"",
+            email: "",
+        }
+        console.log('state', this.state)
+        if(window.localStorage.getItem('cool-jwt') === null){
+            console.log('pas de jwt');
+        } else {
+            console.log('jwt detécté')
+            let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
+            console.log(userId._id);
+            axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
+                    .then(res => {
+                    console.log('voila la réponses suite à connected user', res.data)
+                    this.setState({...this.state, isConnected : true,
+                    name: res.data.name,
+                    surname: res.data.surname,
+                    email: res.data.email,})
+                    console.log('state après connexion', this.state)
+                    console.log(this.state.isConnected)
+                })
+            
+    }
+}
+
+componentDidUpdate(){
+    console.log('state du CDM', this.state)
+}
+
+    render(){
+        console.log('state du main après le construct:', this.state)
+        return (
+        <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
-            <div className="topSpeech"><h2 className="slogan">On ne poussera pas votre caddie, mais on vous aide pour le reste !</h2><p className="description">
-            <br></br><br></br>Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ?
+            {this.state.isConnected && 
+            <p>Bonjour {this.state.name} !
+            </p>
+        }
+            <div className="topSpeech"><p className="description"><h2 className="slogan">On ne poussera pas votre caddie, mais on vous aide pour le reste !</h2>
+            <br></br><br></br>Mais alors dis-moi Jamy, qu'est-ce que c'est O'Courses ? 
             <br></br><br></br>O'Courses, c'est l'application qui va vous faciliter la vie en vous permettant de créer et gérer vos listes de courses. Vous passerez moins de temps à faire les courses, et plus de temps à manger !</p>
             </div>
                     <div className="mainContent"><NavLink to="/saisons">
@@ -80,7 +122,36 @@ const Main = () => {
                 </div>
 
             </div>
+        )
             
 };
+}
 
-export default Main;
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+    // 1er argument : stratégie de lecture (dans le state privé global)
+    (state, ownProps) => {
+      return {
+        ...state,
+      };
+    },
+  
+    // 2d argument : stratégie d'écriture (dans le state privé global)
+    (dispatch, ownProps) => {
+      return {
+        updateState: (newState) => {
+            dispatch({ type : 'UPDATE_STATE', value : newState })
+        },
+        setConnecterUser: (userId) => {
+            dispatch({ type : 'USER_CONNECTED', value : userId })
+        }
+        
+      };
+    },
+  );
+  
+  // Étape 2 : on applique ces stratégies à un composant spécifique.
+  const MainContainer = connectionStrategies(Main);
+  
+  // Étape 3 : on exporte le composant connecté qui a été généré
+  export default MainContainer;

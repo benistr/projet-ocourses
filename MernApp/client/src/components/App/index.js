@@ -19,15 +19,17 @@ import UserAccount from 'src/components/UserAccount';
 
 // Composants enfants éventuels
 
-import Log from 'src/components/Log';
+import LogContainer from 'src/components/Log';
 import Lists from 'src/components/Lists';
-import Main from 'src/components/Main';
+import MainContainer from 'src/components/Main';
 import CreateListContainer from 'src/components/CreateList'
 import SignUp from 'src/components/SignUp';
 import Team from 'src/components/Team';
 
 import Recipe from 'src/components/Recipe';
 import Season from 'src/components/Season';
+
+
 
 // Styles et assets
 
@@ -50,9 +52,9 @@ const App = () => {
         <Header />
 
         <Switch>
-        <Route path="/" exact component={Main} />
+        <Route path="/" exact component={MainContainer} />
         <Route path="/listes" component={Lists} />
-        <Route path="/login" component={Log} />
+        <Route path="/login" component={LogContainer} />
         <Route path="/team" component={Team} />
         <Route path="/account" component={UserAccount} />
         <Route path="/recettes" component={Recipe} />
