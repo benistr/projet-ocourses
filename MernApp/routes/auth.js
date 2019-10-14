@@ -40,7 +40,7 @@ router.post('/register', async (req, res) => {
         console.log('on lance savedUser');
         const savedUser = await user.save();
         res.header('auth-token', token);
-        res.send({token, user: user_id});
+        res.send({token, user: user._id}); 
     } catch(err){
         res.status(400).send(err);
     }
