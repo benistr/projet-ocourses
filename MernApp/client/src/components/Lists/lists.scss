@@ -8,6 +8,14 @@
     padding-left: 2.5rem;
 }
 
+.navigation {
+    display: block;
+    width:100%;
+    font-family: $font-family;
+    color: $text-color;
+    padding-left: 2.5rem;
+}
+
 .contain {
     width: 70%;
     display: flex;
@@ -18,7 +26,7 @@
     background-color:#F9F9F9;  
     margin: 0 auto;
 }
-    
+
 .content {
     width: 80%;
     border-radius: 8px;
@@ -36,7 +44,6 @@
     font-family: $font-family;
     color: $text-color;
 }
-
 
 .title {
     display: flex;
@@ -102,17 +109,14 @@
     padding: 0.4em;
 }
 
-
-
 @media (min-width: 800px){
     .path {
         padding-left: 1rem;
     }
 
     .content {
-    width: 100%;
-    margin: 1rem 1rem;
-    
+        width: 100%;
+        margin: 1rem 1rem;
     }
 
     // .content {
@@ -122,14 +126,12 @@
     .container {
         margin: auto;
         width: 70%;
-        
         display: flex;
         flex-flow: row wrap;
     }
 
 .recipe-items {
     // display: block;
-    
 }
 
 .summary-title {

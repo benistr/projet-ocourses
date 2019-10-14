@@ -16,10 +16,8 @@
     padding-top: 120px;
     font-family: $font-family;
     background-color:#F9F9F9;
-    
 }
 
-    
 .mainContent {
     width: 80%;
     border-radius: 8px;
@@ -34,9 +32,7 @@
     transform: scale(1.05);
     width: 50;
     margin: 1rem auto;
-
 }
-
 
 .title {
     height: 20px;
@@ -46,8 +42,7 @@
     filter: drop-shadow(1px 1px 2px #DCDCDC);
     font-weight: bolder;
 }
-    
-    
+
 .recette {
     padding-top: 0.5rem;
     height: 260px;
@@ -66,7 +61,6 @@
     background-repeat: no-repeat;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 
 .summary {
@@ -83,10 +77,7 @@
 
 .recipe-items {
     display: none;
-    
 }
-
-
 
 @media (min-width: 800px){
     .navigation {
@@ -94,22 +85,19 @@
     }
 
     .mainContent {
-    width: calc(50% - 2rem);
-    margin: 1rem 1rem;
-    
+        width: calc(50% - 2rem);
+        margin: 1rem 1rem;
     }
 
     .mainContainer {
         margin: auto;
         width: 70%;
-        
         display: flex;
         flex-flow: row wrap;
     }
 
 .recipe-items {
     display: block;
-    
 }
 
 .summary-title {

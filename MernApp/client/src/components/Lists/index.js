@@ -12,19 +12,17 @@ import Supprimer from './supprimer.png';
 import Image from './oeuf.jpg';
 
 const Contain = styled.div`
-position: absolute; 
-  height: 10px;
-  left: 0;
-  right: 0;
+    position: absolute; 
+    height: 10px;
+    left: 0;
+    right: 0;
 `
 
 const Container = styled.div`
     padding-top: 120px;
-  
-  top: 50px;
-  left: 0;
-  right: 0;
-  
+    top: 50px;
+    left: 0;
+    right: 0;
 `;
 
 
@@ -81,8 +79,8 @@ class Lists extends React.Component {
     render() {
         return (
 
-            <Contain>
-            
+            <Contain className="mainContainer">
+            <p className="navigation">▶ Accueil ▶ Mes listes</p>
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable 
                     droppableId="all-columns" 

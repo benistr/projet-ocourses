@@ -2,6 +2,7 @@ import React from 'react';
 import { Input } from 'semantic-ui-react';
 import * as jwtDecode from 'jwt-decode';
 import axios from 'axios';
+import { Redirect } from 'react-router-dom';
 
 import './style.scss';
 
@@ -18,6 +19,7 @@ class FormUser extends React.Component {
             name: "",
             surname:"",
             email: "",
+            redirect: false
         }
         console.log('state', this.state)
         if(window.localStorage.getItem('cool-jwt') === null){
@@ -42,55 +44,71 @@ class FormUser extends React.Component {
 
 logOut = () => {
     window.localStorage.removeItem('cool-jwt');
-    this.props.history.push('/');
+    this.setState({redirect: true});
     }
 
+editProfile = () => {
+    this.newState = {
+        name: "",
+        surname: "",
+        email: ""
+    }
+    axios.post(`http://localhost:8800/api/user/edituser/${userId._id}`, {user: this.newState })
+    .then(res)
+    localStorage.setItem('name', res.data.user.name);
+}
+
     render() {
+
+        if(this.state.redirect){
+            return (<Redirect to={'/login'}/>)
+        }
+
         return (
-            <div className="logContainer">
+            <div className="formContainer">
                 <h1 className="form-text">Mon Compte</h1> 
                 <img className="img-log" src={Logo}/>
 
-                <label>Nom</label>
+                <label>Nom : {this.state.name}</label>
                 {this.state.isConnected && 
                     <Input
                     name="name"
                     type="text"
                     className="ui input"
                     placeholder="Nom"
-                    value={this.state.name}
+                    value={this.state.value}
                     />
                 }
                 <br></br>
-                <label className="label">Prénom</label>
+                <label className="label">Prénom : {this.state.surname}</label>
                 {this.state.isConnected && 
                     <Input
                     name="name"
                     type="text"
                     className="ui input"
-                    placeholder="Nom"
-                    value={this.state.surname}
+                    placeholder="Prénom"
+                    value={this.state.value}
                     />
                 }
                 <br></br>
-                <label className="label">E-mail</label>
+                <label className="label">E-mail : {this.state.email}</label>
                 {this.state.isConnected && 
                     <Input
                     name="name"
                     type="text"
                     className="ui input"
-                    placeholder="Nom"
-                    value={this.state.email}
+                    placeholder="Email"
+                    value={this.state.value}
                     />
                 }
                     <form>
-                        <button type="submit" className="ui button">
+                        <button onClick={this.editProfile} type="submit" className="ui button">
                         Modifier vos informations
                         </button>
                         <button type="submit" className="ui button">
                         Modifier votre mot de passe
                         </button>
-                        <button onSubmit={this.logOut} type="submit" className="ui red button">
+                        <button onClick={this.logOut} type="submit" className="ui red button">
                         Déconnexion
                         </button>
                     </form>

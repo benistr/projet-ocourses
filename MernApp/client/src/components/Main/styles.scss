@@ -44,9 +44,11 @@
 }
 
 .box {
-    width: 100%;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
+    padding-top: 0.5rem;
+    height: 260px;
+    background-image: url(../Season/Octobre.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .fred {

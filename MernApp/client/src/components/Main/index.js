@@ -88,12 +88,12 @@ componentDidUpdate(){
         </div>
 
                 <div className="mainContent">
-                    <a href="">
-                    <div className="title">Fruits & légumes de saison : Octobre</div>
-                        <img className="box" src={Octobre}></img> 
+                    <NavLink to="/saisons" id="a" href="">
+                    <div className="title">Les fruits & légumes du mois d'octobre</div>
+                        <div className="box"></div> 
                         <Responsive minWidth={1024}>
                         </Responsive>  
-                    </a>
+                    </NavLink>
                 </div>
                 <div className="mainContent">
                     <a href="">
@@ -106,6 +106,7 @@ componentDidUpdate(){
                                         <li>- 1 Branche de céleri </li>
                                         <li>- 800gr hâché mélangé </li>
                                         <li>- Sauce tomate </li>
+                                        <li><a>Voir plus</a></li>
                                     </ul>
                                 </Responsive>
                             </div>    
@@ -122,8 +123,8 @@ componentDidUpdate(){
                                         <li>- 300gr de farine</li>
                                         <li>- 3 oeufs</li>
                                         <li>- 50gr de beurre fondu</li>
-                                        <li>- 60cl de lait</li>
                                         <li>- Du suc'</li>
+                                        <li><a>Voir plus</a></li>
                                     </ul>
                                 </Responsive>
                             </div>    
@@ -141,6 +142,7 @@ componentDidUpdate(){
                                         <li>- 1 poivron</li>
                                         <li>- 3 champignons</li>
                                         <li>- Mozzarella</li>
+                                        <li><a>Voir plus</a></li>
                                     </ul>
                                 </Responsive>
                             </div>    
