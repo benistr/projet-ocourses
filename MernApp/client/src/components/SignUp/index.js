@@ -56,8 +56,6 @@ handleSubmit = () => {
                 <h1>S'enregistrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-            <form onSubmit={(event) => this.handleSubmit()}>
-
             <Input
                 name="name"
                 type="text"
@@ -90,14 +88,14 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
-            
+            <form onSubmit={(event) => this.handleSubmit()}>
                 <button type="submit" className="ui button">
                 S'enregistrer
                 </button>
                 <button type="cancel" className="ui button">
                 Annuler
                 </button>
-                </form>
+            </form>
             </div>
             </div>
         );

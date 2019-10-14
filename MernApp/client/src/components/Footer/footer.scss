@@ -62,7 +62,7 @@ li a:hover {
 
 .addAList {
 
-    width: 68%;
+    width: 100%;
     display: flex;
     margin: 0 auto;
     z-index: 100;
@@ -99,7 +99,8 @@ li a:hover {
     align-items:center;
     font-family: $font-family;
     font-size: 0.8em;
-    position: fixed;
+    position: relative;
+    right: 4%;
     bottom: 8%;
 }
 
