@@ -10,6 +10,16 @@ import './styles.scss';
 
 import Fred from './fred2.png';
 import Jamy from './jamy1.png';
+import Janvier from '../Season/Janvier.jpg';
+import Février from '../Season/Février.jpg';
+import Mars from '../Season/Mars.jpg';
+import Avril from '../Season/Avril.jpg';
+import Mai from '../Season/Mai.jpg';
+import Juin from '../Season/Juin.jpg';
+import Juillet from '../Season/Juillet.jpg';
+import Aout from '../Season/Aout.jpg';
+import Septembre from '../Season/Septembre.jpg';
+import Octobre from '../Season/Octobre.jpg';
 
 class Main extends React.Component {
     constructor(props) {
@@ -79,19 +89,10 @@ componentDidUpdate(){
 
                 <div className="mainContent">
                     <a href="">
-                    <div className="title">Pizza maison</div>
-                        <div className="pizza"> 
-                            <div className="summary">
-                                <Responsive minWidth={1024}>
-                                    <ul className="recipe-items">
-                                        <li>- Mortadelle</li>
-                                        <li>- 1 poivron</li>
-                                        <li>- 3 champignons</li>
-                                        <li>- Mozzarella</li>
-                                    </ul>
-                                </Responsive>
-                            </div>    
-                        </div>
+                    <div className="title">Fruits & légumes de saison : Octobre</div>
+                        <img className="box" src={Octobre}></img> 
+                        <Responsive minWidth={1024}>
+                        </Responsive>  
                     </a>
                 </div>
                 <div className="mainContent">

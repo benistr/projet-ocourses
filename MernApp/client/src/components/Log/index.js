@@ -89,8 +89,6 @@ handleSubmit = () => {
 
     render() {
         return (
-           
-         
             <div className='logContainer'>
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 

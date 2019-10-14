@@ -3,11 +3,6 @@
 .body {
     position: relative;
     width: 100%;
-    
-}
-
-.teste {
-    padding-top: 120px;
 }
 
 .userForm {
@@ -20,7 +15,21 @@
     align-items: center;
     margin: 0 auto;
     margin-bottom: 2rem;
+}
 
+.img-log {
+    width: 100px;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+h1 {
+    margin-top: 200px;
+    font-size: 2em;
+}
+
+button {
+    margin-bottom: 20%;
 }
 
 .form-logo {
@@ -38,7 +47,6 @@
     font-size: 2em;
     font-style: italic;
     font-family: $font-family;
-    
 }
 
 .form {
@@ -50,6 +58,7 @@
     display: inline-block;
     margin-left: .5em;
     font-style: italic;
+    text-align: center;
 }
 
 .p-style {
@@ -59,18 +68,15 @@
     font-family: $font-family;
 }
 
-
-  
-.ui.divider {
-    margin: .5em auto;
-    padding: .5em;
-    width: 80%;
-    color: $text-color;   
+label {
+    text-align: center;
 }
 
-.addli .buttonLabel{
-    display: none;
+p {
+    text-align: center;
 }
+
+
    
 @media (max-width: 800px) {
     .userForm {

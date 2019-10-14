@@ -16,27 +16,25 @@
     padding-top: 120px;
     font-family: $font-family;
     background-color:#F9F9F9;
-    
 }
     
 .mainContent {
     width: 80%;
     border-radius: 8px;
     margin : 1rem auto;
-    
     transition: transform .1s;
     background-color: #F2F2F2;
     padding-top: calc(20px - 1rem);
 }
 
 .topSpeech {
-    
     background-color: #FFF;
     border-radius: 12px;
     padding: 1rem;
     margin: 0.5 auto;
     margin: 0.8rem;
 }
+
 .gradient-box {
     background: linear-gradient(to right, rgba(153,204,51,0.7), rgba(0,191,255,0.7));
     box-shadow: 5px 5px 8px #D7D7D7;
@@ -45,11 +43,15 @@
     margin: 1.5rem auto;
 }
 
+.box {
+    width: 100%;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .fred {
     display: flex; /* contexte sur le parent */
-  align-items: center;
-  
-    
+    align-items: center;
 }
 
 .fred-text {
@@ -67,8 +69,8 @@
 
 .jamy {
     display: flex; /* contexte sur le parent */
-  align-items: center;
-  margin-top: 2rem;
+    align-items: center;
+    margin-top: 2rem;
 }
 
 .jamy-img {
@@ -104,7 +106,6 @@
     transform: scale(1.05);
     width: 50;
     margin: 1rem auto;
-
 }
 
 .title {
@@ -116,7 +117,6 @@
     font-weight: bolder;
     color: $text-color;
 }
-    
     
 .recette {
     padding-top: 0.5rem;
@@ -136,7 +136,6 @@
     background-repeat: no-repeat;
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
-
 }
 
 .summary {
@@ -153,10 +152,7 @@
 
 .recipe-items {
     display: none;
-    
 }
-
-
 
 @media (min-width:1200px){
     .navigation {
@@ -166,20 +162,17 @@
     .mainContent {
     width: calc(50% - 2rem);
     margin: 1rem 1rem;
-    
     }
 
     .mainContainer {
         margin: auto;
         width: 70%;
-        
         display: flex;
         flex-flow: row wrap;
     }
 
     .recipe-items {
         display: block;
-        
     }
 
     .summary-title {
@@ -213,14 +206,13 @@
         box-shadow: 5px 5px 8px #D7D7D7;
         width: 97%;
         border-radius: 15px;
-        
     }
+
     .description {
         padding: 2rem 2rem 0 2rem;
     }
 
     .fred-img {
-        
         width: 7rem;
         height: 7rem;
     }
@@ -231,7 +223,6 @@
 
     .jamy-text {
         font-size: 1.1rem;
-     
     }
 
     .jamy-img {
