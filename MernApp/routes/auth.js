@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../model/User');
+const List = require('../model/List');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require ('../validation');
@@ -70,6 +71,11 @@ router.post('/login', async (req, res) => {
 
 })
 
+router.get('/getlist/:id', async (req, res) => {
+    console.log('côté server route getlist', req.params);
+    const list = await List.find();
+    console.log('test de la list', list);
+})
 
 
 router.get('/getuser/:id', async (req, res) => {

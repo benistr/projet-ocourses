@@ -3,6 +3,8 @@ import initialData from './initial-data';
 import Column from './column';
 import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import axios from 'axios'
+import * as jwtDecode from 'jwt-decode';
 
 //Local imports
 import './lists.scss';
@@ -29,7 +31,22 @@ const Container = styled.div`
 
 
 class Lists extends React.Component {
-    state = initialData;
+    constructor(props) {
+    super(props);    
+    this.state = initialData;
+    
+    if(window.localStorage.getItem('cool-jwt') === null){
+        console.log('pas de jwt');
+    } else {
+        console.log('jwt detécté')
+        let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
+        console.log(userId._id);
+        // this.isConnected = true
+        axios.get(`http://localhost:8800/api/user/getlist/${userId._id}`)
+        
+
+    }
+    }
 
     onDragEnd = result => {
         const { destination, source, draggableId, type } = result;    
