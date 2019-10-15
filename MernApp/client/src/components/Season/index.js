@@ -23,7 +23,7 @@ const Season = () => {
                 <div className="mainContent">
                     <a href="">
                     <div className="title">Janvier</div>
-                    <img className="box" src={Janvier}></img> 
+                    <img className="box-img" src={Janvier}></img> 
                         <Responsive minWidth={1024}>
                         </Responsive>
                     </a>
@@ -32,7 +32,7 @@ const Season = () => {
                 <div className="mainContent">
                     <a href="">
                     <div className="title">Février</div>
-                    <img className="box" src={Février}></img>
+                    <img className="box-img" src={Février}></img>
                         <Responsive minWidth={1024}>
                         </Responsive>
                     </a>
@@ -41,7 +41,7 @@ const Season = () => {
                 <div className="mainContent">
                     <a href="">
                     <div className="title">Mars</div>
-                    <img className="box" src={Mars}></img>
+                    <img className="box-img" src={Mars}></img>
                         <Responsive minWidth={1024}>
                         </Responsive>
                     </a>
@@ -50,7 +50,7 @@ const Season = () => {
                 <div className="mainContent">
                     <a href="">
                     <div className="title">Avril</div>
-                    <img className="box" src={Avril}></img>
+                    <img className="box-img" src={Avril}></img>
                         <Responsive minWidth={1024}>
                         </Responsive>
                     </a>
@@ -59,7 +59,7 @@ const Season = () => {
                 <div className="mainContent">
                     <a href="">
                     <div className="title">Mai</div>
-                    <img className="box" src={Mai}></img>
+                    <img className="box-img" src={Mai}></img>
                         <Responsive minWidth={1024}>
                         </Responsive>
                     </a>
@@ -68,7 +68,7 @@ const Season = () => {
                 <div className="mainContent">
                     <a href="">
                     <div className="title">Juin</div>
-                    <img className="box" src={Juin}></img>
+                    <img className="box-img" src={Juin}></img>
                         <Responsive minWidth={1024}>
                         </Responsive>
                     </a>
@@ -77,7 +77,7 @@ const Season = () => {
             <div className="mainContent">
                 <a href="">
                 <div className="title">Juillet</div>
-                <img className="box" src={Juillet}></img>
+                <img className="box-img" src={Juillet}></img>
                     <Responsive minWidth={1024}>
                     </Responsive>
                 </a>
@@ -86,7 +86,7 @@ const Season = () => {
             <div className="mainContent">
                 <a href="">
                 <div className="title">Aout</div>
-                <img className="box" src={Aout}></img>
+                <img className="box-img" src={Aout}></img>
                     <Responsive minWidth={1024}>
                     </Responsive>
                 </a>
@@ -95,7 +95,7 @@ const Season = () => {
             <div className="mainContent">
                 <a href="">
                 <div className="title">Septembre</div>
-                <img className="box" src={Septembre}></img>
+                <img className="box-img" src={Septembre}></img>
                     <Responsive minWidth={1024}>
                     </Responsive>
                 </a>
@@ -104,7 +104,7 @@ const Season = () => {
             <div className="mainContent">
                 <a href="">
                 <div className="title">Octobre</div>
-                <img className="box" src={Octobre}></img>
+                <img className="box-img" src={Octobre}></img>
                     <Responsive minWidth={1024}>
                     </Responsive>
                 </a>
