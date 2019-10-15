@@ -18,13 +18,13 @@ class CreateList extends React.Component{
         console.log('props reçu', props);
         console.log('rackList:', props.rackList)
         this.state = {
-            isConnected: false,
             product: '',
             rack: '',
             quantity: '',
             fav: false,
             id: 0
         }
+        let isConnected = false
 
         if(window.localStorage.getItem('cool-jwt') === null){
             console.log('pas de jwt');
@@ -32,8 +32,8 @@ class CreateList extends React.Component{
             console.log('jwt detécté')
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
-            this.state.isConnected = true,
-            console.log('state de CreateList après connexion', this.state) 
+            this.isConnected = true,
+            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props) 
   
         }
     }
@@ -54,6 +54,7 @@ class CreateList extends React.Component{
     handleChange = (e, key) => {
         this.setState({
             [key]: e.target.value,
+            fav: false,
             id: Math.random(1, 100)
         })
     }
@@ -97,18 +98,16 @@ class CreateList extends React.Component{
          </form>
          <button onClick={() => {this.handleSave()}}>Sauvegarder la Liste</button>
 
-        {/* {this.props.rackList.map( (rack, index) => {
-            console.log(rack);
-            this.props.itemList.map( (item, index) => {
-                if(item.rack === rack){
-                     console.log(item)
-           //Boucler sur item list car rackList ne change pas si 2 item on le meme rayon
-                   return <CreatedRackContainer key={index} rack={rack} item={item}/>}
-            })
-                
-            })
-        } */}
-        {this.props.rackList.map( (rack, index) => {
+        {
+            this.isConnected && 
+            <div className="favorites">
+                <h2>Ajoutez vos favoris</h2>
+                {/* Faire un map sur la liste des favoris que j'obtiendrais du state */}
+                {console.log(this.props.favItems)}
+            </div>
+        }
+        {this.props.rackList.length > 0 &&
+            this.props.rackList.map( (rack, index) => {
                 return <CreatedRackContainer 
                         key={index}
                         rack={rack}
