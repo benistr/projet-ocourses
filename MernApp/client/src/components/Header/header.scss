@@ -20,7 +20,7 @@ $break-extra-large: 2500px;
   display: flex;
   position: fixed;
   padding: 1rem;
-  z-index: 10;
+  z-index: 100;
 }
 
 .logo-head {
@@ -104,6 +104,8 @@ $break-extra-large: 2500px;
   transition-duration: 200ms, 300ms;
 }
 
+
+
 .picto-menu:hover {
   transform: scale(1.1, 1.1);
   transition-duration: 300ms;
@@ -135,6 +137,13 @@ $break-extra-large: 2500px;
 }
 
 #a:hover {
+  transform: scale(1.05, 1.05);
+  transition-duration: 200ms, 300ms;
+  color: $text-color;
+  font-weight: bold; 
+}
+
+.active {
   transform: scale(1.05, 1.05);
   transition-duration: 200ms, 300ms;
   color: $text-color;

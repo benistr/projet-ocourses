@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.scss';
+import './../App/App.css';
 import FormUser from 'src/components/FormUser';
 
 class UserAccount extends React.Component {

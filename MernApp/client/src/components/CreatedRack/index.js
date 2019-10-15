@@ -105,4 +105,3 @@ const connectionStrategies = connect(
   
   // Étape 3 : on exporte le composant connecté qui a été généré
   export default CreatedRackContainer;
-

@@ -2,16 +2,19 @@ import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
 import axios from 'axios';
 
+
 /**
 * Local import
 */
 import Logo from '../../../../../Ressources/Images/logo.png';
+import './../App/App.css';
 
 // Composants enfants éventuels
 
 
 // Styles et assets
 import './styles.sass';
+import './../App/App.css';
 
 
 class SignUp extends React.Component {
@@ -48,12 +51,11 @@ handleSubmit = () => {
 
     render() {
         return (
+            <div className="Container">
             <div className='logContainer'>
-                <h1>S'enregristrer</h1>
+                <h1>S'enregistrer</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-            <form onSubmit={(event) => this.handleSubmit()}>
-
             <Input
                 name="name"
                 type="text"
@@ -86,7 +88,8 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
-            
+
+            <form onSubmit={(event) => this.handleSubmit()}>
                 <button type="submit" className="ui button">
                 S'enregistrer
                 </button>
@@ -94,6 +97,7 @@ handleSubmit = () => {
                 Annuler
                 </button>
             </form>
+            </div>
             </div>
         );
     }
