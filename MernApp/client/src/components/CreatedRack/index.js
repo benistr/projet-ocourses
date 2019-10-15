@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
 import * as jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
 class CreatedRack extends React.Component{
   constructor(props){
@@ -89,6 +90,7 @@ const connectionStrategies = connect(
       return {
         clickOnFav: (userId, itemId) => {
             console.log('click sur fav ', userId, itemId);
+          
           dispatch( {type: "CLICK_FAV", value: {user: userId, item: itemId}} );
         },
         deleteItem: (id) => {

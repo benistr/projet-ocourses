@@ -12,10 +12,9 @@ class Main extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isConnected: false,
-            name: "",
-            surname:"",
-            email: "",
+            isConnected: this.props.isConnected,
+            user:this.props.connectedUser,
+            favlist: this.props.favItems
         }
         console.log('state du main', this.state, 'et racklist', this.props.rackList)
         if(window.localStorage.getItem('cool-jwt') === null){
@@ -25,19 +24,24 @@ class Main extends React.Component {
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
             axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
-                    .then(res => {
-                    this.props.setConnecterUser(userId._id);
-                    console.log('voila la réponses suite à connected user', res.data)
-                    this.setState({...this.state, isConnected : true,
-                    name: res.data.name,
-                    surname: res.data.surname,
-                    email: res.data.email,})
-                    console.log('state après connexion', this.state, 'et rackList', this.props.rackList)
-                    console.log(this.state.isConnected)
-                })
+            .then(res => {
+              console.log('voila la réponses suite à la requete getUser', res.data, 'et la favlist', res.data.favlist)
+              let newConnectedUser = {
+                name: res.data.name,
+                surname: res.data.surname,
+                email: res.data.email
+              }
+              let newIsConnected = true;
+              let newFavItems = res.data.favlist;
+              console.log('après recup de la réponse dans après la requete getUser', newConnectedUser, newFavItems, newIsConnected)      
+          
+             //Je lance ma méthode pour obtenir les détails de l'user et les mettre dans le store
+             this.props.setConnecterUser(newConnectedUser, newIsConnected, newFavItems);
+            })
             
     }
 }
+
 
 
     render(){
@@ -46,7 +50,7 @@ class Main extends React.Component {
         <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
             {this.state.isConnected && 
-            <p>Bonjour {this.state.name} !
+            <p>Bonjour {this.state.user.name} !
             </p>
         }
             <div className="topSpeech"><p className="description"><h2 className="slogan">On ne poussera pas votre caddie, mais on vous aide pour le reste !</h2>
@@ -130,7 +134,9 @@ const connectionStrategies = connect(
     // 1er argument : stratégie de lecture (dans le state privé global)
     (state, ownProps) => {
       return {
-        ...state,
+        connectedUser: state.connectedUser,
+        favItems: state.favItems,
+        isConnected: state.isConnected
       };
     },
   
@@ -140,10 +146,10 @@ const connectionStrategies = connect(
         updateState: (newState) => {
             dispatch({ type : 'UPDATE_STATE', value : newState })
         },
-        setConnecterUser: (userId) => {
-            dispatch({ type : 'USER_CONNECTED', value : userId })
+        setConnecterUser: (user, connected, favlist) => {
+            console.log('dans mon action à dispatch', user, connected, favlist)
+            dispatch({ type : 'USER_CONNECTED', value : {user, connected, favlist} })
         }
-        
       };
     },
   );

@@ -28,35 +28,22 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
     case 'USER_CONNECTED': {
-      console.log('dans connected user')
-      let newIsConnected = state.isConnected;
-      let newConnectedUser = state.connectedUser;
-      let newFavItems = state.favItems
+      console.log('dans connected user reception:', action.value)
+      let newIsConnected = action.value.connected;
+      let newConnectedUser = action.value.user;
+      let newFavItems = action.value.favlist;
 
-      axios.get(`http://localhost:8800/api/user/getuser/${action.value}`)
-      .then(res => {
-        console.log('voila la réponses suite à connected user', res.data, 'et la favlist', res.data.favlist)
-        newConnectedUser = {
-          name: res.data.name,
-          surname: res.data.surname,
-          email: res.data.email
-        }
-        newIsConnected = true;
-        newFavItems = res.data.favList;
-        console.log('après recup de la réponse dans le reducer', newConnectedUser, newFavItems, newIsConnected)
-        return {
-          ...state,
-          isConnected: newIsConnected,
-          favItems: newFavItems,
-          connectedUser: { ...state.connectedUser, 
-                          name: newConnectedUser.name,
-                          surname: newConnectedUser.surname, 
-                          email: newConnectedUser.email},
-        
-      }
       
-      })
-    
+      return {
+        ...state,
+        isConnected: newIsConnected,
+        favItems: newFavItems,
+        connectedUser: { ...state.connectedUser, 
+                        name: newConnectedUser.name,
+                        surname: newConnectedUser.surname, 
+                        email: newConnectedUser.email},
+      
+    }
     };
     break;
     //soucis qui apparaissait au premier chargement de la page (rackList.push is not a function) résolu grâce au break

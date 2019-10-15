@@ -103,7 +103,22 @@ class CreateList extends React.Component{
             <div className="favorites">
                 <h2>Ajoutez vos favoris</h2>
                 {/* Faire un map sur la liste des favoris que j'obtiendrais du state */}
+                <ul>
                 {console.log(this.props.favItems)}
+               
+                {this.props.favItems.map(item => {
+                    return <li onClick={ () => {
+                        this.setState({
+                            product: item.product,
+                            rack: item.rack,
+                            fav: true,
+                            id: Math.random(1, 100)
+                        })
+                    
+                        }
+                    }>{item.product}</li>
+                })}
+                </ul>
             </div>
         }
         {this.props.rackList.length > 0 &&
