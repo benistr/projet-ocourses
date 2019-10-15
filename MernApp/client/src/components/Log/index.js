@@ -95,9 +95,6 @@ handleSubmit = () => {
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-
-            <form onSubmit={(event) => this.handleSubmit()}>
-
             <Input
                 name="email"
                 type="email"
@@ -114,14 +111,14 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
-            </form>
+            <form onSubmit={(event) => this.handleSubmit()}>
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>
                 <button type="cancel" className="ui button">
                 Annuler
                 </button>
-            
+            </form>
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
             <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
