@@ -16,7 +16,14 @@
     padding-top: 120px;
     font-family: $font-family;
     background-color:#F9F9F9;
-    
+}
+
+.box {
+    padding-top: 0.5rem;
+    height: 260px;
+    background-image: url(../Season/Octobre.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
 }
     
 .mainContent {

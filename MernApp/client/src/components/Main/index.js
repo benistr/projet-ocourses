@@ -78,7 +78,14 @@ componentDidUpdate(){
             </div>
         </div>
 
-
+                <div className="mainContent">
+                    <NavLink to="/saisons" id="a" href="">
+                    <div className="title">Les fruits & légumes du mois d'octobre</div>
+                        <div className="box"></div>
+                            <Responsive minWidth={1024}>
+                            </Responsive>
+                    </NavLink>
+                </div>
                 <div className="mainContent"><a href="">
                 <div className="title">Lasagnes à l'italienne</div>
                 <div className="lasagnes"> 
@@ -107,23 +114,6 @@ componentDidUpdate(){
                             <li>- 50gr de beurre fondu</li>
                             <li>- 60cl de lait</li>
                             <li>- Du suc'</li>
-                        </ul>
-                        </Responsive>
-                        </div>    
-                    </div>
-                    </a>
-                </div>
-                <div className="mainContent"><a href="">
-                    <div className="title">Pizza maison</div>
-                    <div className="pizza"> 
-                        <div className="summary">
-                        <Responsive minWidth={1024}>
-                        <ul className="recipe-items">
-                            <li>- Mortadelle</li>
-                            <li>- 1 poivron</li>
-                            <li>- 3 champignons</li>
-                            <li>- Mozzarella</li>
-                            
                         </ul>
                         </Responsive>
                         </div>    
