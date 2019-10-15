@@ -21,6 +21,11 @@ class CreatedRack extends React.Component{
     this.props.deleteItem(itemId);
     this.setState({ ...this.state, itemList: this.props.itemList})
   }
+
+  modifyItem = () => {
+    this.props.onClick(itemId);
+    
+  }
   
   /**
    * TODO
