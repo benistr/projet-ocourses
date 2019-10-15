@@ -19,7 +19,7 @@ position: absolute;
 `
 
 const Container = styled.div`
-    padding-top: 120px;
+    padding-top: 20px;
   
   top: 50px;
   left: 0;
@@ -82,7 +82,7 @@ class Lists extends React.Component {
         return (
 
             <Contain>
-            
+            <p className="path">▶ Accueil ▶ Listes</p>
             <DragDropContext onDragEnd={this.onDragEnd}>
                 <Droppable 
                     droppableId="all-columns" 
