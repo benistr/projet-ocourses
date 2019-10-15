@@ -1,6 +1,7 @@
 import React from 'react';
 import { Icon } from 'semantic-ui-react';
 import { connect } from 'react-redux';
+import './CreatedRack.scss';
 
 class CreatedRack extends React.Component{
   constructor(props){
@@ -8,7 +9,7 @@ class CreatedRack extends React.Component{
     this.state = {
       rack: props.rack,
       itemList: props.itemList,
-      
+      active: false
     }
   }
 
@@ -20,11 +21,6 @@ class CreatedRack extends React.Component{
   handleDelete = (itemId) => {
     this.props.deleteItem(itemId);
     this.setState({ ...this.state, itemList: this.props.itemList})
-  }
-
-  modifyItem = () => {
-    this.props.onClick(itemId);
-    
   }
   
   /**
@@ -45,7 +41,10 @@ class CreatedRack extends React.Component{
                        
                         if(item.rack === this.state.rack){
                             // console.log("item filtré par rack", item);
-                            return <li key={item.product}>
+                            return <li
+                            className={ this.state.active ? "item-done" : null }
+                            onClick={() => this.setState({active: !this.state.active})}
+                            key={item.product}>
                                 <ul className="itemDetails">
                                     <li>
                                         <span className="categoryInput name">{item.product}</span>
