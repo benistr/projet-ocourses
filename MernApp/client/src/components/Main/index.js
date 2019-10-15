@@ -20,7 +20,7 @@ class Main extends React.Component {
             surname:"",
             email: "",
         }
-        console.log('state', this.state)
+        console.log('state du main', this.state, 'et racklist', this.props.rackList)
         if(window.localStorage.getItem('cool-jwt') === null){
             console.log('pas de jwt');
         } else {
@@ -29,24 +29,22 @@ class Main extends React.Component {
             console.log(userId._id);
             axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
                     .then(res => {
+                    this.props.setConnecterUser(userId._id);
                     console.log('voila la réponses suite à connected user', res.data)
                     this.setState({...this.state, isConnected : true,
                     name: res.data.name,
                     surname: res.data.surname,
                     email: res.data.email,})
-                    console.log('state après connexion', this.state)
+                    console.log('state après connexion', this.state, 'et rackList', this.props.rackList)
                     console.log(this.state.isConnected)
                 })
             
     }
 }
 
-componentDidUpdate(){
-    console.log('state du CDM', this.state)
-}
 
     render(){
-        console.log('state du main après le construct:', this.state)
+        console.log('state du main après le construct:', this.state, 'et rackList', this.props.rackList)
         return (
         <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>

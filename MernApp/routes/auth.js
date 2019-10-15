@@ -41,6 +41,7 @@ router.post('/register', async (req, res) => {
         const savedUser = await user.save();
         res.header('auth-token', token);
         res.send({token, user: user._id}); 
+
     } catch(err){
         res.status(400).send(err);
     }
@@ -70,8 +71,18 @@ router.post('/login', async (req, res) => {
 
 })
 
+//Enregistrement des favoris de l'user
+router.post('/favlist/:id', async(req, res) => {
+    console.log('dans la route favlist', req.params,  'et body', req.body.favlist);
+    const user = await User.findOne({ _id: req.params.id});
+    const newUser = await User.updateOne({ _id: req.params.id}, {$set: {favlist: req.body.favlist}});
+    console.log('user',user, 'et new user', newUser);
+    
+
+})
 
 
+//Obtenir les infos de l'user 
 router.get('/getuser/:id', async (req, res) => {
     console.log('dans auth getUser req:', req.params);
     const user = await User.findOne({ _id: req.params.id});
@@ -83,7 +94,8 @@ router.get('/getuser/:id', async (req, res) => {
     const connectedUser = {
         name: user.name,
         surname: user.surname,
-        email: user.email
+        email: user.email,
+        favlist: user.favlist
     }
     res.send(connectedUser);
 

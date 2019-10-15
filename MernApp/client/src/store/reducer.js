@@ -4,13 +4,16 @@ export const UPDATE_INPUT_VALUE = 'UPDATE_INPUT_VALUE';
 export const SIDE_EFFECT = 'SIDE_EFFECT';
 
 const initialState = {
+  isConnected: false,
   itemList: [],
   newItem: {},
   rackList: [],
+  favItems: [],
   connectedUser: {
     name: "",
     surname: "",
     email: "",
+    favlist: [],
   }
 };
 
@@ -26,21 +29,37 @@ const reducer = (state = initialState, action = defaultAction) => {
     }
     case 'USER_CONNECTED': {
       console.log('dans connected user')
+      let newIsConnected = state.isConnected;
+      let newConnectedUser = state.connectedUser;
+      let newFavItems = state.favItems
+
       axios.get(`http://localhost:8800/api/user/getuser/${action.value}`)
       .then(res => {
-        console.log('voila la réponses suite à connected user', res.data)
-        // const NewconnectedUser = {
-        //   name: res.data.name,
-        //   surname: res.data.surname,
-        //   email: res.data.email
-        // }
-        // console.log('après recup de la réponse dans le reducer', NewconnectedUser)
-      return {
-        ...state,
-        connectedUser: {...state.connectedUser, name: res.data.name, surname: res.data.surname, email: res.data.email},
+        console.log('voila la réponses suite à connected user', res.data, 'et la favlist', res.data.favlist)
+        newConnectedUser = {
+          name: res.data.name,
+          surname: res.data.surname,
+          email: res.data.email
+        }
+        newIsConnected = true;
+        newFavItems = res.data.favList;
+        console.log('après recup de la réponse dans le reducer', newConnectedUser, newFavItems, newIsConnected)
+        return {
+          ...state,
+          isConnected: newIsConnected,
+          favItems: newFavItems,
+          connectedUser: { ...state.connectedUser, 
+                          name: newConnectedUser.name,
+                          surname: newConnectedUser.surname, 
+                          email: newConnectedUser.email},
+        
       }
-    })
-    }
+      
+      })
+    
+    };
+    break;
+    //soucis qui apparaissait au premier chargement de la page (rackList.push is not a function) résolu grâce au break
     case 'NEW_RACK': {
       let newRackList = state.rackList.push(action.value);
       return {
@@ -71,7 +90,7 @@ const reducer = (state = initialState, action = defaultAction) => {
       console.log('add idem, recu : ', action.value)
       let updatedItemList = state.itemList;
       updatedItemList.push(action.value);
-      console.log("itemList suite ajout: ", updatedItemList);
+      console.log("itemList suite ajout: ", updatedItemList, 'rackList', state.rackList);
       let newRackList = state.rackList.slice();
       if(newRackList.filter( name => name == action.value.rack).length>0 ) {
         console.log('le rayon existe');                
@@ -88,20 +107,27 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
     case "CLICK_FAV" : {
+      console.log('click fav value', action.value, 'user', action.value.user)
       let updatedItemList = state.itemList;
       console.log('dans reducer action CLICK_FAV');
       for (let i=0; i <= updatedItemList.length -1; i++) {
         console.log("dans le for de click_fav");
-          if(updatedItemList[i].id == action.value){
+          if(updatedItemList[i].id == action.value.item){
             console.log("item identique trouvé", updatedItemList[i])
             console.log(updatedItemList[i].fav);
             updatedItemList[i].fav = !updatedItemList[i].fav
             console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
+        let newFavList = updatedItemList.filter(item => item.fav === true)
+        console.log('suite filter nouveaux favoris :', newFavList);
+        axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
+        .then(res => console.log(res.body))
+
       return {
         ...state,
-        itemsOnList: updatedItemList,       
+        itemsOnList: updatedItemList,
+        favItems: newFavList,       
       }
     }
     default: {

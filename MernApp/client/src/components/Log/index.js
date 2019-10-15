@@ -111,6 +111,7 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
+
             <form onSubmit={(event) => this.handleSubmit()}>
                 <button type="submit" className="ui button">
                 Se connecter
