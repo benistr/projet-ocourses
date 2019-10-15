@@ -67,15 +67,6 @@
     display: inline;
 }
 
-// .list-lists {
-//     height: auto;
-//     padding-bottom: 1rem;
-//     background-color: #FFF;
-//     border-bottom-left-radius: 5px;
-//     border-bottom-right-radius: 5px;
-//     font-size: 0.8em;
-//     display: inline;
-// }
 
 .summary-lists {
     display: flex;
@@ -102,11 +93,20 @@
     padding: 0.4em;
 }
 
+.path {
+    display: block;
+    width:100%;
+    font-family: $font-family;
+    color: $text-color;
+    padding-left: 2.5rem;
+    padding-top: 120px;
+}
+
 
 
 @media (min-width: 800px){
     .path {
-        padding-left: 1rem;
+        padding-left: 16%;
     }
 
     .content {
@@ -114,10 +114,6 @@
     margin: 1rem 1rem;
     
     }
-
-    // .content {
-    //     transform: scale(1.05);
-    // }
 
     .container {
         margin: auto;
@@ -128,7 +124,7 @@
     }
 
 .recipe-items {
-    // display: block;
+
     
 }
 
@@ -140,44 +136,4 @@
 }
 
 
-
-// return  <div className="contain">
-//             <p className="path">▶ Accueil ▶ Listes</p>
-
-
-//                 <div className="content"><a href="">
-//                     <ul className="title">Carrefour <img className="delete"src={Supprimer}/></ul>
-                
-//                         <div className="summary-lists">
-                        
-                    
-//                             <ul className="list-lists">
-
-//                                 <ul className="list-infos">
-//                                     <li><img className="item" src={Image}/>- tomates </li>
-//                                     <li className="item">500g</li>
-//                                 </ul>
-
-//                                 <ul className="list-infos">
-//                                     <li><img className="item" src={Image}/>- bières</li>
-//                                     <li className="item">500g</li>
-//                                 </ul>
-
-//                                 <ul className="list-infos">
-//                                     <li><img className="item" src={Image}/>- liquide vaisselle</li>
-//                                     <li className="item">500g</li>
-//                                 </ul>
-
-//                                 <ul className="list-infos">
-//                                     <li><img className="item" src={Image}/>- poivrons</li>
-//                                     <li className="item">500g</li>
-//                                 </ul>
-//                             </ul> 
-                  
-//                         </div>
-                    
-//                     </a>
-//                 </div>
-
-//             </div>
             

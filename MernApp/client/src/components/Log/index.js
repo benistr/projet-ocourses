@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
 import { NavLink } from 'react-router-dom';
 import axios from 'axios';
+
 import * as jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
+
 
 /**
 * Local import
@@ -15,7 +17,10 @@ import Logo from '../../../../../Ressources/Images/logo.png';
 
 // Styles et assets
 import './styles.sass';
-import { cpus } from 'os';
+import './../App/App.css';
+
+
+
 
 /* class Popup extends React.Component {
     render() {
@@ -55,6 +60,14 @@ handleChange = () => {
 
 handleSubmit = () => {
     event.preventDefault();
+
+    axios.post('/auth/getToken', {
+    
+        email: this.state.email,
+        password: this.state.password,
+    
+    }).then(res => localStorage.setItem('cool-jwt', res.data));
+
     //je vérifie que le login existe et je récupère le token
     axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
         .then(res => { console.log('reponses', res);
@@ -85,17 +98,17 @@ handleSubmit = () => {
        this.props.history.push('/');  
     })
     
+
 }
 
     render() {
         return (
+           
+         
             <div className='logContainer'>
                 <h1>Se connecter</h1>
             <img className="img-log" src={Logo}></img> 
             <br></br>
-
-            <form onSubmit={(event) => this.handleSubmit()}>
-
             <Input
                 name="email"
                 type="email"
@@ -112,7 +125,8 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
-            
+
+            <form onSubmit={(event) => this.handleSubmit()}>
                 <button type="submit" className="ui button">
                 Se connecter
                 </button>
@@ -124,6 +138,7 @@ handleSubmit = () => {
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
             <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
             </div>
+
         );
     }
 };
