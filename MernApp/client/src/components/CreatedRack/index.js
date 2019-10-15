@@ -22,6 +22,11 @@ class CreatedRack extends React.Component{
     this.props.deleteItem(itemId);
     this.setState({ ...this.state, itemList: this.props.itemList})
   }
+
+  handleChangeItem = (itemId) => {
+    this.props.clickOnChange(itemId);
+    this.setState({...this.state, itemList: this.props.itemList})
+  }
   
   /**
    * TODO
@@ -42,14 +47,20 @@ class CreatedRack extends React.Component{
                         if(item.rack === this.state.rack){
                             // console.log("item filtré par rack", item);
                             return <li
-                            className={ this.state.active ? "item-done" : null }
-                            onClick={() => this.setState({active: !this.state.active})}
                             key={item.product}>
                                 <ul className="itemDetails">
                                     <li>
-                                        <span className="categoryInput name">{item.product}</span>
+                                        <span className="categoryInput name"
+                                        className={ this.state.active ? "item-done" : null }
+                                        key={item.id}
+                                        onClick={() => this.handleChangeItem(item.id)}>
+                                        {item.product}
+                                        </span>
+
                                         <span className="categoryInput quantity">{item.quantity}</span>
+
                                         <span className="categoryInput favorite"><Icon name={favStar} onClick={ () => this.handleFav(item.id) }/> 
+
                                         <Icon name="delete" onClick={() => {this.handleDelete(item.id)} }/></span>
                                     </li>
                                 </ul>
@@ -85,6 +96,9 @@ const connectionStrategies = connect(
         deleteItem: (id) => {
           console.log('dans deleteItem id: ', id);
         dispatch( {type: "DELETE_ITEM", value: id} );
+      },
+        clickOnChange: (id) => {
+        dispatch ( {type: "CHANGE_ITEM", value: id})
       }
         
       };

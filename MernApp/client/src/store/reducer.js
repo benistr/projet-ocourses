@@ -11,7 +11,7 @@ const initialState = {
     name: "",
     surname: "",
     email: "",
-  }
+  },
 };
 
 const defaultAction = {};

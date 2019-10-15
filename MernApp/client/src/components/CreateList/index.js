@@ -23,7 +23,8 @@ class CreateList extends React.Component{
             rack: '',
             quantity: '',
             fav: false,
-            id: 0
+            id: 0,
+            active: false,
         }
     }
 
@@ -97,17 +98,14 @@ class CreateList extends React.Component{
             })
         } */}
         {this.props.rackList.map( (rack, index) => {
-                return <CreatedRackContainer 
-                        key={index}
-                        rack={rack}
-                        />
+            return <CreatedRackContainer 
+                    key={index}
+                    rack={rack}
+                    />
             })
         }
-        
     </div>
 
-
-    
 }
 }
 
