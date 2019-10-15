@@ -72,17 +72,31 @@ handleSubmit = () => {
     axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
         .then(res => { console.log('reponses', res);
         //Je mets le token dans le localStorage
-        localStorage.setItem('cool-jwt', res.data.token);
+        localStorage.setItem('cool-jwt', res.data.token);  
+        })
         //Je décode le token
-        const jwtD = jwtDecode(res.data.token);
+        const jwtD = jwtDecode((window.localStorage.getItem('cool-jwt')));
         const userId= jwtD._id;
         console.log('après decode:', jwtD, 'et id:', userId)
-        console.log('on lance connected user');
-        //Je lance ma méthode pour obtenir les détails de l'user et les mettre dans le store
-        this.props.setConnecterUser(userId);
-        // je redirige vers la page d'accueil
-        this.props.history.push('/');
-        })
+        console.log('on lance la requete axios getuser');
+       //Je récupère les infos de mon user
+        axios.get(`http://localhost:8800/api/user/getuser/${userId}`)
+      .then(res => {
+        console.log('voila la réponses suite à la requete getUser', res.data, 'et la favlist', res.data.favlist)
+        let newConnectedUser = {
+          name: res.data.name,
+          surname: res.data.surname,
+          email: res.data.email
+        }
+        let newIsConnected = true;
+        let newFavItems = res.data.favlist;
+        console.log('après recup de la réponse dans après la requete getUser', newConnectedUser, newFavItems, newIsConnected)      
+    
+       //Je lance ma méthode pour obtenir les détails de l'user et les mettre dans le store
+       this.props.setConnecterUser(newConnectedUser, newIsConnected, newFavItems);
+       // je redirige vers la page d'accueil
+       this.props.history.push('/');  
+    })
     
 
 }
@@ -111,6 +125,7 @@ handleSubmit = () => {
                 value={this.state.value}
                 onChange={(event) => this.handleChange()}
             />
+
             <form onSubmit={(event) => this.handleSubmit()}>
                 <button type="submit" className="ui button">
                 Se connecter
@@ -144,8 +159,9 @@ const connectionStrategies = connect(
         updateState: (newState) => {
             dispatch({ type : 'UPDATE_STATE', value : newState })
         },
-        setConnecterUser: (userId) => {
-            dispatch({ type : 'USER_CONNECTED', value : userId })
+        setConnecterUser: (user, connected, favlist) => {
+            console.log('dans mon action à dispatch', user, connected, favlist)
+            dispatch({ type : 'USER_CONNECTED', value : {user, connected, favlist} })
         }
         
       };
