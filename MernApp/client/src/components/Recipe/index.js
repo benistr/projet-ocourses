@@ -83,6 +83,8 @@ const Recipe = () => {
                     </a>
                 </div>
 
+                <div className="addRecipe"><NavLink id="addRecipeNav" to="/newRecipe">Ajoutez une nouvelle recette</NavLink></div>
+
             </div>
             
 };

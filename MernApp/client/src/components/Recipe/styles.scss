@@ -99,7 +99,17 @@
 
 .recipe-items {
     display: none;
-    
+}
+
+.addRecipe {
+    text-align: center;
+}
+
+#addRecipeNav:hover {
+    color: $text-color;
+    transform: scale(1.05, 1.05);
+    transition-duration: 200ms, 300ms;
+    font-weight: bold;
 }
 
 
