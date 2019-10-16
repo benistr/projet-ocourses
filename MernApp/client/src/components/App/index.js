@@ -21,6 +21,7 @@ import MainContainer from 'src/components/Main';
 import CreateListContainer from 'src/components/CreateList'
 import SignUp from 'src/components/SignUp';
 import Team from 'src/components/Team';
+import NewRecipe from 'src/components/NewRecipe';
 
 import Recipe from 'src/components/Recipe';
 import Season from 'src/components/Season';
@@ -60,6 +61,7 @@ const App = () => {
               <Route path="/saisons" component={Season} />
               <Route path="/create-list" component={CreateListContainer} />
               <Route path="/signup" component={SignUp} />
+              <Route path="/nouvelle-recette" component={NewRecipe} />
               
               <Route render={
                 () => 
