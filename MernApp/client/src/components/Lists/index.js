@@ -3,6 +3,8 @@ import initialData from './initial-data';
 import Column from './column';
 import styled from 'styled-components';
 import { DragDropContext, Droppable } from 'react-beautiful-dnd';
+import * as jwtDecode from 'jwt-decode';
+import axios from 'axios';
 
 //Local imports
 import './lists.scss';
@@ -29,35 +31,60 @@ const Container = styled.div`
 
 
 class Lists extends React.Component {
-    state = initialData;
+    constructor(props) {
+        super(props)
+            this.state = {
+                initialData,
+                listreceived: []
+            }
+            if(window.localStorage.getItem('cool-jwt') === null){
+                console.log('pas de jwt');
+            } else {
+                console.log('jwt detécté')
+                let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
+                // console.log(userId._id);
+                axios.get(`http://localhost:8800/api/user/getlist/${userId._id}`)
+                .then(res => {
+                    console.log(res.data);
+                    this.setState({...this.state, initialData: res.data})
+                })
+      
+            }
+    }
 
     onDragEnd = result => {
+        console.log('voila le result', result)
         const { destination, source, draggableId, type } = result;    
     
         if(!destination) {
+            console.log('erreur de destination');
             return;
         }
 
         if (
             destination.droppableId === source.droppableId && destination.index === source.index
         ) {
+            console.log('destination = source')
             return;
         }
 
         if(type === 'column') {
-            const newColumnOrder = Array.from(this.state.columnOrder);
+            console.log('j\'entre dans le if')
+            const newColumnOrder = Array.from(this.state.initialData.columnOrder);
+            console.log('splice 1')
             newColumnOrder.splice(source.index, 1);
+            console.log('splice 2')
             newColumnOrder.splice(destination.index, 0, draggableId);
 
             const newState = {
-                ...this.state,
+                ...this.state.initialData,
                 columnOrder: newColumnOrder,
             };
-            this.setState(newState);
+            this.setState({...this.state, initialData: newState});
             return;
         }
 
-        const column = this.state.columns[source.droppableId];
+        const column = this.state.initialData.columns[source.droppableId];
         const newTaskIds = Array.from(column.taskIds);
         newTaskIds.splice(source.index, 1);
         newTaskIds.splice(destination.index, 0, draggableId);
@@ -68,17 +95,18 @@ class Lists extends React.Component {
         };
 
         const newState = {
-            ...this.state,
+            ...this.state.initialData,
             columns: {
-                ...this.state.columns,
+                ...this.state.initialData.columns,
                 [newColumn.id]: newColumn,            
             },
         };
 
-        this.setState(newState);
+        this.setState({...this.state, initialData : newState});
     };
 
     render() {
+        console.log('voila le state', this.state);
         return (
 
             <Contain>
@@ -94,10 +122,10 @@ class Lists extends React.Component {
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                     >
-                    {this.state.columnOrder.map((columnId, index) => {
-                    const column = this.state.columns[columnId];
+                    {this.state.initialData.columnOrder.map((columnId, index) => {
+                    const column = this.state.initialData.columns[columnId];
                     const tasks = column.taskIds.map(
-                        taskId => this.state.tasks[taskId],
+                        taskId => this.state.initialData.tasks[taskId],
                     );
 
                     return (
