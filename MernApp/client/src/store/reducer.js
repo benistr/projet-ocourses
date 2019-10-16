@@ -6,6 +6,7 @@ export const SIDE_EFFECT = 'SIDE_EFFECT';
 const initialState = {
   isConnected: false,
   itemList: [],
+  itemsIds: [],
   newItem: {},
   rackList: [],
   favItems: [],
@@ -85,11 +86,14 @@ const reducer = (state = initialState, action = defaultAction) => {
     console.log('le rayon n\'existe pas');
     newRackList.push(action.value.rack);       
 }
+    let updatedItemsIds = state.itemsIds;
+    updatedItemsIds.push(action.value.id);
       console.log("sortie du if de verif de rack",updatedItemList);
       return {
         ...state,
         itemList: updatedItemList,
         rackList: newRackList,
+        itemsIds: updatedItemsIds,
         newItem: {}
       }
     }

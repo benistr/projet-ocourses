@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../model/User');
+const Lists = require('../model/Lists');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require ('../validation');
@@ -77,11 +78,54 @@ router.post('/favlist/:id', async(req, res) => {
     const user = await User.findOne({ _id: req.params.id});
     const newUser = await User.updateOne({ _id: req.params.id}, {$set: {favlist: req.body.favlist}});
     console.log('user',user, 'et new user', newUser);
-    
-
 })
 
+//Ajouter une nouvelle liste
+router.post('/newlist/:id', async(req, res) => {
+    console.log('dans la route newlist', req.params.id, 'et le contenu', req.body)
+    const list = new Lists ({
+        userId: req.params.id,
+        title: req.body.listName,
+        racks: req.body.racks,
+        products: req.body.products,
+    });
+    try{
+        console.log('on lance savedList');
+        const savedList = await list.save();
+        res.send({list}); 
 
+    } catch(err){
+        res.status(400).send(err);
+    }
+})
+
+//Récupérer les infos d'une liste
+router.get('/getlist/:id', async(req, res) => {
+    const getlist = await Lists.find({ _userId: req.param.id });
+    console.log('retour fait par getlist', getlist, 'pour l\'user', req.params.id);
+    res.send({
+        tasks: {
+            'task-1': { id: 'task-1', content: '- Cette liste est vide pour le moment!'},
+            'task-2': { id: 'task-2', content: 'Pouet!'},
+          },
+          columns: {
+            'column-1': {
+              id: 'column-1',
+              title: 'Ca va être une galère',
+              taskIds: ['task-1', 'task-2'],
+            },
+            'column-2': {
+              id: 'column-2',
+              title: 'PouetPouet',
+              taskIds: [],
+            },
+          },
+          // Facilitate reordering of the columns
+          columnOrder: ['column-1', 'column-2'],
+    })
+})
+
+ 
 //Obtenir les infos de l'user 
 router.get('/getuser/:id', async (req, res) => {
     console.log('dans auth getUser req:', req.params);
