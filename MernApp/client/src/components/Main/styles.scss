@@ -160,9 +160,18 @@
 
 .recipe-items {
     display: none;
-    
 }
 
+.welcome {
+    background: linear-gradient(to right, rgba(153,204,51,0.7), rgba(0,191,255,0.7));
+    box-shadow: 5px 5px 8px #D7D7D7;
+    width: 80%;
+    border-radius: 15px;
+    margin: 0 auto;
+    color: white;
+    text-align: center;
+    padding: 0.5em;
+}
 
 
 @media (min-width:1200px){
