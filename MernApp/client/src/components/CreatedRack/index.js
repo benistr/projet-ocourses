@@ -27,8 +27,12 @@ class CreatedRack extends React.Component{
   handleFav = (itemId) => {
     let userId = jwtDecode((window.localStorage.getItem('cool-jwt')))
     console.log('test d\'acces à userId', userId._id )
-      this.props.clickOnFav( userId._id, itemId );
-      this.setState({...this.state, itemList: this.props.itemList})
+    axios.get(`http://localhost:8800/api/user/favlist/${userId._id}`)
+        .then(res => {
+      // console.log(res.data);
+      this.props.clickOnFav( userId._id, itemId, res.data);
+      this.setState({...this.state, itemList: this.props.itemList});
+        })
   }  
 
   handleDelete = (itemId) => {
@@ -88,10 +92,10 @@ const connectionStrategies = connect(
     // 2d argument : stratégie d'écriture (dans le state privé global)
     (dispatch, ownProps) => {
       return {
-        clickOnFav: (userId, itemId) => {
-            console.log('click sur fav ', userId, itemId);
+        clickOnFav: (userId, itemId, favlist) => {
+            console.log('click sur fav ', userId, itemId, favlist);
           
-          dispatch( {type: "CLICK_FAV", value: {user: userId, item: itemId}} );
+          dispatch( {type: "CLICK_FAV", value: {user: userId, item: itemId, favlist}} );
         },
         deleteItem: (id) => {
           console.log('dans deleteItem id: ', id);

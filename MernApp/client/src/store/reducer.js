@@ -94,7 +94,7 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
     case "CLICK_FAV" : {
-      console.log('click fav value', action.value, 'user', action.value.user)
+      console.log('click fav value', action.value, 'user', action.value.user, 'favlist', action.value.favlist)
       let updatedItemList = state.itemList;
       console.log('dans reducer action CLICK_FAV');
       for (let i=0; i <= updatedItemList.length -1; i++) {
@@ -102,19 +102,27 @@ const reducer = (state = initialState, action = defaultAction) => {
           if(updatedItemList[i].id == action.value.item){
             console.log("item identique trouvé", updatedItemList[i])
             console.log(updatedItemList[i].fav);
-            updatedItemList[i].fav = !updatedItemList[i].fav
+            updatedItemList[i].fav = !updatedItemList[i].fav;
+            if(updatedItemList[i].fav){
+              console.log('on le fav')
+              action.value.favlist.push(updatedItemList[i]);
+              axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: action.value.favlist})
+              console.log('newfavs', action.value.favlist);
+            } else {
+              console.log('on le défav');
+            }
             console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
         let newFavList = updatedItemList.filter(item => item.fav === true)
         console.log('suite filter nouveaux favoris :', newFavList);
-        axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
-        .then(res => console.log(res.body))
+        // axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
+        // .then(res => console.log(res.body))
 
       return {
         ...state,
         itemsOnList: updatedItemList,
-        favItems: newFavList,       
+        favItems: action.value.favlist,       
       }
     }
     default: {

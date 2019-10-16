@@ -109,7 +109,7 @@ class CreateList extends React.Component{
                 <h2>Ajoutez vos favoris</h2>
                 {/* Faire un map sur la liste des favoris que j'obtiendrais du state */}
                 <ul>
-                {console.log(this.props.favItems)}
+                {/*console.log(this.props.favItems)*/}
                
                 {this.props.favItems.map(item => {
                     return <li onClick={ () => {

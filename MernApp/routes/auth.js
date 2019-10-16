@@ -76,10 +76,18 @@ router.post('/favlist/:id', async(req, res) => {
     console.log('dans la route favlist', req.params,  'et body', req.body.favlist);
     const user = await User.findOne({ _id: req.params.id});
     const newUser = await User.updateOne({ _id: req.params.id}, {$set: {favlist: req.body.favlist}});
-    console.log('user',user, 'et new user', newUser);
+    console.log('new user', newUser);
     
 
 })
+
+router.get('/favlist/:id', async(req,res) => {
+    console.log('dans la route get favlist');
+    const user = await User.findOne( {_id: req.params.id});
+    console.log('voila la favlist demandée', user.favlist);
+    res.send(user.favlist)
+} )
+        
 
 
 //Obtenir les infos de l'user 
