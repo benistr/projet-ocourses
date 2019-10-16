@@ -54,6 +54,11 @@ class CreateList extends React.Component{
     handleSubmit = () => {
         console.log('HandleSubmit lancé');
         console.log(this.state)
+        if(this.state.id === 0){
+            this.state.id = Math.random(1,1000)
+        } else {
+            this.state.id = this.state.id;
+        }
         this.props.addItem(this.state)
     }  
 
@@ -66,8 +71,6 @@ class CreateList extends React.Component{
     handleChange = (e, key) => {
         this.setState({
             [key]: e.target.value,
-            fav: false,
-            id: Math.random(1, 100)
         })
     }
     
@@ -129,7 +132,7 @@ class CreateList extends React.Component{
                                     product: item.product,
                                     rack: item.rack,
                                     fav: true,
-                                    id: Math.random(1, 100)
+                                    id: item.id
                                 })
                             
                                 }

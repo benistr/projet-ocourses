@@ -95,6 +95,7 @@ const reducer = (state = initialState, action = defaultAction) => {
     }
     case "CLICK_FAV" : {
       console.log('click fav value', action.value, 'user', action.value.user, 'favlist', action.value.favlist)
+      //Je récupère la liste des items pour mettre à jour leur propriété fav
       let updatedItemList = state.itemList;
       console.log('dans reducer action CLICK_FAV');
       for (let i=0; i <= updatedItemList.length -1; i++) {
@@ -103,23 +104,23 @@ const reducer = (state = initialState, action = defaultAction) => {
             console.log("item identique trouvé", updatedItemList[i])
             console.log(updatedItemList[i].fav);
             updatedItemList[i].fav = !updatedItemList[i].fav;
-            if(updatedItemList[i].fav){
-              console.log('on le fav')
-              action.value.favlist.push(updatedItemList[i]);
-              axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: action.value.favlist})
-              console.log('newfavs', action.value.favlist);
-            } else {
-              let refreshfavlist = action.value.favlist;
-              console.log('on le défav');
-              console.log('objet à defav :', updatedItemList[i])
-              let rerefreshfavlist = refreshfavlist.splice(refreshfavlist[updatedItemList[i]], 1);
-              console.log('suite splice',rerefreshfavlist)
-              axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: refreshfavlist})
-              console.log('new favs suite defav', refreshfavlist)
-            }
             console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
+        //je récupère ma favlist existante
+        let existingFavList = state.favItems;
+        //je vérifie si l'item existe déjà dans la liste
+        let itemExist = existingFavList.includes(action.value.item.produt);
+        console.log('verif de présence', itemExist);
+        //Si c'est le cas je vérifie que la propriété fav esd true sinon je push l'item dans ma liste
+        if(!itemExist) {
+          console.log('n\'existe pas, j\'ajoute')
+          existingFavList.push(action.value.item);
+          console.log('nouvelle favlist', existingFavList)
+        } else {
+          console.log('il existe!!')
+        }
+
         let newFavList = updatedItemList.filter(item => item.fav === true)
         console.log('suite filter nouveaux favoris :', newFavList);
         axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
@@ -128,7 +129,7 @@ const reducer = (state = initialState, action = defaultAction) => {
       return {
         ...state,
         itemsOnList: updatedItemList,
-        favItems: action.value.favlist,       
+        favItems: newFavList,       
       }
     }
     default: {
