@@ -1,5 +1,6 @@
 import React from 'react';
 import { Responsive } from 'semantic-ui-react';
+import { NavLink } from 'react-router-dom';
 
 //Local imports
 import './styles.scss';
@@ -19,8 +20,8 @@ const Recipe = () => {
                                 <li>- 1 Branche de céleri </li>
                                 <li>- 800gr hâché mélangé </li>
                                 <li>- Sauce tomate </li>
-                                
-                        </ul> 
+                                <li><a>Voir plus</a></li>
+                            </ul> 
                         </Responsive>
                         </div>
                     </div>
@@ -32,14 +33,33 @@ const Recipe = () => {
                     <div className="crepes"> 
                         <div className="summary">
                         <Responsive minWidth={1024}>
-                        <ul className="recipe-items">
-                            <li>- 300gr de farine</li>
-                            <li>- 3 oeufs</li>
-                            <li>- 50gr de beurre fondu</li>
-                            <li>- 60cl de lait</li>
-                            <li>- Du suc'</li>
-                        </ul>
+                            <ul className="recipe-items">
+                                <li>- 300gr de farine</li>
+                                <li>- 3 oeufs</li>
+                                <li>- 50gr de beurre fondu</li>
+                                <li>- 60cl de lait</li>
+                                <li>- Du suc'</li>
+                                <li><a>Voir plus</a></li>
+                            </ul>
                         </Responsive>
+                        </div>    
+                    </div>
+                    </a>
+                </div>
+
+                <div className="mainContent"><a href="">
+                    <div className="title">Soupe de légumes</div>
+                    <div className="soup"> 
+                        <div className="summary">
+                            <Responsive minWidth={1024}>
+                                <ul className="recipe-items">
+                                    <li>- 4 tomates</li>
+                                    <li>- 1 courgette</li>
+                                    <li>- 1 oignon</li>
+                                    <li>- 1 carotte</li>
+                                    <li><a>Voir plus</a></li>
+                                </ul>
+                            </Responsive>
                         </div>    
                     </div>
                     </a>
@@ -49,15 +69,15 @@ const Recipe = () => {
                     <div className="title">Pizza maison</div>
                     <div className="pizza"> 
                         <div className="summary">
-                        <Responsive minWidth={1024}>
-                        <ul className="recipe-items">
-                            <li>- Mortadelle</li>
-                            <li>- 1 poivron</li>
-                            <li>- 3 champignons</li>
-                            <li>- Mozzarella</li>
-                            
-                        </ul>
-                        </Responsive>
+                            <Responsive minWidth={1024}>
+                                <ul className="recipe-items">
+                                    <li>- Mortadelle</li>
+                                    <li>- 1 poivron</li>
+                                    <li>- 3 champignons</li>
+                                    <li>- Mozzarella</li>
+                                    <li><a>Voir plus</a></li>
+                                </ul>
+                            </Responsive>
                         </div>    
                     </div>
                     </a>
