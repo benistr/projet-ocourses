@@ -3,7 +3,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import CreatedList from 'src/components/CreatedList';
 import CreatedRackContainer from 'src/components/CreatedRack';
-
+import { Droppable, Draggable } from 'react-beautiful-dnd';
 
 //Local import 
 import './CreateList.scss';
@@ -20,16 +20,22 @@ class CreateList extends React.Component{
         console.log('rackList:', props.rackList)
         this.state = {
             product: '',
-            rack: '',
             quantity: '',
             fav: false,
-            id: 0
+            id: 0,
+            itemList: {
+                id: '',
+                content:'',
+              },
+              rack: {
+                  id: '',
+                  title: '',
+                  taskIds: '',
+                
+              }
         }
     }
 
-    
-    
-    
 
 // Méthode ajoutant le produit à la list des items du state.
     handleSubmit = () => {
