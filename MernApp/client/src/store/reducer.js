@@ -109,14 +109,20 @@ const reducer = (state = initialState, action = defaultAction) => {
               axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: action.value.favlist})
               console.log('newfavs', action.value.favlist);
             } else {
+              let refreshfavlist = action.value.favlist;
               console.log('on le défav');
+              console.log('objet à defav :', updatedItemList[i])
+              let rerefreshfavlist = refreshfavlist.splice(refreshfavlist[updatedItemList[i]], 1);
+              console.log('suite splice',rerefreshfavlist)
+              axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: refreshfavlist})
+              console.log('new favs suite defav', refreshfavlist)
             }
             console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
         let newFavList = updatedItemList.filter(item => item.fav === true)
         console.log('suite filter nouveaux favoris :', newFavList);
-        // axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
+        axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
         // .then(res => console.log(res.body))
 
       return {

@@ -26,7 +26,11 @@ class CreateList extends React.Component{
             id: 0
         }
         let isConnected = false
+        let favdisplay = false;
+        
 
+        
+        
         if(window.localStorage.getItem('cool-jwt') === null){
             console.log('pas de jwt');
         } else {
@@ -39,7 +43,10 @@ class CreateList extends React.Component{
         }
     }
 
-    
+    changeFavDisplay =() => {
+        this.favdisplay = !this.favdisplay;
+        this.setState({state: this.state})
+    }
     
     
 
@@ -65,11 +72,14 @@ class CreateList extends React.Component{
     }
     
     handleListSave = () => {
+        
         console.log('click sur enregistrement', this.props.itemList)
     }
 
 
     render() {
+        
+
       return  <div className="mainListContainer">
  
        {/* Input de recherche */}
@@ -104,26 +114,29 @@ class CreateList extends React.Component{
          <button onClick={() => {this.handleSave()}}>Sauvegarder la Liste</button>
 
         {
+    
             this.isConnected && 
             <div className="favorites">
-                <h2>Ajoutez vos favoris</h2>
-                {/* Faire un map sur la liste des favoris que j'obtiendrais du state */}
-                <ul>
-                {/*console.log(this.props.favItems)*/}
-               
-                {this.props.favItems.map(item => {
-                    return <li onClick={ () => {
-                        this.setState({
-                            product: item.product,
-                            rack: item.rack,
-                            fav: true,
-                            id: Math.random(1, 100)
-                        })
+                <h2 className="favs-title" onClick={ () => this.changeFavDisplay()}>Vos favoris</h2>
+                {/* Faire un map sis.favClass}ur la liste des favoris que j'obtiendrais du state */}
+                <div className={this.favdisplay? 'favs' : 'favs-hidden'}>
+                        <ul>
+                        {/*console.log(this.props.favItems)*/}
                     
-                        }
-                    }>{item.product}</li>
-                })}
-                </ul>
+                        {this.props.favItems.map(item => {
+                            return <li className="favs-li" onClick={ () => {
+                                this.setState({
+                                    product: item.product,
+                                    rack: item.rack,
+                                    fav: true,
+                                    id: Math.random(1, 100)
+                                })
+                            
+                                }
+                            }>{item.product}</li>
+                        })}
+                        </ul>
+                </div>
             </div>
         }
         {this.props.rackList.length > 0 &&
