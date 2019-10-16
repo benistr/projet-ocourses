@@ -46,7 +46,7 @@ class Lists extends React.Component {
                 axios.get(`http://localhost:8800/api/user/getlist/${userId._id}`)
                 .then(res => {
                     console.log(res.data);
-                    this.setState({...this.state, listreceived: res.data})
+                    this.setState({...this.state, initialData: res.data})
                 })
       
             }
