@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import * as jwtDecode from 'jwt-decode';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 
+
 class CreatedRack extends React.Component{
   constructor(props){
     super(props);
