@@ -35,7 +35,7 @@ class Lists extends React.Component {
         super(props)
             this.state = {
                 initialData,
-                listreceived: []
+                listreceived: {}
             }
             if(window.localStorage.getItem('cool-jwt') === null){
                 console.log('pas de jwt');
@@ -45,8 +45,8 @@ class Lists extends React.Component {
                 // console.log(userId._id);
                 axios.get(`http://localhost:8800/api/user/getlist/${userId._id}`)
                 .then(res => {
-                    console.log(res.data);
-                    this.setState({...this.state, initialData: res.data})
+                    console.log('réponses reçue',res.data);
+                    this.setState({...this.state, listreceived: res.data})
                 })
       
             }
