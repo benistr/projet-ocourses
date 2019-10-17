@@ -67,8 +67,7 @@
 
 .fred-img {
     flex-wrap: wrap;
-    width: 5rem;
-    height: 5rem;
+    width: 40%;
     filter: drop-shadow(2px 2px 3px rgb(173, 173, 173));
 }
 
@@ -80,7 +79,7 @@
 
 .jamy-img {
     flex-wrap: wrap;
-    width: 5rem;
+    width: 85%;
     right: 0px;
     z-index: 50;
     margin-left: 1rem;
@@ -233,8 +232,7 @@
 
     .fred-img {
         
-        width: 7rem;
-        height: 7rem;
+        width: 20%
     }
 
     .fred-text {
@@ -247,7 +245,7 @@
     }
 
     .jamy-img {
-        width: 7rem;
+        width: 80%;
     }
 
     .topSpeech {

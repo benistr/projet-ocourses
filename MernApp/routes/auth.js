@@ -109,7 +109,7 @@ router.get('/favlist/:id', async(req,res) => {
         
 
 
-//Récupérer les infos d'une liste
+//Récupérer les infos des listes sauvegardées
 router.get('/getlist/:id', async(req, res) => {
     const getlist = await Lists.find({ userId: req.params.id });
     console.log('retour fait par getlist', getlist, 'pour l\'user', req.params.id);
@@ -119,9 +119,12 @@ router.get('/getlist/:id', async(req, res) => {
     let columns = {};
     let columnOrder = [];
     
+    
+    
 
 
         for(let x = 0; x < getlist.length; x ++) {
+            
             let taskIds = [];
             getlist[x].products.forEach(product => {
                 let key = 'task-' + product.id;
@@ -142,12 +145,19 @@ router.get('/getlist/:id', async(req, res) => {
             columnOrder
         }
        
-        console.log('reponse', response)    
+        console.log('reponse', response, 'les produits', tasks)    
 
-        res.send(response);
+        res.send({response, columnOrder});
  
 })
 
+//récupérer les infos d'une liste par son id 
+router.get('/findlist/:id', async (req, res) => {
+    let listId = req.params.id.substring(7);
+    const getlist = await Lists.findOne({_id: listId })
+    console.log('liste demandée',getlist)
+    res.send(getlist)
+})
 
  
 //Obtenir les infos de l'user 
