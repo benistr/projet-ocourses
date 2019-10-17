@@ -33,7 +33,12 @@ class CreatedRack extends React.Component{
       this.props.clickOnFav( userId._id, itemId, res.data);
       this.setState({...this.state, itemList: this.props.itemList});
         })
-  }  
+  } 
+  
+  handleShopped = (itemId) => {
+    this.props.clickToShop(itemId);
+    this.setState({...this.state, itemList: this.props.itemList})
+  }
 
   handleDelete = (itemId) => {
     this.props.deleteItem(itemId);
@@ -55,14 +60,15 @@ class CreatedRack extends React.Component{
                     { this.state.itemList.map( item => {
                         // console.log("item general", item);
                         const favStar= item.fav ? 'star' : 'star outline';
+                        const itemShopped = item.shopped ? 'over categoryInput ' : 'categoryInput ';
                        
                         if(item.rack === this.state.rack){
                             // console.log("item filtré par rack", item, item.rack);
                             return <li key={item.id}>
                                 <ul className="itemDetails">
                                     <li>
-                                        <span className="categoryInput name">{item.product}</span>
-                                        <span className="categoryInput quantity">{item.quantity}</span>
+                                        <span onClick={() => this.handleShopped(item.id)} className={`${itemShopped} name`}>{item.product}</span>
+                                        <span onClick={() => this.handleShopped(item.id)} className={`${itemShopped} categoryInput quantity`}>{item.quantity}</span>
                                         <span className="categoryInput favorite"><Icon name={favStar} onClick={ () => this.handleFav(item.id) }/> 
                                         <Icon name="delete" onClick={() => {this.handleDelete(item.id, item.rack)} }/></span>
                                     </li>
@@ -100,8 +106,12 @@ const connectionStrategies = connect(
         deleteItem: (id, rack) => {
           console.log('dans deleteItem id: ', id, rack);
         dispatch( {type: "DELETE_ITEM", value: {id, rack} });
-      }
-        
+      },
+        clickToShop: (itemId) => {
+          console.log('click sur', itemId);
+          dispatch({ type: "ITEM_SHOPPED", value: itemId});
+
+       } 
       };
     },
   );
