@@ -104,67 +104,38 @@ router.get('/getlist/:id', async(req, res) => {
     const getlist = await Lists.find({ _userId: req.param.id });
     console.log('retour fait par getlist', getlist, 'pour l\'user', req.params.id);
     
-    let response = getlist.map( list => {
-        let listId = list.id
-        
-        {
-                tasks: {
-                list.products.map( product => {
-                    
-                    product.product;
-                    'task-' + product.id, { id: 'task-' + product.id, content: product.product };
-                }
-                    )
-                }
-                columns: {
-                    
-                    'column-' + listId, {
-                        id: 'column'-listId,
-                        title: list.title,
-                        tasksId: [
-                            list.products.map( product => {
-                                
-                            'task-' + product.id
-                            }
-                                
-                            )
-                        ]
-                    }
-                    
-                }
-                columnOrder: [
-                    getlist.map( list => {
-                    
-                        'column-' + list._id
-                    })
-                ]
-        }
-    })
-   
+    
+    let tasks = {};
+    let columns = {};
+    let columnOrder = [];
     
 
+
+        for(let x = 0; x < getlist.length; x ++) {
+            let taskIds = [];
+            getlist[x].products.forEach(product => {
+                let key = 'task-' + product.id;
+                tasks[key] = {id: key, content: product.product};
+                taskIds.push(key)
+             
+            });
+
+            let key = 'column-' + getlist[x].id;
+            columns[key] = {id: key, title: getlist[x].title, taskIds }
+            columnOrder.push(key);
+             
+        }
+        // console.log('testtasks', tasks, 'testcolumns', columns, 'testcolumnOrder', columnOrder);
+        let response = {
+            tasks,
+            columns,
+            columnOrder
+        }
+       
+        console.log('reponse', response)    
+
         res.send(response);
-        // task{
-        //     'task-1': { id: 'task-1', content: '- Cette liste est vide pour le moment!'},
-        //     'task-2': { id: 'task-2', content: 'Pouet!'},
-        //   },
-        //   columns: {
-        //     'column-1': {
-        //       id: 'column-1',
-        //       title: 'Ca va être une galère',
-        //       taskIds: ['task-1', 'task-2'],
-        //     },
-        //     'column-2': {
-        //       id: 'column-2',
-        //       title: 'PouetPouet',
-        //       taskIds: [],
-        //     },
-        //   },
-        //   // Facilitate reordering of the columns
-        //   columnOrder: ['column-1', 'column-2'],
-    // })
-    
-// })
+ 
 })
 
  
