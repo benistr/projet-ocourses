@@ -91,65 +91,68 @@ class CreateList extends React.Component{
 
 
     render() {
-        
+        return  <div className="mainListContainer">
 
-      return  <div className="mainListContainer">
-          <form onSubmit={(event) => {this.handleListSave()}}> 
-      <input type="text" className="input" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>
-          <button>Sauvegarder la Liste</button>
-          </form>
-       {/* Input de recherche */}
-         <form className="inputs" onSubmit= { (e) => { 
+    <form className="inputs" onSubmit={(event) => {this.handleListSave()}}> 
+        <input type="text" className="input" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>         
+    </form>
+            {/* Input de recherche */}
+    <form className="inputs" onSubmit= { (e) => { 
              e.preventDefault();
              this.handleSubmit() }}>
-         <input type="text" className="input" icon="search" placeholder="Produit recherché..." value={this.state.product} name="product" id="product"  onChange={(e) => this.handleChange(e, 'product')}/>
-         <select className="input" icon="cart" name="rack" id="rack" value={this.state.rack} onChange={(e) => this.handleChange(e, 'rack')} >
-             <option value="">--Categorie / Rayon--</option>
-             <option value="Animaux">Animaux</option>
-             <option value="Autres">Autres</option>
-             <option value="Bébé">Bébé</option>
-             <option value="Bio">Bio</option>
-             <option value="Biscuits">Biscuits</option>
-             <option value="Boissons alcoolisées">Boissons alcoolisées</option>
-             <option value="Boissons">Boissons</option>
-             <option value="Boulangerie">Boulangerie</option>
-             <option value="Confiserie">Confiserie</option>
-             <option value="Epicerie">Epicerie</option>
-             <option value="Fruits &amp; Légumes">Fruits &amp; Légumes</option>
-             <option value="Hygière">Hygiène</option>
-             <option value="Poissons">Poissons</option>
-             <option value="Produits frais">Produits frais</option>
-             <option value="Produits Ménagers">Produits Ménagers</option>
-             <option value="Surgelés">Surgelés</option>
-             <option value="Viandes">Viandes</option>
-             <option value="Viennoiseries">Viennoiseries</option>
-         </select>
-         <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" value={this.state.quantity} onChange={(e) => this.handleChange(e, 'quantity')}/>
-         <button type="submit">Ajouter</button>
-         </form>
+
+    <input type="text" className="input" icon="search" placeholder="Produit recherché..." value={this.state.product} name="product" id="product"  onChange={(e) => this.handleChange(e, 'product')}/>
+        <select className="input" icon="cart" name="rack" id="rack" value={this.state.rack} onChange={(e) => this.handleChange(e, 'rack')} >
+            <option value="">--Categorie / Rayon--</option>
+            <option value="Animaux">Animaux</option>
+            <option value="Autres">Autres</option>
+            <option value="Bébé">Bébé</option>
+            <option value="Bio">Bio</option>
+            <option value="Biscuits">Biscuits</option>
+            <option value="Boissons alcoolisées">Boissonsalcoolisées</option>
+            <option value="Boissons">Boissons</option>
+            <option value="Boulangerie">Boulangerie</option>
+            <option value="Confiserie">Confiserie</option>
+            <option value="Epicerie">Epicerie</option>
+            <option value="Fruits &amp; Légumes">Fruits &amp;Légumes</option>
+            <option value="Hygière">Hygiène</option>
+            <option value="Poissons">Poissons</option>
+            <option value="Produits frais">Produits frais</option>
+            <option value="Produits Ménagers">Produits Ménagers</option>
+            <option value="Surgelés">Surgelés</option>
+            <option value="Viandes">Viandes</option>
+            <option value="Viennoiseries">Viennoiseries</option>
+        </select>
+            <input type="text" className="input" icon=""   placeholder="Quantité" name="quantity" id="quantity" value=   {this.state.quantity} onChange={(e) => this.handleChange(e,    'quantity')}/>
+         
+        <button type="submit">Ajouter</button>
+            <div className="buttons">
+        <button className="save-button">Sauvegarder la Liste</button>
+         </div>
+    </form>
          
 
-        {
+    {
     
-            this.isConnected && 
-            <div className="favorites">
-                <h2 className="favs-title" onClick={ () => this.changeFavDisplay()}>Vos favoris</h2>
+    this.isConnected && 
+        <div className="favorites">
+            <h2 className="favs-title" onClick={ () => this.changeFavDisplay()}>Vos favoris</h2>
                 {/* Faire un map sis.favClass}ur la liste des favoris que j'obtiendrais du state */}
-                <div className={this.favdisplay? 'favs' : 'favs-hidden'}>
-                        <ul>
-                        {/*console.log(this.props.favItems)*/}
+        <div className={this.favdisplay? 'favs' : 'favs-hidden'}>
+            <ul>
+                {/*console.log(this.props.favItems)*/}
                     
-                        {this.props.favItems.map(item => {
+                    {this.props.favItems.map(item => {
                             
-                            return <li key={item.id} className="favs-li" onClick={ () => {
-                                this.setState({
-                                    product: item.product,
-                                    rack: item.rack,
-                                    fav: true,
-                                    id: item.id
-                                })
+                    return <li key={item.id} className="favs-li" onClick={ () => {
+                        this.setState({
+                            product: item.product,
+                            rack: item.rack,
+                            fav: true,
+                            id: item.id
+                        })
                             
-                                }
+                        }
                             }>{item.product}</li>
                         })}
                         </ul>
