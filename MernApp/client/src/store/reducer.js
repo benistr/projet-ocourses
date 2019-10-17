@@ -80,6 +80,12 @@ const reducer = (state = initialState, action = defaultAction) => {
         
       }
     }
+    case 'CLEAR_LIST_LOGOUT': {
+      return {
+        itemList: [],
+        rackList: []
+      }
+    }
     case 'ADD_ITEM_TO_LIST': {
       console.log('add idem, recu : ', action.value)
       let updatedItemList = state.itemList;
