@@ -93,11 +93,20 @@ router.post('/newlist/:id', async(req, res) => {
         console.log('on lance savedList');
         const savedList = await list.save();
         res.send({list}); 
-
     } catch(err){
         res.status(400).send(err);
     }
 })
+
+
+router.get('/favlist/:id', async(req,res) => {
+    console.log('dans la route get favlist');
+    const user = await User.findOne( {_id: req.params.id});
+    console.log('voila la favlist demandée', user.favlist);
+    res.send(user.favlist)
+} )
+        
+
 
 //Récupérer les infos d'une liste
 router.get('/getlist/:id', async(req, res) => {
@@ -137,6 +146,7 @@ router.get('/getlist/:id', async(req, res) => {
         res.send(response);
  
 })
+
 
  
 //Obtenir les infos de l'user 

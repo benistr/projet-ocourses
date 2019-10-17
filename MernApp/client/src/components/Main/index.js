@@ -22,6 +22,7 @@ class Main extends React.Component {
         console.log('state du main', this.state, 'et racklist', this.props.rackList)
         if(window.localStorage.getItem('cool-jwt') === null){
             console.log('pas de jwt');
+            this.state.isConnected = false
         } else {
             console.log('jwt detécté')
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));

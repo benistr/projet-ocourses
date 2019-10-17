@@ -27,8 +27,12 @@ class CreatedRack extends React.Component{
   handleFav = (itemId) => {
     let userId = jwtDecode((window.localStorage.getItem('cool-jwt')))
     console.log('test d\'acces à userId', userId._id )
-      this.props.clickOnFav( userId._id, itemId );
-      this.setState({...this.state, itemList: this.props.itemList})
+    axios.get(`http://localhost:8800/api/user/favlist/${userId._id}`)
+        .then(res => {
+      // console.log(res.data);
+      this.props.clickOnFav( userId._id, itemId, res.data);
+      this.setState({...this.state, itemList: this.props.itemList});
+        })
   }  
 
   handleDelete = (itemId) => {
@@ -53,14 +57,14 @@ class CreatedRack extends React.Component{
                         const favStar= item.fav ? 'star' : 'star outline';
                        
                         if(item.rack === this.state.rack){
-                            // console.log("item filtré par rack", item);
-                            return <li key={item.product}>
+                            // console.log("item filtré par rack", item, item.rack);
+                            return <li key={item.id}>
                                 <ul className="itemDetails">
                                     <li>
                                         <span className="categoryInput name">{item.product}</span>
                                         <span className="categoryInput quantity">{item.quantity}</span>
                                         <span className="categoryInput favorite"><Icon name={favStar} onClick={ () => this.handleFav(item.id) }/> 
-                                        <Icon name="delete" onClick={() => {this.handleDelete(item.id)} }/></span>
+                                        <Icon name="delete" onClick={() => {this.handleDelete(item.id, item.rack)} }/></span>
                                     </li>
                                 </ul>
                             </li>
@@ -88,14 +92,14 @@ const connectionStrategies = connect(
     // 2d argument : stratégie d'écriture (dans le state privé global)
     (dispatch, ownProps) => {
       return {
-        clickOnFav: (userId, itemId) => {
-            console.log('click sur fav ', userId, itemId);
+        clickOnFav: (userId, itemId, favlist) => {
+            console.log('click sur fav ', userId, itemId, favlist);
           
-          dispatch( {type: "CLICK_FAV", value: {user: userId, item: itemId}} );
+          dispatch( {type: "CLICK_FAV", value: {user: userId, item: itemId, favlist}} );
         },
-        deleteItem: (id) => {
-          console.log('dans deleteItem id: ', id);
-        dispatch( {type: "DELETE_ITEM", value: id} );
+        deleteItem: (id, rack) => {
+          console.log('dans deleteItem id: ', id, rack);
+        dispatch( {type: "DELETE_ITEM", value: {id, rack} });
       }
         
       };

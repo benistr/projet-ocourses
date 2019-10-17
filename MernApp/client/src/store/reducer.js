@@ -59,15 +59,20 @@ const reducer = (state = initialState, action = defaultAction) => {
     //Gestion de la suppression d'un tâche 
     case 'DELETE_ITEM': {
       let updatedItemList = state.itemList;
-      console.log('suppression item id:', action.value);
+      console.log('suppression item id:', action.value.id);
       for (let i=0; i <= updatedItemList.length -1; i++) {
         console.log("dans le for de delete_item");
-          if(updatedItemList[i].id == action.value){
+          if(updatedItemList[i].id == action.value.id){
             console.log("item identique trouvé", updatedItemList[i])
+            console.log("test d'un filter sur rack", action.value.rack)
+            //Je veux descendre mon item list en regardant combien d'items ont le même rayon que celui que j'ai suprrimé
+            let rackNumber = updatedItemList.filter(item => item.rack == action.value.rack).length;
+            console.log('nombre d\'item avec le même rayon')
             updatedItemList.splice(i, 1);
           }
         }
-      console.log("itemsOnListe suite suppression: ", updatedItemList);
+      console.log("itemsOnListe suite suppression: ", updatedItemList, 'et rackList', state.rackList);
+      
       // console.log('tableau après suppression :',updatedTasks);
       return {
         ...state,
@@ -103,7 +108,8 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
     case "CLICK_FAV" : {
-      console.log('click fav value', action.value, 'user', action.value.user)
+      console.log('click fav value', action.value, 'user', action.value.user, 'favlist', action.value.favlist)
+      //Je récupère la liste des items pour mettre à jour leur propriété fav
       let updatedItemList = state.itemList;
       console.log('dans reducer action CLICK_FAV');
       for (let i=0; i <= updatedItemList.length -1; i++) {
@@ -111,14 +117,20 @@ const reducer = (state = initialState, action = defaultAction) => {
           if(updatedItemList[i].id == action.value.item){
             console.log("item identique trouvé", updatedItemList[i])
             console.log(updatedItemList[i].fav);
-            updatedItemList[i].fav = !updatedItemList[i].fav
+            updatedItemList[i].fav = !updatedItemList[i].fav;
             console.log('suite maj: updatedItemList:', updatedItemList)
           }
         }
+        
+
         let newFavList = updatedItemList.filter(item => item.fav === true)
+
+        /**TODO
+         * Faire en sorte que deux favoris ne puisse pas avoir le même nom et si on ajoute un article qui à le même nom qu'un favori, griser l'étoile
+         */
         console.log('suite filter nouveaux favoris :', newFavList);
         axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
-        .then(res => console.log(res.body))
+        // .then(res => console.log(res.body))
 
       return {
         ...state,

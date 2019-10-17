@@ -27,7 +27,10 @@ class CreateList extends React.Component{
             id: 0
         }
         let isConnected = false
+        let favdisplay = false;
 
+        
+        
         if(window.localStorage.getItem('cool-jwt') === null){
             console.log('pas de jwt');
         } else {
@@ -40,7 +43,10 @@ class CreateList extends React.Component{
         }
     }
 
-    
+    changeFavDisplay =() => {
+        this.favdisplay = !this.favdisplay;
+        this.setState({state: this.state})
+    }
     
     
 
@@ -48,7 +54,17 @@ class CreateList extends React.Component{
     handleSubmit = () => {
         console.log('HandleSubmit lancé');
         console.log(this.state)
+        if(this.state.id === 0){
+            this.state.id = Math.random(1,1000)
+        } else {
+            this.state.id = this.state.id;
+        }
         this.props.addItem(this.state)
+        this.setState({product: '',
+        rack: '',
+        quantity: '',
+        fav: false,
+        id: 0})
     }  
 
     deleteItem = (...props) => {
@@ -60,8 +76,6 @@ class CreateList extends React.Component{
     handleChange = (e, key) => {
         this.setState({
             [key]: e.target.value,
-            fav: false,
-            id: Math.random(1, 100)
         })
     }
     
@@ -77,6 +91,8 @@ class CreateList extends React.Component{
 
 
     render() {
+        
+
       return  <div className="mainListContainer">
           <form onSubmit={(event) => {this.handleListSave()}}> 
       <input type="text" className="input" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>
@@ -114,26 +130,30 @@ class CreateList extends React.Component{
          
 
         {
+    
             this.isConnected && 
             <div className="favorites">
-                <h2>Ajoutez vos favoris</h2>
-                {/* Faire un map sur la liste des favoris que j'obtiendrais du state */}
-                <ul>
-                {/*console.log(this.props.favItems)*/}
-               
-                {this.props.favItems.map(item => {
-                    return <li onClick={ () => {
-                        this.setState({
-                            product: item.product,
-                            rack: item.rack,
-                            fav: true,
-                            id: Math.random(1, 100)
-                        })
+                <h2 className="favs-title" onClick={ () => this.changeFavDisplay()}>Vos favoris</h2>
+                {/* Faire un map sis.favClass}ur la liste des favoris que j'obtiendrais du state */}
+                <div className={this.favdisplay? 'favs' : 'favs-hidden'}>
+                        <ul>
+                        {/*console.log(this.props.favItems)*/}
                     
-                        }
-                    }>{item.product}</li>
-                })}
-                </ul>
+                        {this.props.favItems.map(item => {
+                            
+                            return <li key={item.id} className="favs-li" onClick={ () => {
+                                this.setState({
+                                    product: item.product,
+                                    rack: item.rack,
+                                    fav: true,
+                                    id: item.id
+                                })
+                            
+                                }
+                            }>{item.product}</li>
+                        })}
+                        </ul>
+                </div>
             </div>
         }
         {this.props.rackList.length > 0 &&
