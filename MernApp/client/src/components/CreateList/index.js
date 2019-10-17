@@ -27,7 +27,6 @@ class CreateList extends React.Component{
         }
         let isConnected = false
         let favdisplay = false;
-        
 
         
         
@@ -60,6 +59,11 @@ class CreateList extends React.Component{
             this.state.id = this.state.id;
         }
         this.props.addItem(this.state)
+        this.setState({product: '',
+        rack: '',
+        quantity: '',
+        fav: false,
+        id: 0})
     }  
 
     deleteItem = (...props) => {
@@ -127,7 +131,8 @@ class CreateList extends React.Component{
                         {/*console.log(this.props.favItems)*/}
                     
                         {this.props.favItems.map(item => {
-                            return <li className="favs-li" onClick={ () => {
+                            
+                            return <li key={item.id} className="favs-li" onClick={ () => {
                                 this.setState({
                                     product: item.product,
                                     rack: item.rack,
