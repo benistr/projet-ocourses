@@ -7,6 +7,7 @@ const initialState = {
   isConnected: false,
   itemList: [],
   itemsIds: [],
+  allIds: [],
   newItem: {},
   rackList: [],
   favItems: [],
@@ -88,12 +89,16 @@ const reducer = (state = initialState, action = defaultAction) => {
 }
     let updatedItemsIds = state.itemsIds;
     updatedItemsIds.push(action.value.id);
-      console.log("sortie du if de verif de rack",updatedItemList);
+    updatedItemsIds[action.value.id] = action.value;
+    let newAllIds = state.allIds;
+    newAllIds.push(action.value.id)
+      console.log("sortie du if de verif de rack",updatedItemList, updatedItemsIds);
       return {
         ...state,
         itemList: updatedItemList,
         rackList: newRackList,
         itemsIds: updatedItemsIds,
+        allIds: newAllIds,
         newItem: {}
       }
     }
