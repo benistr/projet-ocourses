@@ -24,7 +24,8 @@ class CreateList extends React.Component{
             rack: '',
             quantity: '',
             fav: false,
-            id: 0
+            id: 0,
+            shopped: false,
         }
         let isConnected = false
         let favdisplay = false;
@@ -64,7 +65,9 @@ class CreateList extends React.Component{
         rack: '',
         quantity: '',
         fav: false,
-        id: 0})
+        id: 0,
+        shopped: false
+    })
     }  
 
     deleteItem = (...props) => {
@@ -146,7 +149,8 @@ class CreateList extends React.Component{
                                     product: item.product,
                                     rack: item.rack,
                                     fav: true,
-                                    id: item.id
+                                    id: item.id,
+                                    shopped: false,
                                 })
                             
                                 }

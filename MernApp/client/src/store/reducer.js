@@ -145,6 +145,24 @@ const reducer = (state = initialState, action = defaultAction) => {
       }
     }
 
+    case "ITEM_SHOPPED" :{
+      let updatedItemList = state.itemList;
+      console.log('dans reducer action Item shopped');
+      for (let i=0; i <= updatedItemList.length -1; i++) {
+        console.log("dans le for de item shopped");
+          if(updatedItemList[i].id == action.value){
+            console.log("item identique trouvé", updatedItemList[i])
+            console.log(updatedItemList[i].fav);
+            updatedItemList[i].shopped = !updatedItemList[i].shopped;
+            console.log('suite maj: updatedItemList:', updatedItemList)
+          }
+        }
+        return {
+          ...state,
+          itemsOnList: updatedItemList,
+        }
+    }
+
     case 'LOAD_LIST_DETAILS' : {
       console.log('dans charge list' , action.value)
 
