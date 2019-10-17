@@ -101,14 +101,14 @@ editProfile = () => {
                     value={this.state.value}
                     />
                 }
-                    <form>
+                    <form className="account-buttons">
                         <button onClick={this.editProfile} type="submit" className="ui button">
                         Modifier vos informations
                         </button>
                         <button type="submit" className="ui button">
                         Modifier votre mot de passe
                         </button>
-                        <button onClick={this.logOut} type="submit" className="ui red button">
+                        <button onClick={this.logOut} type="submit" className="ui blue button">
                         Déconnexion
                         </button>
                     </form>
