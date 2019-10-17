@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
 import { withRouter } from 'react-router-dom'
 import axios from 'axios';
-
+import { NavLink } from 'react-router-dom';
 import * as jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 
