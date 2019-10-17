@@ -108,7 +108,7 @@ editProfile = () => {
                         <button type="submit" className="ui button">
                         Modifier votre mot de passe
                         </button>
-                        <button onClick={this.logOut} type="submit" className="ui blue button">
+                        <button onClick={this.logOut} type="submit" className="ui red button">
                         Déconnexion
                         </button>
                     </form>
