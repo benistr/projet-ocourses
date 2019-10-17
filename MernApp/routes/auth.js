@@ -3,6 +3,7 @@ const User = require('../model/User');
 const Lists = require('../model/Lists');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+const ObjectId = require('mongodb').ObjectId
 const { registerValidation, loginValidation } = require ('../validation');
 
 
@@ -110,7 +111,7 @@ router.get('/favlist/:id', async(req,res) => {
 
 //Récupérer les infos d'une liste
 router.get('/getlist/:id', async(req, res) => {
-    const getlist = await Lists.find({ _userId: req.param.id });
+    const getlist = await Lists.find({ userId: req.params.id });
     console.log('retour fait par getlist', getlist, 'pour l\'user', req.params.id);
     
     
