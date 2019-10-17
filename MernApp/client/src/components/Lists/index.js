@@ -6,6 +6,7 @@ import { DragDropContext, Droppable } from 'react-beautiful-dnd';
 import * as jwtDecode from 'jwt-decode';
 import axios from 'axios';
 
+
 //Local imports
 import './lists.scss';
 import './../App/App.css';
@@ -35,7 +36,8 @@ class Lists extends React.Component {
         super(props)
             this.state = {
                 initialData,
-                listreceived: {}
+                listreceived: {},
+                
             }
             if(window.localStorage.getItem('cool-jwt') === null){
                 console.log('pas de jwt');
@@ -45,8 +47,8 @@ class Lists extends React.Component {
                 // console.log(userId._id);
                 axios.get(`http://localhost:8800/api/user/getlist/${userId._id}`)
                 .then(res => {
-                    console.log('réponses reçue',res.data);
-                    this.setState({...this.state, initialData: res.data})
+                    // console.log('réponses reçue',res.data.response, 'et les listes', );
+                    this.setState({...this.state, initialData: res.data.response})
                 })
       
             }
@@ -117,11 +119,14 @@ class Lists extends React.Component {
                     direction="vertical" 
                     type="column"
                 >
+                    
                 {provided => (
                     <Container
+                    
                     {...provided.droppableProps}
                     ref={provided.innerRef}
                     >
+                    
                     {this.state.initialData.columnOrder.map((columnId, index) => {
                     const column = this.state.initialData.columns[columnId];
                     const tasks = column.taskIds.map(
@@ -148,6 +153,5 @@ class Lists extends React.Component {
         
     }
 }
-
 
 export default Lists;
