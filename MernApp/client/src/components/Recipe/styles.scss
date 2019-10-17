@@ -75,6 +75,16 @@
     border-bottom-right-radius: 5px;
 }
 
+.soup {
+    padding-top: 0.5rem;
+    height: 260px;
+    background-image: url(./soup.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
 .summary {
     display: block;
     text-align: left;
@@ -89,7 +99,17 @@
 
 .recipe-items {
     display: none;
-    
+}
+
+.addRecipe {
+    text-align: center;
+}
+
+#addRecipeNav:hover {
+    color: $text-color;
+    transform: scale(1.05, 1.05);
+    transition-duration: 200ms, 300ms;
+    font-weight: bold;
 }
 
 

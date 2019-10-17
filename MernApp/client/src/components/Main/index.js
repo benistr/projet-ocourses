@@ -54,13 +54,13 @@ class Main extends React.Component {
         <div className="mainContainer">
             <p className="navigation">▶ Accueil</p>
             {this.state.isConnected && 
-            <p>Bonjour {this.state.user.name} !
-            </p>
+            <div className="welcome">Bonjour {this.state.user.surname} !
+            </div>
         }
         <div className="gradient-box">
         <div className="topSpeech">
                     
-            <h2 className="slogan">On ne peut pas pousser pas votre caddie 
+            <h2 className="slogan">On ne peut pas pousser votre caddie 
             mais on peut vous aider pour le reste !</h2>
             <div className="description">
                 <div className="fred">

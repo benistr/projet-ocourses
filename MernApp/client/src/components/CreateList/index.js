@@ -19,6 +19,7 @@ class CreateList extends React.Component{
         console.log('props reçu', props);
         console.log('rackList:', props.rackList)
         this.state = {
+            listName: '',
             product: '',
             rack: '',
             quantity: '',
@@ -37,7 +38,7 @@ class CreateList extends React.Component{
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
             this.isConnected = true,
-            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props) 
+            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props, 'tentative de refaire tasks', this.props.itemsIds, 'et tasksId', this.props.allIds) 
   
         }
     }
@@ -79,8 +80,13 @@ class CreateList extends React.Component{
     }
     
     handleListSave = () => {
-        
-        console.log('click sur enregistrement', this.props.itemList)
+        event.preventDefault();
+        let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
+        console.log('click sur enregistrement', 'nom de la liste', this.state.listName, 'tableau des rayons', this.props.rackList, 'tableau des items', this.props.itemList)
+        axios.post(`http://localhost:8800/api/user/newlist/${userId._id}`, {listName: this.state.listName, racks: this.props.rackList, products: this.props.itemList})
+        .then( res => {
+            console.log('réponse reçu', res.data)
+        })
     }
 
 
@@ -88,7 +94,10 @@ class CreateList extends React.Component{
         
 
       return  <div className="mainListContainer">
- 
+          <form onSubmit={(event) => {this.handleListSave()}}> 
+      <input type="text" className="input" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>
+          <button>Sauvegarder la Liste</button>
+          </form>
        {/* Input de recherche */}
          <form className="inputs" onSubmit= { (e) => { 
              e.preventDefault();
@@ -118,7 +127,7 @@ class CreateList extends React.Component{
          <input type="text" className="input" icon="" placeholder="Quantité" name="quantity" id="quantity" value={this.state.quantity} onChange={(e) => this.handleChange(e, 'quantity')}/>
          <button type="submit">Ajouter</button>
          </form>
-         <button onClick={() => {this.handleSave()}}>Sauvegarder la Liste</button>
+         
 
         {
     

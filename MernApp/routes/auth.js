@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const User = require('../model/User');
+const Lists = require('../model/Lists');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { registerValidation, loginValidation } = require ('../validation');
@@ -76,10 +77,27 @@ router.post('/favlist/:id', async(req, res) => {
     console.log('dans la route favlist', req.params,  'et body', req.body.favlist);
     const user = await User.findOne({ _id: req.params.id});
     const newUser = await User.updateOne({ _id: req.params.id}, {$set: {favlist: req.body.favlist}});
-    console.log('new user', newUser);
-    
-
+    console.log('user',user, 'et new user', newUser);
 })
+
+//Ajouter une nouvelle liste
+router.post('/newlist/:id', async(req, res) => {
+    console.log('dans la route newlist', req.params.id, 'et le contenu', req.body)
+    const list = new Lists ({
+        userId: req.params.id,
+        title: req.body.listName,
+        racks: req.body.racks,
+        products: req.body.products,
+    });
+    try{
+        console.log('on lance savedList');
+        const savedList = await list.save();
+        res.send({list}); 
+    } catch(err){
+        res.status(400).send(err);
+    }
+})
+
 
 router.get('/favlist/:id', async(req,res) => {
     console.log('dans la route get favlist');
@@ -90,6 +108,47 @@ router.get('/favlist/:id', async(req,res) => {
         
 
 
+//Récupérer les infos d'une liste
+router.get('/getlist/:id', async(req, res) => {
+    const getlist = await Lists.find({ _userId: req.param.id });
+    console.log('retour fait par getlist', getlist, 'pour l\'user', req.params.id);
+    
+    
+    let tasks = {};
+    let columns = {};
+    let columnOrder = [];
+    
+
+
+        for(let x = 0; x < getlist.length; x ++) {
+            let taskIds = [];
+            getlist[x].products.forEach(product => {
+                let key = 'task-' + product.id;
+                tasks[key] = {id: key, content: product.product};
+                taskIds.push(key)
+             
+            });
+
+            let key = 'column-' + getlist[x].id;
+            columns[key] = {id: key, title: getlist[x].title, taskIds }
+            columnOrder.push(key);
+             
+        }
+        // console.log('testtasks', tasks, 'testcolumns', columns, 'testcolumnOrder', columnOrder);
+        let response = {
+            tasks,
+            columns,
+            columnOrder
+        }
+       
+        console.log('reponse', response)    
+
+        res.send(response);
+ 
+})
+
+
+ 
 //Obtenir les infos de l'user 
 router.get('/getuser/:id', async (req, res) => {
     console.log('dans auth getUser req:', req.params);
