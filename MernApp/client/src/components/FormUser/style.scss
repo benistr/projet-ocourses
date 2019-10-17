@@ -73,8 +73,10 @@ label {
    //    margin: 2rem;
    }
 
-   .ui.button {
-      justify-items: center;
+   .account-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
    }
 
    // .form-logo {

@@ -101,7 +101,7 @@ editProfile = () => {
                     value={this.state.value}
                     />
                 }
-                    <form>
+                    <form className="account-buttons">
                         <button onClick={this.editProfile} type="submit" className="ui button">
                         Modifier vos informations
                         </button>
