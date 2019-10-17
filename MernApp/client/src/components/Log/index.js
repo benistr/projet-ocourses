@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import axios from 'axios';
 
 import * as jwtDecode from 'jwt-decode';
@@ -172,6 +172,6 @@ const connectionStrategies = connect(
   const LogContainer = connectionStrategies(Log);
   
   // Étape 3 : on exporte le composant connecté qui a été généré
-  export default LogContainer;
+  export default withRouter(LogContainer);
 
 

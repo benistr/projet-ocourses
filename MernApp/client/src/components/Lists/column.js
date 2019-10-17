@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Task from './task';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
 import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -49,7 +50,7 @@ class Column extends React.Component {
   render() {
     return (
       <Contain>
-
+      
       <Draggable draggableId={this.props.column.id} index={this.props.index}>
       {(provided) => (
       <Container {...provided.draggableProps} ref={provided.innerRef}>
@@ -58,6 +59,7 @@ class Column extends React.Component {
          .then(res => {
            console.log('voila la réponse products', res.data.products, 'et racks', res.data.racks);
            this.props.loadList(res.data.products, res.data.racks);
+           this.props.history.push('/create-list')
          })
         }
        } {...provided.dragHandleProps}>{
@@ -110,4 +112,4 @@ const connectionStrategies = connect(
 const ColumnContainer = connectionStrategies(Column);
 
 // Étape 3 : on exporte le composant connecté qui a été généré
-export default ColumnContainer;
+export default withRouter(ColumnContainer);

@@ -138,6 +138,16 @@ const reducer = (state = initialState, action = defaultAction) => {
         favItems: newFavList,       
       }
     }
+
+    case 'LOAD_LIST_DETAILS' : {
+      console.log('dans charge list' , action.value)
+
+      return {
+        ...state,
+        itemList: action.value.products,
+        rackList: action.value.racks,
+      }
+    }
     default: {
       // return state;
       // Dans le cas où on ne comprend pas quelle est l'action à
