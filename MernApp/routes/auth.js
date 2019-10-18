@@ -151,15 +151,6 @@ router.get('/getlist/:id', async(req, res) => {
  
 })
 
-//Supprimer une liste de la bdd
-router.post('/remove'), async (req,res) => {
-    // let listId = req.params.id.substring(7);
-    console.log('suppression de la liste')
-    // const getlist = await Lists.remove({_id: listId })
-    // res.send(getlist);
-}
- 
-
 //récupérer les infos d'une liste par son id 
 router.get('/findlist/:id', async (req, res) => {
     let listId = req.params.id.substring(7);
@@ -202,8 +193,9 @@ router.get('/findlist/:id', async (req, res) => {
     const postupdatedList = await Lists.findOne({_id: listId })
     console.log('nouvelle query', postupdatedList)
     res.send(postupdatedList);
-});
+})
 
+ 
 //Obtenir les infos de l'user 
 router.get('/getuser/:id', async (req, res) => {
     console.log('dans auth getUser req:', req.params);
