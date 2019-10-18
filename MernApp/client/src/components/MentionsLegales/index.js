@@ -5,6 +5,7 @@ const MentionsLegales = () => {
 
     return (
         <div class="mentionContainer">
+        <p className="navigation-mention">▶ Accueil ▶ Mentions Légales</p>
         <h3 className="titre-mentions">Mentions Légales</h3>
 
 
