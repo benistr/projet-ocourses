@@ -134,7 +134,7 @@ componentDidMount(){
             <option value="Poissons">Poissons</option>
             <option value="Produits frais">Produits frais</option>
             <option value="Produits Ménagers">Produits Ménagers</option>
-            <option value="Surgelés">Surgelés</option>
+            <option value="Surgelés">Surgelés</option>w
             <option value="Viandes">Viandes</option>
             <option value="Viennoiseries">Viennoiseries</option>
         </select>
@@ -143,7 +143,7 @@ componentDidMount(){
     </form>
     <div className="save-button">
         <button>Sauvegarder la Liste</button>
-        <button className="delete-button">Effacer la Liste</button>
+        <button onClick={() => this.erase()} className="delete-button">Effacer la Liste</button>
     </div>
     
     {
