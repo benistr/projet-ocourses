@@ -42,7 +42,6 @@
     padding: 5px;   
 }
 
-
 button {
     border-radius: 5px;
     border-color: white;
@@ -55,6 +54,15 @@ button {
     padding: 5px; 
     height: 40px;
 }
+
+.save-button {
+    display: flex;
+    flex-direction: column;
+}
+/*
+.delete-button {
+    flex-wrap: wrap;
+}*/
 
 .categories {
     width: 70%;
@@ -199,8 +207,13 @@ color: #B6B6B6;
 
 .save-button {
     display: flex;
-    flex-wrap: wrap;
+    //flex-wrap: wrap;
+    flex-direction: row;
     padding: .6em;
+}
+
+.delete-button {
+    margin-left: 2px;
 }
 
 button {
@@ -211,8 +224,7 @@ button {
     height: 40px;
     text-align: center; 
     padding: 6px; 
-    align-self: center;
-    
+    align-self: center;   
 }
 
 }

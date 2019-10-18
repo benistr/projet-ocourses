@@ -127,7 +127,8 @@ class CreateList extends React.Component{
         <button type="submit">Ajouter</button>   
     </form>
     <div className="save-button">
-        <button className="save-button">Sauvegarder la Liste</button>
+        <button>Sauvegarder la Liste</button>
+        <button className="delete-button">Effacer la Liste</button>
     </div>
     
     {
