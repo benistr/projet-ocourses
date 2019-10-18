@@ -8,6 +8,7 @@ const dotenv = require("dotenv");
 require('dotenv').config({ path: './routes/.env' });
 
 dotenv.config();
+mongoose.set('useFindAndModify', false);
 
 //Connexion à la base de donnée
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () =>
