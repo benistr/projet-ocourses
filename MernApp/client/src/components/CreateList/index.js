@@ -142,7 +142,7 @@ componentDidMount(){
         <button type="submit">Ajouter</button>   
     </form>
     <div className="save-button">
-        <button>Sauvegarder la Liste</button>
+        <button onClick={()=> this.handleListSave()}>Sauvegarder la Liste</button>
         <button onClick={() => this.erase()} className="delete-button">Effacer la Liste</button>
     </div>
     
