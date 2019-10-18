@@ -47,7 +47,7 @@ function Nav() {
           </NavLink>
         </li>
         <li id="nav-desktop">
-          <NavLink to="/saisons" id="a" href="">Légumes de saison
+          <NavLink to="/carousel" id="a" href="">Légumes de saison
           </NavLink>
         </li>
 

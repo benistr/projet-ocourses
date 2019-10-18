@@ -26,6 +26,7 @@ const Carousel = () => {
 
 
   return (
+
     <div className="containerSlide">
       <Slide {...proprietes}>
         <div className="each-slide">
