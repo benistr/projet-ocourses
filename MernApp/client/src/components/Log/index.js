@@ -136,7 +136,7 @@ handleSubmit = () => {
             </form>
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
+            <NavLink to="/signup" id="navlink">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
             </div>
 
         );
