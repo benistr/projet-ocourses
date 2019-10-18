@@ -78,8 +78,8 @@ const Menu = ({ open, ...props }) => {
         </a>
         </NavLink>
 
-        <NavLink to='' href="">
-        <a className="bord" href="/" tabIndex={tabIndex} onClick={() => props.setOpen(false)}>
+        <NavLink to='/mentionslegales' href="">
+        <a className="bord" href="/mentionslegales" tabIndex={tabIndex} onClick={() => props.setOpen(false)}>
           <span aria-hidden="true"></span>
           <div className="text">
             Mentions légales<img className="fleche" src={Fleche}/>

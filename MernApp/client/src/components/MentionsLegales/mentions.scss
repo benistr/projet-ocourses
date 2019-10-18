@@ -1,0 +1,42 @@
+@import 'src/styles/vars';
+
+.mentionContainer {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding-top: 120px;
+    font-family: $font-family;
+    background-color:#F9F9F9;
+}
+
+.navigation-mention {
+    display: block;
+    width:90%;
+    font-family: $font-family;
+    color: $text-color;
+    padding-left: 2.5rem;
+}
+
+.titre-mentions {
+    font-size: 1.5rem;
+    margin: 16px 0;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.para-mentions {
+    text-align: center;
+}
+
+a:hover {
+    transform: scale(1.05, 1.05);
+    transition-duration: 200ms, 300ms;
+    color: $text-color;
+    font-weight: bold;
+}
+
+a {
+    font-weight: bold;
+}
