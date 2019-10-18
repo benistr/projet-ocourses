@@ -10,6 +10,10 @@ const Recipe = () => {
    
     return  <div className="mainContainer">
             <p className="navigation">▶ Accueil ▶ Mes recettes</p>
+
+            <div className="wip">Patience, la fonctionnalité recette sera bientôt cuite ! Euh... prête !
+            </div>
+
                 <div className="mainContent"><a href="">
                     <div className="title">Lasagnes à l'italienne</div>
                     <div className="lasagnes"> 

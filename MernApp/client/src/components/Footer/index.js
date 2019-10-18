@@ -11,7 +11,7 @@ const Footer = () => (
 
         <div className="addAList">
             <div className="list">
-                <p className="buttonLabel">Ajouter une nouvelle Liste </p>
+                <p className="buttonLabel">Ajouter une nouvelle liste </p>
                 <NavLink to="/create-list" href=""><img className="addlist"  src={Addlist}></img></NavLink>
             </div>
         </div>

@@ -3,6 +3,7 @@ import { Input } from 'semantic-ui-react';
 import * as jwtDecode from 'jwt-decode';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './style.scss';
 
@@ -44,6 +45,7 @@ class FormUser extends React.Component {
 
 logOut = () => {
     window.localStorage.removeItem('cool-jwt');
+    this.props.logOutClearLists();
     this.setState({redirect: true});
     }
 
@@ -101,7 +103,7 @@ editProfile = () => {
                     value={this.state.value}
                     />
                 }
-                    <form>
+                    <form className="account-buttons">
                         <button onClick={this.editProfile} type="submit" className="ui button">
                         Modifier vos informations
                         </button>
@@ -118,4 +120,35 @@ editProfile = () => {
     }
 }
 
-export default FormUser;
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+    // 1er argument : stratégie de lecture (dans le state privé global)
+    (state, ownProps) => {
+      return {
+        ...state
+      };
+    },
+  
+    // 2d argument : stratégie d'écriture (dans le state privé global)
+    (dispatch, ownProps) => {
+      return {
+        clickOnFav: (userId, itemId, favlist) => {
+            console.log('click sur fav ', userId, itemId, favlist);
+          
+          dispatch( {type: "CLICK_FAV", value: {user: userId, item: itemId, favlist}} );
+        },
+        deleteItem: (id, rack) => {
+          console.log('dans deleteItem id: ', id, rack);
+        dispatch( {type: "DELETE_ITEM", value: {id, rack} });
+      },
+        clearItemList: () => {
+            dispatch( {type: "CLEAR_LIST_LOGOUT", value: {}});
+        }
+      };
+    },
+  );
+  
+  // Étape 2 : on applique ces stratégies à un composant spécifique.
+const FormUserContainer = connectionStrategies(FormUser);
+
+export default FormUserContainer;

@@ -76,9 +76,9 @@ router.post('/login', async (req, res) => {
 //Enregistrement des favoris de l'user
 router.post('/favlist/:id', async(req, res) => {
     console.log('dans la route favlist', req.params,  'et body', req.body.favlist);
-    const user = await User.findOne({ _id: req.params.id});
     const newUser = await User.updateOne({ _id: req.params.id}, {$set: {favlist: req.body.favlist}});
-    console.log('user',user, 'et new user', newUser);
+    const user = await User.findOne({_id: req.params.id})
+    console.log('nouvelle favlist', user.favlist);
 })
 
 //Ajouter une nouvelle liste
@@ -100,7 +100,7 @@ router.post('/newlist/:id', async(req, res) => {
 })
 
 
-router.get('/favlist/:id', async(req,res) => {
+router.get('/getfavlist/:id', async(req,res) => {
     console.log('dans la route get favlist');
     const user = await User.findOne( {_id: req.params.id});
     console.log('voila la favlist demandée', user.favlist);
@@ -109,7 +109,7 @@ router.get('/favlist/:id', async(req,res) => {
         
 
 
-//Récupérer les infos d'une liste
+//Récupérer les infos des listes sauvegardées
 router.get('/getlist/:id', async(req, res) => {
     const getlist = await Lists.find({ userId: req.params.id });
     console.log('retour fait par getlist', getlist, 'pour l\'user', req.params.id);
@@ -119,9 +119,12 @@ router.get('/getlist/:id', async(req, res) => {
     let columns = {};
     let columnOrder = [];
     
+    
+    
 
 
         for(let x = 0; x < getlist.length; x ++) {
+            
             let taskIds = [];
             getlist[x].products.forEach(product => {
                 let key = 'task-' + product.id;
@@ -142,12 +145,55 @@ router.get('/getlist/:id', async(req, res) => {
             columnOrder
         }
        
-        console.log('reponse', response)    
+        console.log('reponse', response, 'les produits', tasks)    
 
-        res.send(response);
+        res.send({response, columnOrder});
  
 })
 
+//récupérer les infos d'une liste par son id 
+router.get('/findlist/:id', async (req, res) => {
+    let listId = req.params.id.substring(7);
+    const getlist = await Lists.findOne({_id: listId })
+    userId = getlist.userId;
+    console.log('user id', userId)
+    console.log('liste demandée',getlist)
+    //Après avoir trouvé la liste on récupère la liste des favoris de l'user.
+    const userfavs = await User.findOne({ _id: ObjectId(userId)});
+    console.log("la liste des favoris de l'user", userfavs.surname, "est celle ci", userfavs.favlist);
+    //Je parcours les produits composant la liste demlandée
+    for (let x = 0; x < getlist.products.length; x ++) {
+        //Je vérifie leur nom et leur propriété fav
+        console.log('test du name',getlist.products[x].product, getlist.products[x].fav);
+        //Si la liste des favs de l'user est > 0
+            if(userfavs.favlist.length > 0){
+                // Je la passe en revue
+                for(let y = 0; y < userfavs.favlist.length; y ++){
+                    // Je compare les noms des produits passés en maj
+                    if(getlist.products[x].product.toUpperCase() == userfavs.favlist[y].product.toUpperCase()){
+                        //Si ce sont les mêmes, je m'assurer que la propriété fav est true
+                        console.log("l'item", getlist.products[x].product , "est dans les fav");
+                        getlist.products[x].fav = true;
+                        console.log('donc voici la nouvelle propriété', getlist.products[x].product.toUpperCase(), getlist.products[x].fav)
+                    } else {
+                        //Sinon je m'assure que fav est false
+                        console.log("l'item n'est pas dans les fav");
+                        getlist.products[x].fav = false;
+                        console.log("log donc on s'assure que c'est bien false pour", getlist.products[x].product, getlist.products[x].fav );
+                    }
+                }
+            }else {
+                //Si la longueur de la liste de fav de l'user est 0, il n'a pas de favoris
+                //Je passe fav en false
+                getlist.products[x].fav = false;
+            }
+    };
+    console.log('sortie du for voici la nouvelle liste', getlist);
+    let updatedList = await Lists.findOneAndUpdate({_id: listId}, getlist, {upsert:true})
+    const postupdatedList = await Lists.findOne({_id: listId })
+    console.log('nouvelle query', postupdatedList)
+    res.send(postupdatedList);
+})
 
  
 //Obtenir les infos de l'user 

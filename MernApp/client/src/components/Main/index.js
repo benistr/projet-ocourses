@@ -82,7 +82,7 @@ class Main extends React.Component {
         </div>
 
                 <div className="mainContent">
-                    <NavLink to="/saisons" id="a" href="">
+                    <NavLink to="/carousel" id="a" href="">
                     <div className="title">Les fruits & légumes du mois d'octobre</div>
                         <div className="box"></div>
                             <Responsive minWidth={1024}>

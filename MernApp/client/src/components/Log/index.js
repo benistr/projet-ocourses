@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { Input } from 'semantic-ui-react';
-import { NavLink } from 'react-router-dom';
+import { withRouter } from 'react-router-dom'
 import axios from 'axios';
-
+import { NavLink } from 'react-router-dom';
 import * as jwtDecode from 'jwt-decode';
 import { connect } from 'react-redux';
 
@@ -60,13 +60,6 @@ handleChange = () => {
 
 handleSubmit = () => {
     event.preventDefault();
-
-    axios.post('/auth/getToken', {
-    
-        email: this.state.email,
-        password: this.state.password,
-    
-    }).then(res => localStorage.setItem('cool-jwt', res.data));
 
     //je vérifie que le login existe et je récupère le token
     axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
@@ -136,7 +129,7 @@ handleSubmit = () => {
             </form>
             <br></br>
             <small>Comment ? Vous n'avez pas encore de compte ?</small>
-            <NavLink to="/signup">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
+            <NavLink to="/signup" id="navlink">▶ ▶ ▶ Créez un compte ici ◀ ◀ ◀</NavLink>
             </div>
 
         );
@@ -172,6 +165,6 @@ const connectionStrategies = connect(
   const LogContainer = connectionStrategies(Log);
   
   // Étape 3 : on exporte le composant connecté qui a été généré
-  export default LogContainer;
+  export default withRouter(LogContainer);
 
 

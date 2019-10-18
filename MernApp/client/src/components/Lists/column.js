@@ -2,6 +2,9 @@ import React from 'react';
 import styled from 'styled-components';
 import Task from './task';
 import { Droppable, Draggable } from 'react-beautiful-dnd';
+import {connect} from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import axios from 'axios';
 
 
 
@@ -18,7 +21,7 @@ const Container = styled.div`
   background-color: #FFF;
   box-shadow: 4px 4px 6px #D7D7D7;
   padding:1 rem;
-
+  margin-bottom: 60px;
   display: flex;
   flex-direction: column;
 
@@ -40,15 +43,26 @@ flex-grow: 1;
 min-height: 50px;
 `;
 
-export default class Column extends React.Component {
+class Column extends React.Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <Contain>
-
+      
       <Draggable draggableId={this.props.column.id} index={this.props.index}>
       {(provided) => (
       <Container {...provided.draggableProps} ref={provided.innerRef}>
-        <Title {...provided.dragHandleProps}>{
+       <Title onClick={ () => { 
+         axios.get(`http://localhost:8800/api/user/findlist/${this.props.column.id}`)
+         .then(res => {
+           console.log('voila la réponse products', res.data.products, 'et racks', res.data.racks);
+           this.props.loadList(res.data.products, res.data.racks);
+           this.props.history.push('/create-list')
+         })
+        }
+       } {...provided.dragHandleProps}>{
           this.props.column.title}</Title>
         <Droppable droppableId={this.props.column.id} type="task">
         {(provided) => (
@@ -71,3 +85,31 @@ export default class Column extends React.Component {
 }
 
 }
+
+// Étape 1 : on définit des stratégies de connexion au store de l'app.
+const connectionStrategies = connect(
+  // 1er argument : stratégie de lecture (dans le state privé global)
+  (state, ownProps) => {
+    return {
+      connectedUser: state.connectedUser,
+      favItems: state.favItems,
+      isConnected: state.isConnected
+    };
+  },
+
+  // 2d argument : stratégie d'écriture (dans le state privé global)
+  (dispatch, ownProps) => {
+    return {
+      loadList : (products, racks) => {
+          console.log('click sur une liste', products, racks),
+          dispatch({type: 'LOAD_LIST_DETAILS', value : {products, racks}})
+      }
+    };
+  },
+);
+
+// Étape 2 : on applique ces stratégies à un composant spécifique.
+const ColumnContainer = connectionStrategies(Column);
+
+// Étape 3 : on exporte le composant connecté qui a été généré
+export default withRouter(ColumnContainer);

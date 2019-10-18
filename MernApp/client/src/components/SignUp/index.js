@@ -41,9 +41,13 @@ handleSubmit = () => {
     console.log(this.state);
     axios.post('http://localhost:8800/api/user/register' , { user: this.state })
         .then(res => {console.log(res.data);
+            if(res.status = 400) {
+                console.log("stop!",res)
+            } else{
         localStorage.setItem('token', res.data.token);
         localStorage.setItem('name', res.data.user.name)
         this.props.history.push('/');
+            }
         })
         
     }

@@ -24,7 +24,8 @@ class CreateList extends React.Component{
             rack: '',
             quantity: '',
             fav: false,
-            id: 0
+            id: 0,
+            shopped: false,
         }
         let isConnected = false
         let favdisplay = false;
@@ -38,7 +39,7 @@ class CreateList extends React.Component{
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
             this.isConnected = true,
-            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props, 'tentative de refaire tasks', this.props.itemsIds, 'et tasksId', this.props.allIds) 
+            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props.favItems) 
   
         }
     }
@@ -48,7 +49,9 @@ class CreateList extends React.Component{
         this.setState({state: this.state})
     }
     
-    
+componentDidMount(){
+    console.log('cdm favlist', this.props.favItems)
+}
 
 // Méthode ajoutant le produit à la list des items du state.
     handleSubmit = () => {
@@ -64,7 +67,9 @@ class CreateList extends React.Component{
         rack: '',
         quantity: '',
         fav: false,
-        id: 0})
+        id: 0,
+        shopped: false
+    })
     }  
 
     deleteItem = (...props) => {
@@ -143,13 +148,15 @@ class CreateList extends React.Component{
                     
                     {this.props.favItems.map(item => {
                             
-                    return <li key={item.id} className="favs-li" onClick={ () => {
-                        this.setState({
-                            product: item.product,
-                            rack: item.rack,
-                            fav: true,
-                            id: item.id
-                        })
+
+                            return <li key={item.id} className="favs-li" onClick={ () => {
+                                this.setState({
+                                    product: item.product,
+                                    rack: item.rack,
+                                    fav: true,
+                                    id: item.id,
+                                    shopped: false,
+                                })
                             
                         }
                             }>{item.product}</li>

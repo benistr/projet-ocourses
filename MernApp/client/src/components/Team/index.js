@@ -35,7 +35,7 @@ const Team = () => {
                             <p className="title-team">Product Owner</p>
                             </div>
                             <div className="summary-team">
-                            <p className="title-team">Support Dev Back</p>
+                            <p className="title-team">Support Dev Back / Front</p>
                             </div>
                             <div className="summary-team">
                             <p className="title-team">Strasbourg</p>
