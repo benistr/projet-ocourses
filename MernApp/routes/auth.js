@@ -76,9 +76,9 @@ router.post('/login', async (req, res) => {
 //Enregistrement des favoris de l'user
 router.post('/favlist/:id', async(req, res) => {
     console.log('dans la route favlist', req.params,  'et body', req.body.favlist);
-    const user = await User.findOne({ _id: req.params.id});
     const newUser = await User.updateOne({ _id: req.params.id}, {$set: {favlist: req.body.favlist}});
-    console.log('user',user, 'et new user', newUser);
+    const user = await User.findOne({_id: req.params.id})
+    console.log('nouvelle favlist', user.favlist);
 })
 
 //Ajouter une nouvelle liste
@@ -100,7 +100,7 @@ router.post('/newlist/:id', async(req, res) => {
 })
 
 
-router.get('/favlist/:id', async(req,res) => {
+router.get('/getfavlist/:id', async(req,res) => {
     console.log('dans la route get favlist');
     const user = await User.findOne( {_id: req.params.id});
     console.log('voila la favlist demandée', user.favlist);
