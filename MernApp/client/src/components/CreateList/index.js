@@ -91,6 +91,7 @@ componentDidMount(){
         axios.post(`http://localhost:8800/api/user/newlist/${userId._id}`, {listName: this.state.listName, racks: this.props.rackList, products: this.props.itemList})
         .then( res => {
             console.log('réponse reçu', res.data)
+            this.props.history.push('/listes')
         })
     }
 
