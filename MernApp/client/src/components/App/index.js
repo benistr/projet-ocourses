@@ -25,6 +25,7 @@ import Carousel from 'src/components/Carousel';
 import Recipe from 'src/components/Recipe';
 import Season from 'src/components/Season';
 import Navet from 'src/components/App/navet.png';
+import MentionsLegales from 'src/components/MentionsLegales';
 // Styles et assets
 import './App.css';
 import './app.sass';
@@ -61,6 +62,7 @@ const App = () => {
               <Route path="/create-list" component={CreateListContainer} />
               <Route path="/signup" component={SignUp} />
               <Route path="/carousel" component={Carousel} />
+              <Route path="/mentionslegales" component={MentionsLegales} />
               
               <Route render={
                 () => 

@@ -21,8 +21,8 @@ const Footer = () => (
     
         <div className="footer-menu">
             <ul className='nav-footer'>
-                <li className="li" ><a href="">CGU</a></li>  
-                <li className="li "><a href="">Mentions légales</a></li>
+                <li className="li"><a href="">CGU</a></li>  
+                <li className="li"><a href="/mentionslegales">Mentions légales</a></li>
                 <li className="li"><a href="">Contact</a></li>
             </ul>
         </div>
