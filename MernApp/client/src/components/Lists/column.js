@@ -57,7 +57,7 @@ class Column extends React.Component {
 
   deleteList = (id) => {
     console.log('click pour supprimer', id);
-    // axios.post(`http://localhost:8800/api/user/remove`)
+    axios.post(`http://localhost:8800/api/user/remove`)
     // this.props.deleteFromDB(id);
   }
   render() {
