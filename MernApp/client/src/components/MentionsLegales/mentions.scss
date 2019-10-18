@@ -1,5 +1,15 @@
 @import 'src/styles/vars';
 
+.mentionContainer {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    padding-top: 120px;
+    font-family: $font-family;
+    background-color:#F9F9F9;
+}
 
 h3 {
     font-size: 1.5rem;

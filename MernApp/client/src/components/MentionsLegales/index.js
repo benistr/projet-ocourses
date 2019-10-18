@@ -4,7 +4,7 @@ import './mentions.scss'
 const MentionsLegales = () => {
 
     return (
-        <div class="mainContainer">
+        <div class="mentionContainer">
         <h3 class="mb-3">Mentions Légales</h3>
 
 
