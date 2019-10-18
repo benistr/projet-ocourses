@@ -94,10 +94,20 @@ componentDidMount(){
         })
     }
 
+    erase = () => {
+        this.props.eraseList();
+        this.setState({product: '',
+        rack: '',
+        quantity: '',
+        fav: false,
+        id: 0,
+        shopped: false
+    })
+    }
+
 
     render() {
         return  <div className="mainListContainer">
-
     <form className="inputs" onSubmit={(event) => {this.handleListSave()}}> 
         <input type="text" className="form" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>         
     </form>
@@ -207,6 +217,9 @@ const connectionStrategies = connect(
             console.log('dans addItem, ajout de ', item)
             dispatch( {type: "ADD_ITEM_TO_LIST", value: item})
         },
+        eraseList: () => {
+            dispatch({ type: 'ERASE_LIST'})
+        }
         
       };
     },
