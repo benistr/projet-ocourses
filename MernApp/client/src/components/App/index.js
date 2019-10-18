@@ -30,6 +30,7 @@ import MentionsLegales from 'src/components/MentionsLegales';
 import './App.css';
 import './app.sass';
 import './error404.scss';
+
 // App Component
 // ATTENTION : penser à importer et mettre en place la balise Router dans le index.js du dossier src
 // Import de Router, Switch et Route et mise en place des routes avec les premiers composants
