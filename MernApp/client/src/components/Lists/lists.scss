@@ -37,7 +37,9 @@
     color: $text-color;
 }
 
-
+.list-title {
+    align-self: center;
+}
 .title {
     display: flex;
     justify-content: space-between;
@@ -52,10 +54,12 @@
 .delete {
     width: 2em;
     margin-right: 4px;
+    align-self: center;
 }
 
 .delete:hover {
     transform: scale(1.05); 
+    cursor: default;
     // transform: rotate(90deg);
     transition-duration: 200ms, 300ms;
     filter: drop-shadow(1px 1px 2px #DCDCDC);

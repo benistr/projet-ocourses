@@ -172,6 +172,17 @@ const reducer = (state = initialState, action = defaultAction) => {
         rackList: action.value.racks,
       }
     }
+    case 'ERASE_LIST' : {
+      return{
+        ...state,
+        itemList: [],
+        rackList: []
+      }
+    }
+    case 'DELETE_FROM_DB':{
+      console.log('dans le reducer')
+      axios.post(`http://localhost:8800/api/user/remove-list/${action.value}`)
+    }
     default: {
       // return state;
       // Dans le cas où on ne comprend pas quelle est l'action à

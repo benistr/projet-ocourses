@@ -6,6 +6,9 @@ import {connect} from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import axios from 'axios';
 
+//Import local
+import Supprimer from './supprimer.png';
+
 
 
 const Contain = styled.div`
@@ -27,6 +30,9 @@ const Container = styled.div`
 
   `;
 const Title = styled.h3`
+  display: flex;
+  justify-content: space-between;
+  align-item: center;
   padding: 8px;
   background-color: #F2F2F2;
   border-top-left-radius: 8px;
@@ -46,6 +52,13 @@ min-height: 50px;
 class Column extends React.Component {
   constructor(props){
     super(props)
+    this.state={}
+  }
+
+  deleteList = (id) => {
+    console.log('click pour supprimer', id);
+    // axios.post(`http://localhost:8800/api/user/remove`)
+    // this.props.deleteFromDB(id);
   }
   render() {
     return (
@@ -54,7 +67,8 @@ class Column extends React.Component {
       <Draggable draggableId={this.props.column.id} index={this.props.index}>
       {(provided) => (
       <Container {...provided.draggableProps} ref={provided.innerRef}>
-       <Title onClick={ () => { 
+       <Title {...provided.dragHandleProps}>
+         <span onClick={ () => { 
          axios.get(`http://localhost:8800/api/user/findlist/${this.props.column.id}`)
          .then(res => {
            console.log('voila la réponse products', res.data.products, 'et racks', res.data.racks);
@@ -62,8 +76,10 @@ class Column extends React.Component {
            this.props.history.push('/create-list')
          })
         }
-       } {...provided.dragHandleProps}>{
-          this.props.column.title}</Title>
+       } className="list-title">{
+          this.props.column.title}</span>
+          <img onClick={() => this.deleteList(this.props.column.id)} className="delete" src={Supprimer}></img>
+          </Title>
         <Droppable droppableId={this.props.column.id} type="task">
         {(provided) => (
         <TaskList 
@@ -103,6 +119,10 @@ const connectionStrategies = connect(
       loadList : (products, racks) => {
           console.log('click sur une liste', products, racks),
           dispatch({type: 'LOAD_LIST_DETAILS', value : {products, racks}})
+      },
+      deleteFromDB: (listId) => {
+        console.log('dans deleteFromDB')
+        dispatch({ type: 'DELETE_FROM_DB', value: listId})
       }
     };
   },
