@@ -61,13 +61,6 @@ handleChange = () => {
 handleSubmit = () => {
     event.preventDefault();
 
-    axios.post('/auth/getToken', {
-    
-        email: this.state.email,
-        password: this.state.password,
-    
-    }).then(res => localStorage.setItem('cool-jwt', res.data));
-
     //je vérifie que le login existe et je récupère le token
     axios.post('http://localhost:8800/api/user/login' , ({user : this.state }))
         .then(res => { console.log('reponses', res);

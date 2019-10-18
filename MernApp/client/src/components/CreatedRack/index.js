@@ -27,7 +27,7 @@ class CreatedRack extends React.Component{
   handleFav = (itemId) => {
     let userId = jwtDecode((window.localStorage.getItem('cool-jwt')))
     console.log('test d\'acces à userId', userId._id )
-    axios.get(`http://localhost:8800/api/user/favlist/${userId._id}`)
+    axios.get(`http://localhost:8800/api/user/getfavlist/${userId._id}`)
         .then(res => {
       // console.log(res.data);
       this.props.clickOnFav( userId._id, itemId, res.data);

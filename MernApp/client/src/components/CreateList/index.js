@@ -39,7 +39,7 @@ class CreateList extends React.Component{
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
             this.isConnected = true,
-            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props, 'tentative de refaire tasks', this.props.itemsIds, 'et tasksId', this.props.allIds) 
+            console.log('state de CreateList après connexion', this.state, 'et isConnected?', this.isConnected, 'et favlist', this.props.favItems) 
   
         }
     }
@@ -49,7 +49,9 @@ class CreateList extends React.Component{
         this.setState({state: this.state})
     }
     
-    
+componentDidMount(){
+    console.log('cdm favlist', this.props.favItems)
+}
 
 // Méthode ajoutant le produit à la list des items du state.
     handleSubmit = () => {
