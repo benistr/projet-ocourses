@@ -94,7 +94,7 @@ class CreateList extends React.Component{
         return  <div className="mainListContainer">
 
     <form className="inputs" onSubmit={(event) => {this.handleListSave()}}> 
-        <input type="text" className="input" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>         
+        <input type="text" className="input form" icon="search" placeholder="Nom de votre liste" value={this.state.listName} name="listName" id="listName" onChange={(e) => this.handleChange(e, 'listName')}/>         
     </form>
             {/* Input de recherche */}
     <form className="inputs" onSubmit= { (e) => { 
@@ -124,14 +124,12 @@ class CreateList extends React.Component{
             <option value="Viennoiseries">Viennoiseries</option>
         </select>
             <input type="text" className="input" icon=""   placeholder="Quantité" name="quantity" id="quantity" value=   {this.state.quantity} onChange={(e) => this.handleChange(e,    'quantity')}/>
-         
-        <button type="submit">Ajouter</button>
-            <div className="buttons">
-        <button className="save-button">Sauvegarder la Liste</button>
-         </div>
+        <button type="submit">Ajouter</button>   
     </form>
-         
-
+    <div className="save-button">
+        <button className="save-button">Sauvegarder la Liste</button>
+    </div>
+    
     {
     
     this.isConnected && 

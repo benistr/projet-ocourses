@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: space-around;
     margin-top: 3px;
-    flex-wrap: wrap; 
+    //flex-wrap: wrap; 
     text-align: center;  
 }
 
@@ -31,11 +31,7 @@
     text-align: center; 
     padding: 5px;    
 }
-/*
-.form {
-    margin-bottom: 3px;
-    text-align: center;
-}*/
+
 
 button {
     border-radius: 5px;
@@ -114,7 +110,7 @@ color: #B6B6B6;
 }
 
 .favs-title {
-    margin-bottom: 3px 0;
+    margin-top: 3px 0;
     cursor: ns-resize;
     font-weight: bold;
     text-decoration: underline;
@@ -161,8 +157,13 @@ color: #B6B6B6;
     height: 40px;
     flex-direction: row;
     justify-content: space-between;
-    flex-wrap: wrap;
-    margin: 3px;
+    //margin: 3px;
+}
+
+.form {
+    margin-bottom: .5em;
+    text-align: center;
+
 }
 
 
@@ -173,26 +174,21 @@ color: #B6B6B6;
     width: 30%;
     height: 100%;
     text-align: center;
-    margin-bottom: 3px;
+    //margin-bottom: 3px;
 }
 
-.buttons {
+.save-button {
     display: flex;
-    align-content: flex-end;
-    margin: 0 auto;
+    flex-wrap: wrap;
+    padding: .6em;
 }
 
 button {
-    border-radius: 5px;
+    border-radius: 8px;
     background-color: $text-color;
     color: white;
+    padding: 10px;
     
 }
 
-.save {
-    margin: 3px auto;
-    border: 2px solid red;
-
-    
-}
 }
