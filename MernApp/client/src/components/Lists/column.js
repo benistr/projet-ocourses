@@ -57,7 +57,7 @@ class Column extends React.Component {
 
   deleteList = (id) => {
     console.log('click pour supprimer', id);
-    axios.post(`/api/user/remove`)
+    axios.post(`http://localhost:8800/api/user/remove`)
     // this.props.deleteFromDB(id);
   }
   render() {
@@ -69,7 +69,7 @@ class Column extends React.Component {
       <Container {...provided.draggableProps} ref={provided.innerRef}>
        <Title {...provided.dragHandleProps}>
          <span onClick={ () => { 
-         axios.get(`/api/user/findlist/${this.props.column.id}`)
+         axios.get(`http://localhost:8800/api/user/findlist/${this.props.column.id}`)
          .then(res => {
            console.log('voila la réponse products', res.data.products, 'et racks', res.data.racks);
            this.props.loadList(res.data.products, res.data.racks);

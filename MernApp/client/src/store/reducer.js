@@ -135,7 +135,7 @@ const reducer = (state = initialState, action = defaultAction) => {
          * Faire en sorte que deux favoris ne puisse pas avoir le même nom et si on ajoute un article qui à le même nom qu'un favori, griser l'étoile
          */
         console.log('suite filter nouveaux favoris :', newFavList);
-        axios.post(`/api/user/favlist/${action.value.user}`, {favlist: newFavList})
+        axios.post(`http://localhost:8800/api/user/favlist/${action.value.user}`, {favlist: newFavList})
         // .then(res => console.log(res.body))
 
       return {
@@ -181,7 +181,7 @@ const reducer = (state = initialState, action = defaultAction) => {
     }
     case 'DELETE_FROM_DB':{
       console.log('dans le reducer')
-      axios.post(`/api/user/remove-list/${action.value}`)
+      axios.post(`http://localhost:8800/api/user/remove-list/${action.value}`)
     }
     default: {
       // return state;

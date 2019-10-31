@@ -29,7 +29,7 @@ class FormUser extends React.Component {
             console.log('jwt detécté')
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
-            axios.get(`/api/user/getuser/${userId._id}`)
+            axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
                     .then(res => {
                     console.log('voila la réponses suite à connected user', res.data)
                     this.setState({...this.state, isConnected : true,
@@ -55,7 +55,7 @@ editProfile = () => {
         surname: "",
         email: ""
     }
-    axios.post(`/api/user/edituser/${userId._id}`, {user: this.newState })
+    axios.post(`http://localhost:8800/api/user/edituser/${userId._id}`, {user: this.newState })
     .then(res)
     localStorage.setItem('name', res.data.user.name);
 }

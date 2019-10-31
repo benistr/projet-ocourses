@@ -22,7 +22,7 @@ componentDidMount() {
          console.log('pas de jwt')
          this.props.history.push('/login');
      }
-     axios.get('/api/user/getUser/', { headers: { Authorization: `Bearer ${jwt}` } })
+     axios.get('http://localhost:8080/api/user/getUser/', { headers: { Authorization: `Bearer ${jwt}` } })
             .then(res => res.setState( {
                 user: res.data
             })).catch(err => {

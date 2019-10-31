@@ -27,7 +27,7 @@ class Main extends React.Component {
             console.log('jwt detécté')
             let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
             console.log(userId._id);
-            axios.get(`/api/user/getuser/${userId._id}`)
+            axios.get(`http://localhost:8800/api/user/getuser/${userId._id}`)
             .then(res => {
               console.log('voila la réponses suite à la requete getUser', res.data, 'et la favlist', res.data.favlist)
               let newConnectedUser = {
