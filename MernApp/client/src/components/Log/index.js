@@ -62,7 +62,7 @@ handleSubmit = () => {
     event.preventDefault();
 
     //je vérifie que le login existe et je récupère le token
-    axios.post('http://www.o-courses.eu/api/user/login' , ({user : this.state }))
+    axios.post('/api/user/login' , ({user : this.state }))
         .then(res => { console.log('reponses', res);
         //Je mets le token dans le localStorage
         localStorage.setItem('cool-jwt', res.data.token);  
@@ -73,7 +73,7 @@ handleSubmit = () => {
         console.log('après decode:', jwtD, 'et id:', userId)
         console.log('on lance la requete axios getuser');
        //Je récupère les infos de mon user
-        axios.get(`http://www.o-courses.eu/api/user/getuser/${userId}`)
+        axios.get(`/api/user/getuser/${userId}`)
       .then(res => {
         console.log('voila la réponses suite à la requete getUser', res.data, 'et la favlist', res.data.favlist)
         let newConnectedUser = {
