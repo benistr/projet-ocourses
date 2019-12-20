@@ -88,7 +88,7 @@ componentDidMount(){
         event.preventDefault();
         let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
         console.log('click sur enregistrement', 'nom de la liste', this.state.listName, 'tableau des rayons', this.props.rackList, 'tableau des items', this.props.itemList)
-        axios.post(`http://localhost:8800/api/user/newlist/${userId._id}`, {listName: this.state.listName, racks: this.props.rackList, products: this.props.itemList})
+        axios.post(`http://www.o-courses.eu/api/user/newlist/${userId._id}`, {listName: this.state.listName, racks: this.props.rackList, products: this.props.itemList})
         .then( res => {
             console.log('réponse reçu', res.data)
             this.props.history.push('/listes')

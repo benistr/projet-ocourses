@@ -45,7 +45,7 @@ class Lists extends React.Component {
                 console.log('jwt detécté')
                 let userId= jwtDecode((window.localStorage.getItem('cool-jwt')));
                 // console.log(userId._id);
-                axios.get(`http://localhost:8800/api/user/getlist/${userId._id}`)
+                axios.get(`http://www.o-courses.eu/api/user/getlist/${userId._id}`)
                 .then(res => {
                     // console.log('réponses reçue',res.data.response, 'et les listes', );
                     this.setState({...this.state, initialData: res.data.response})

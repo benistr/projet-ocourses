@@ -53,5 +53,5 @@ const authRoute = require('./routes/auth');
 app.use('/api/user', authRoute);
 
 //Définition et mise en place du port d'écoute
-const port = 8800;
+const port = 'http://www.o-courses.eu';
 app.listen(port, () => console.log(`Listening on port ${port}`));
